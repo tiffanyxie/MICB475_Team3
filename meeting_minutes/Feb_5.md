@@ -23,7 +23,8 @@
 | Moisture Range | 53.7–88 | 40–85 | 6.7–60.7 | 29.7–76.4 | 24–73.7 | 9–41.1 |
 | CN ratio Range | 25.1–50.9 | 28.7–42.3 | 23.6–46.4 | 30.9–47.4 | 29.8–40.7 | 23.2–32.3 |
 
-![Metadata_Horizon](project_brainstorm/metadata_compare_ltsp_treatment.png)
+Visualization of metadata metrics (sample number, elevation, moisture content, CN ratio)
+![Metadata_Horizon](../project_brainstorm/metadata_compare_ltsp_treatment.png)
 
 **2. Comparing the impact of soil depth on the microbiome within each ecozone**
 * The only independent variable is horizon (O vs A)
@@ -42,7 +43,8 @@
 | Moisture Range | 20.6–88 | 15–85 | 6.7–60.7 | 13.1–75.7 | 4–73.7 | 4–41.1 |
 | CN ratio Range | 25.1–50.9 | 17.4–42.3 | 19.1–46.4 | 16.3–47.4 | 11.1–40.7 | 15.5–32.3 |
 
-![Metadata_Horizon](project_brainstorm/metadata_compare_horizon.png)
+Visualization of metadata metrics (sample number, elevation, moisture content, CN ratio)
+![Metadata_Horizon](../project_brainstorm/metadata_compare_horizon.png)
 
 **3. Correlate Diversity with some continuous metric**
 * Pool nothing
