@@ -52,4 +52,39 @@ Visualization of metadata metrics (sample number, elevation, moisture content, C
 * Put that on a scatter plot with diversity on the y axis and CN ratio, Moisture content, elevation, or annual precipitation on the x axis and see if a linear relationship arises
 
 ## Meeting Minutes
-* 
+Ideas 1 and 2:
+* Original authors assessed effect of removal and compaction levels and found significant impacts
+* Horizon has been assessed and more diversity in organic later
+* Eliminate ideas 1 and 2
+  
+Idea 3: Explore multiple metadata and see what has the biggest impact
+* Run diversity and statistical analyses and outputs p value of significant diversity
+
+Machine Learning Model: Predict organic matter removal
+* Build machine learning of what level of organic matter removal has been applied to a region
+* What taxa are important for predicting to organic matter removal?
+* Use core analyses to select taxa of importance and use that to train machine learning model
+* Which parameter is best for predicting organic matter removal?
+* Paper established OM1, OM2, OM3 have different microbial compositions
+* Create decision tree to determine if it is organic matter removal 1, 2, or 3
+* What metadata columns and taxonomic groups go in to influence organic matter removal
+* Suggest 70 total samples for everything
+* Need to filter before running
+
+Relevance:
+* Rogue soil dataset -> tells you what level of organic material removal is present
+* Can be applied to natural organic removal
+* Tells you which variables have greatest predictive power
+  
+Pipeline:
+1. Diversity metric
+2. DESeq, Indicator taxa, core microbio - identify taxa that go into model
+3. Random forest model - requires tuning and set-up
+
+## Action Items
+* Proposal: ensure we can justify each aim, how will these analyses help answer our question
+* Have an overview of the proposal (e.g. how subsetting data)
+* Process dataset (QIIME2) everytime go to decision point get Bessie
+* Leave full week to discuss machine learning model before presentation
+
+
