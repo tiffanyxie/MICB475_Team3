@@ -9,15 +9,19 @@
 [QIIME2 Script](../QIIME2/QIIME2_script.sh)
 
 ## Results
-Key Outputs:
-* [demux.qzv](../QIIME2/output/demux.qzv)
 
-Demux Sequence Statistics:
+### Post-demultiplexing
+[demux.qzv](../QIIME2/output/demux.qzv)
+
+**Demux Sequence Statistics**:
 
 ![Sequence counts summary](../QIIME2/output/demux_seq_counts.png)
 
-Quality Score per base:
+**Quality Score per Base**:
+
 ![Base quality score](../QIIME2/output/demux_base_qual.png)
 
-Demux sequence lengths:
+**Demux Sequence Lengths**:
+
 ![Sequence lengths](../QIIME2/output/demux_seq_length.png)
+
