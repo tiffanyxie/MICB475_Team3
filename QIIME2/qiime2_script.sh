@@ -23,7 +23,7 @@ qiime demux summarize \
 # After visualization, decided to trim at 390
 # Determine ASVs with DADA2
 qiime dada2 denoise-single \
-  --i-demultiplexed-seqs demux.qza \
+  --i-demultiplexed-seqs demux_seqs.qza \
   --p-trim-left 0 \
   --p-trunc-len 390 \
   --o-representative-sequences rep-seqs.qza \
