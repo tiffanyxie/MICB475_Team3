@@ -25,3 +25,5 @@
 
 ![Sequence lengths](../QIIME2/output/demux_seq_length.png)
 
+**table.qzv**
+<img width="870" height="590" alt="image" src="https://github.com/user-attachments/assets/744cd9fc-a4db-405b-87fc-26fec3fe3494" />
