@@ -49,3 +49,8 @@ qiime feature-classifier extract-reads \
   --p-r-primer GWATTACCGCGGCKGCTG \
   --p-trunc-len 390 \
   --o-reads ref-seqs-trimmed.qza
+
+qiime feature-classifier fit-classifier-naive-bayes \
+  --i-reference-reads ref-seqs-trimmed.qza \
+  --i-reference-taxonomy /datasets/classifiers/silva_ref_files/silva-138-99-tax.qza \
+  --o-classifier classifier.qza
