@@ -19,7 +19,6 @@ qiime demux summarize \
   --i-data demux_seqs.qza \
   --o-visualization demux.qzv
 
-# ----- Ivana's add-on from here -----
 # After visualization, decided to trim at 390
 # Determine ASVs with DADA2
 qiime dada2 denoise-single \
@@ -39,3 +38,14 @@ qiime feature-table summarize \
 qiime feature-table tabulate-seqs \
 --i-data rep-seqs.qza \
 --o-visualization rep-seqs.qzv
+
+# Train classifier for V1-V3
+#use truncal length of 390 used for trimming
+#Use universal 27F (5′- AGA GTT TGA TCM TGG CTC AG–3′) and
+# 519R (5′- GWA TTA CCG CGG CKG CTG–3′) primers
+qiime feature-classifier extract-reads \
+  --i-sequences /datasets/classifiers/silva_ref_files/silva-138-99-seqs.qza \
+  --p-f-primer AGAGTTTGATCMTGGCTCAG \
+  --p-r-primer GWATTACCGCGGCKGCTG \
+  --p-trunc-len 390 \
+  --o-reads ref-seqs-trimmed.qza
