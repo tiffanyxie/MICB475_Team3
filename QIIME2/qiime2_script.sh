@@ -54,3 +54,14 @@ qiime feature-classifier fit-classifier-naive-bayes \
   --i-reference-reads ref-seqs-trimmed.qza \
   --i-reference-taxonomy /datasets/classifiers/silva_ref_files/silva-138-99-tax.qza \
   --o-classifier classifier.qza
+
+# Use the trained classifier to assign taxonomy to your reads (rep-seqs.qza)
+qiime feature-classifier classify-sklearn \
+  --i-classifier classifier.qza \
+  --i-reads rep-seqs.qza \
+  --o-classification taxonomy.qza
+
+  #visualize taxonomy file
+  qiime metadata tabulate \
+  --m-input-file taxonomy.qza \
+  --o-visualization taxonomy.qzv
