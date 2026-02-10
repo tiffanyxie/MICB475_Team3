@@ -82,3 +82,8 @@ qiime taxa filter-table \
   --i-taxonomy taxonomy.qza \
   --p-exclude mitochondria,chloroplast \
   --o-filtered-table table-no-mitochondria-no-chloroplast.qza
+
+qiime feature-table summarize \
+  --i-table table-no-mitochondria-no-chloroplast.qza \
+  --o-visualization table-no-mitochondria-no-chloroplast.qzv \
+  --m-sample-metadata-file soil_metadata.txt
