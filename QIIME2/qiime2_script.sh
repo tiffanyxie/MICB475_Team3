@@ -62,6 +62,23 @@ qiime feature-classifier classify-sklearn \
   --o-classification taxonomy.qza
 
   #visualize taxonomy file
-  qiime metadata tabulate \
+qiime metadata tabulate \
   --m-input-file taxonomy.qza \
   --o-visualization taxonomy.qzv
+
+#Copy metadatafile into project folder
+cp /datasets/project_2/soil/soil_metadata.txt .
+
+#Taxa barplot
+qiime taxa barplot \
+    --i-table table.qza \
+    --i-taxonomy taxonomy.qza \
+    --m-metadata-file soil_metadata.txt \
+    --o-visualization taxa-bar-plots.qzv
+
+#Filter out mitochondria and chloroplast ASVs
+qiime taxa filter-table \
+  --i-table table.qza \
+  --i-taxonomy taxonomy.qza \
+  --p-exclude mitochondria,chloroplast \
+  --o-filtered-table table-no-mitochondria-no-chloroplast.qza
