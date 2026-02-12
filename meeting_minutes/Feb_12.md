@@ -27,4 +27,23 @@ Questions about random forest/methodology
 * Samples for testing: exclude from DESeq, indicator species analysis, and core microbiome? or only exclude from random forest?
 
 ## Meeting Notes
+Will update example model script by end of month
+  
+* Proposal for aim 1 (alpha beta diversity no need to input)
+* Put taxa information (e.g. individual ASVs), no need to put in all metadata
+* Propose which metadata to input, can be like 5 (only for these to look for alpha beeta diversity), look for what's significant, then for aim 2, put what's significant from these only
+* Check diversity for compaction effect
+* Can compare to the author's results, but don't have to
+* Control for human treatment, e.g. herbidice use
+* Try BC only (120 samples)
+* Frame model as predict soil in BC
+* Importance score from model to know which variables could be important that impact OM
+* For model want over 100 samples
 
+* If put all ASVs over-fit the model, trained to too many things and only fit with our dataset
+* Will get a curve after input to model, can tell if model overfitted, if so, delete some metadata
+* ASVs: relative abundance
+
+* Dataset for training (70%) and testing (30%) are randomly selected
+
+* Won't have hypothesis, just prediction, can say predict which metadata most contributing based on literature
