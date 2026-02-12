@@ -8,7 +8,7 @@
 ## Update on data processing
 * Finished QIIME2 pipeline up to taxonomic analysis (generated taxonomy.qzv and taxa barplots)
 * Relevant outputs: [QIIME2 Processing Lab Notebook Entry](../lab_notebook/1_QIIME2_Processing.md)
-* Filtered table to exclude mitochondria and chloroplast, but need to decide what metadata categories to exclude
+* Filtered table to exclude mitochondria and chloroplast, but need to decide what metadata categories to exclude (likely only focus on organic layer?)
 
 ## Proposal update
 * Skeleton of introduction/background and basis for experimental aims completed, and started on proposed approach
@@ -19,7 +19,10 @@ Aims:
 2. DESeq, indicator taxa, core microbiota: To determine what microbial taxa is associated with OM treatment levels and can be used as predictive features for our machine learning model.
 3. Random forest model: To develop a machine learning model to predict OM level using microbial taxa and soil condition factors, and to evaluate its accuracy.
 
-
+Questions about random forest/methodology
+* Confirmation: will we be able to build a model to compare > 2 levels of organic matter removal (Ref, OM1, OM2, OM3)?
+* How much will we have to subset our table before feeding it into the random forest model?
+* Samples for testing: exclude from DESeq, indicator species analysis, and core microbiome? or only exclude from random forest?
 
 ## Meeting Notes
 
