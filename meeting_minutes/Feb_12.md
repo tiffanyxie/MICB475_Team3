@@ -21,7 +21,9 @@ Aims:
 
 Questions about random forest/methodology
 * Confirmation: will we be able to build a model to compare > 2 levels of organic matter removal (Ref, OM1, OM2, OM3)?
+  * If a pivot is necessary, would predicting soil depth be a worthwhile alternative?
 * How much will we have to subset our table before feeding it into the random forest model?
+* Confirmation: Remove herbicide use and A horizons? Remove compaction treatments?
 * Samples for testing: exclude from DESeq, indicator species analysis, and core microbiome? or only exclude from random forest?
 
 ## Meeting Notes
