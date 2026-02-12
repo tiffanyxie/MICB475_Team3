@@ -11,7 +11,8 @@
 * Filtered table to exclude mitochondria and chloroplast, but need to decide what metadata categories to exclude
 
 ## Proposal update
-* 
+* Skeleton of introduction/background and basis for experimental aims completed, and started on proposed approach
+* How do we approach the hypothesis/prediction as this is very exploratory?
 
 ## Meeting Notes
 
