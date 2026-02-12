@@ -14,5 +14,12 @@
 * Skeleton of introduction/background and basis for experimental aims completed, and started on proposed approach
 * How do we approach the hypothesis/prediction as this is very exploratory?
 
+Aims:
+1. Diversity metric: To determine what variables impact alpha diversity by screening all columns in the soil dataset, then sorting by p-value to look for significance.
+2. DESeq, indicator taxa, core microbiota: To determine what microbial taxa is associated with OM treatment levels and can be used as predictive features for our machine learning model.
+3. Random forest model: To develop a machine learning model to predict OM level using microbial taxa and soil condition factors, and to evaluate its accuracy.
+
+
+
 ## Meeting Notes
 
