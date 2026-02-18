@@ -7,7 +7,7 @@
 * Filter out mitochondrial and chloroplast DNA
 
 ## Code
-[QIIME2 Script](../QIIME2/QIIME2_script.sh)
+[QIIME2 Script](../QIIME2/qiime2_script.sh)
 
 ## Results
 
