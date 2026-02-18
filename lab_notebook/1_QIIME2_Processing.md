@@ -47,14 +47,19 @@ Decided to trim to 390 bp
 * Lost 1 sample and ~ 7000 ASVs
 <img width="699" height="555" alt="image" src="https://github.com/user-attachments/assets/30485b64-96a9-46a3-a114-fbb8b75d5353" />
 
-
-## Next steps
-* Decide what other metadata filtering needs to be done
-* Perform rarefaction and generate diversity metrics
-
 ### Organic layer + no herbicide + BC only filtering
 <img width="709" height="566" alt="image" src="https://github.com/user-attachments/assets/08d5f8b0-ad3b-4788-bb27-daa15601ed2a" />
 <img width="1394" height="416" alt="image" src="https://github.com/user-attachments/assets/7811e990-c474-49ae-b85c-344e60aafd46" />
 5296 potentially good sampling depth?
 Samples retained: 27 (OM1), 25 (OM2), 10 (REF)
 
+### Rarefaction curve
+
+<img width="1088" height="462" alt="Screenshot 2026-02-18 at 12 56 29 PM" src="https://github.com/user-attachments/assets/e0fd7861-8b08-46ae-bcd2-61bb493bfcc0" />
+Sequencing depth of ~3000 identified as the minimum
+
+<img width="1431" height="422" alt="Screenshot 2026-02-18 at 12 58 10 PM" src="https://github.com/user-attachments/assets/60dec78d-f1d5-466c-a55c-3d672b1a1a81" />
+Sampling depth revision to 3310
+Samples retained: 45 (OM1), 41 (OM2), 15 (REF)
+* Confirmed with Bessie, will be used going forward
+ 
