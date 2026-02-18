@@ -114,10 +114,24 @@ qiime phylogeny align-to-tree-mafft-fasttree \
 --o-masked-alignment masked-aligned-rep-seqs.qza \
 --o-tree unrooted-tree.qza \
 --o-rooted-tree rooted-tree.qza
+# ^ this gave an error, asked gemini and got told to try this code
 
-# this gave an error, asked gemini and got told to try this code
 qiime phylogeny align-to-tree-mafft-fasttree \
   --i-sequences rep-seqs.qza \
+  --p-n-threads 0 \
+  --o-alignment aligned-rep-seqs.qza \
+  --o-masked-alignment masked-aligned-rep-seqs.qza \
+  --o-tree unrooted-tree.qza \
+  --o-rooted-tree rooted-tree.qza
+# ^ gave error again
+
+qiime feature-table filter-seqs \
+  --i-data rep-seqs.qza \
+  --i-table bc-only-o-layer-no-herbicide-filtered-table.qza \
+  --o-filtered-data bc-only-rep-seqs.qza
+
+qiime phylogeny align-to-tree-mafft-fasttree \
+  --i-sequences bc-only-rep-seqs.qza \
   --p-n-threads 0 \
   --o-alignment aligned-rep-seqs.qza \
   --o-masked-alignment masked-aligned-rep-seqs.qza \
