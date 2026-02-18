@@ -43,7 +43,7 @@ Decided to trim to 390 bp
 * Performed taxonomic analysis using this classifier
 ![Taxa bar plot](../QIIME2/output/level-4-bars.svg)
 
-### Mitochondria and chloroplast filtered table\
+### Mitochondria and chloroplast filtered table
 * Lost 1 sample and ~ 7000 ASVs
 <img width="699" height="555" alt="image" src="https://github.com/user-attachments/assets/30485b64-96a9-46a3-a114-fbb8b75d5353" />
 
@@ -59,7 +59,9 @@ Samples retained: 27 (OM1), 25 (OM2), 10 (REF)
 Sequencing depth of ~3000 identified as the minimum
 
 <img width="1431" height="422" alt="Screenshot 2026-02-18 at 12 58 10 PM" src="https://github.com/user-attachments/assets/60dec78d-f1d5-466c-a55c-3d672b1a1a81" />
-Sampling depth revision to 3310
+Sampling depth revision to 3310 <br\>
+
 Samples retained: 45 (OM1), 41 (OM2), 15 (REF)
+
 * Confirmed with Bessie, will be used going forward
  
