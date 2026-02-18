@@ -22,6 +22,10 @@
 
 ![Base quality score](../QIIME2/output/demux_base_qual.png)
 
+**rep-seqs.qzv**
+<img width="627" height="197" alt="image" src="https://github.com/user-attachments/assets/443c6ff3-e1f5-44b3-8a23-9d4d4109e96e" />
+
+
 **Demux Sequence Lengths**:
 
 ![Sequence lengths](../QIIME2/output/demux_seq_length.png)
