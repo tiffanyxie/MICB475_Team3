@@ -115,6 +115,15 @@ qiime phylogeny align-to-tree-mafft-fasttree \
 --o-tree unrooted-tree.qza \
 --o-rooted-tree rooted-tree.qza
 
+# this gave an error, asked gemini and got told to try this code
+qiime phylogeny align-to-tree-mafft-fasttree \
+  --i-sequences rep-seqs.qza \
+  --p-n-threads 0 \
+  --o-alignment aligned-rep-seqs.qza \
+  --o-masked-alignment masked-aligned-rep-seqs.qza \
+  --o-tree unrooted-tree.qza \
+  --o-rooted-tree rooted-tree.qza
+
 # only run until here (ivana) -----
 
 # Alpha rarefaction curve (8000 is close to 8747)
