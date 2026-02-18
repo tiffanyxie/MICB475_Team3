@@ -47,3 +47,10 @@ Decided to trim to 390 bp
 ## Next steps
 * Decide what other metadata filtering needs to be done
 * Perform rarefaction and generate diversity metrics
+
+### Organic layer + no herbicide + BC only filtering
+<img width="709" height="566" alt="image" src="https://github.com/user-attachments/assets/08d5f8b0-ad3b-4788-bb27-daa15601ed2a" />
+<img width="1394" height="416" alt="image" src="https://github.com/user-attachments/assets/7811e990-c474-49ae-b85c-344e60aafd46" />
+5296 potentially good sampling depth?
+Samples retained: 27 (OM1), 25 (OM2), 10 (REF)
+
