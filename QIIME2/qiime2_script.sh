@@ -138,8 +138,6 @@ qiime phylogeny align-to-tree-mafft-fasttree \
   --o-tree unrooted-tree.qza \
   --o-rooted-tree rooted-tree.qza
 
-# only run until here (ivana) -----
-
 # Alpha rarefaction curve (8000 is close to 8747)
 qiime diversity alpha-rarefaction \
 --i-table table.qza \
@@ -148,9 +146,24 @@ qiime diversity alpha-rarefaction \
 --m-metadata-file /datasets/project_2/soil/soil_metadata.txt \
 --o-visualization alpha-rarefaction.qzv
 
-qiime diversity core-metrics-phylogenetic \
---i-phylogeny rooted-tree.qza \
---i-table table.qza \
---p-sampling-depth 5296 \
---m-metadata-file /datasets/project_2/soil/soil_metadata.txt \
---output-dir core-metrics-results
+# Preparing human-readable files in directory for export to local computer
+mkdir soil_export
+
+qiime tools export \
+  --input-path bc-only-o-layer-no-herbicide-filtered-table.qza \
+  --output-path /data/soil_project/soil_export &
+
+qiime tools export \
+  --input-path taxonomy.qza \
+  --output-path /data/soil_project/soil_export &
+
+qiime tools export \
+  --input-path rooted-tree.qza \
+  --output-path /data/soil_project/soil_export &
+
+scp soil_metadata.txt /data/soil_project/soil_export &
+
+biom convert -i feature-table.biom --to-tsv -o feature-table.txt &
+
+# On local computer, secure copying directory
+scp -r root@10.19.139.186:/data/soil_project/soil_export .
