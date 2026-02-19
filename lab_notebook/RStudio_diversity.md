@@ -27,6 +27,13 @@ Sites
 
 Note that SL site only has one sample after rarefaction
 
+**Histogram of observed features**
+
+<img width="538" height="380" alt="0a222beb-e0e2-4c68-ab44-6e389894a35f" src="https://github.com/user-attachments/assets/201b3c18-d2e5-4ab8-b9a7-77eb03710fc1" />
+
+Note that there is somewhat of a normal distribution within Ecozones, but it does not hold for other variables e.g. Organic Removal treatment
+
+
 ### Beta Diversity - Weighted Unifrac, Unweighted Unifrac
 <img width="404" height="285" alt="6fdc74e4-81f5-4fb9-a3ef-de3decca1a7b" src="https://github.com/user-attachments/assets/75becc06-7c1b-4b3a-8105-ac49d930417c" />
 <img width="404" height="285" alt="fc78b6da-5d67-4128-962f-a685bf299df1" src="https://github.com/user-attachments/assets/9f09a7cb-4c9c-41cc-ae40-d0d5504c55f9" />
