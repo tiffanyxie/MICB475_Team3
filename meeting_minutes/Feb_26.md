@@ -16,8 +16,9 @@
 ## Discussion notes
 - Aim 1: not directly assessing impact of OM removal, but just checking how metadata variables impact alpha and beta diversity
 - We will include all soil conditions in our machine learning model
-- Subset ecozones: do Aim 1 to compare soil conditions within each ecozone
-- Do non-parametric tests for Aim 1 within each ecozone 
+- So far we found that ecozones exhibit different alpha diversity, in order to parse out soil conditions that impact diversity, we will do sub-ecozone analyses for Aim 1 (use non-parametric tests)
+- We can also compare soil metadata conditions between OM removal to check if our results are the same
+- Goal for next week: finish Aim 1 by next week, Spearman correlation between each soil condition and alpha diversity, beta diversity, compare soil metadata conditions between OM removal. 
 
 ## Relevant Analysis Scripts
 - [Diversity Stats trials.R](../soil_export/Diversity%20Stats%20trials.R)
