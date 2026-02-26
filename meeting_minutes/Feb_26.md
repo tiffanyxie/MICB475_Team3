@@ -5,7 +5,7 @@
 2. Review proposal  
 3. Discuss how to infer importance of metadata categories from alpha diversity metrics  
    - (We decided in the proposal that Aim 1 will shift from “choosing metadata categories” to “scanning how metadata influences diversity.”)
-   - Confirm that the statistical analysis methods chosen for aim 1 are correct (kruskal wallis, spearman, permanova)
+   - Confirm that the statistical analysis methods chosen for aim 1 are correct (kruskal wallis, spearman, permanova) and confirm our conclusion of using non parametric tests
 
 ## Update on the project
 - Began preparing R scripts for diversity analyses
