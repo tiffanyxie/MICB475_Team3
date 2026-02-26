@@ -10,6 +10,8 @@
 ## Update on the project
 - Began preparing R scripts for diversity analyses
 - Continued refining the approach for Aim 1 (alpha diversity + metadata influence)
+- 
+[Aim 1 Lab Notebook](https://github.com/tiffanyxie/MICB475_Team3/blob/main/lab_notebook/RStudio_diversity.md)
 
 ## Discussion notes
 - We confirmed that the goal of Aim 1 is now exploratory: identify which metadata categories affect alpha diversity rather than choosing specific metadata upfront.
