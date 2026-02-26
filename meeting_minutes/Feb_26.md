@@ -12,7 +12,6 @@
 
 ## Discussion notes
 - We confirmed that the goal of Aim 1 is now exploratory: identify which metadata categories affect alpha diversity rather than choosing specific metadata upfront.
-- Need to check diversity for compaction effects.
 - Continue reviewing proposals and align plan before next meeting.
 
 ## Relevant Analysis Scripts
