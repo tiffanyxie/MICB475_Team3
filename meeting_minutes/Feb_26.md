@@ -14,8 +14,10 @@
 [Aim 1 Lab Notebook](https://github.com/tiffanyxie/MICB475_Team3/blob/main/lab_notebook/RStudio_diversity.md)
 
 ## Discussion notes
-- We confirmed that the goal of Aim 1 is now exploratory: identify which metadata categories affect alpha diversity rather than choosing specific metadata upfront.
-- Continue reviewing proposals and align plan before next meeting.
+- Aim 1: not directly assessing impact of OM removal, but just checking how metadata variables impact alpha and beta diversity
+- We will include all soil conditions in our machine learning model
+- Subset ecozones: do Aim 1 to compare soil conditions within each ecozone
+- Do non-parametric tests for Aim 1 within each ecozone 
 
 ## Relevant Analysis Scripts
 - [Diversity Stats trials.R](../soil_export/Diversity%20Stats%20trials.R)
