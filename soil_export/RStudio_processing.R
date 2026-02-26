@@ -36,6 +36,12 @@ phylo_soil <- phyloseq(OTU, SAMP, TAX, phylotree)
 #Rarefy to a depth of 3310
 phylo_soil_rare <- rarefy_even_depth(phylo_soil, rngseed = 67, sample.size = 3310)
 
+save(phylo_soil, file = "phylo_soil.RData")
+save(phylo_soil_rare, file = "phylo_soil_rare.RData")
+
+load("phylo_soil.RData")
+load("phylo_soil_rare.RData")
+
 ### Alpha diversity ####
 #Prepare Metadata table to include Faith's PD
 phylo_dist <- pd(t(otu_table(phylo_soil_rare)), phy_tree(phylo_soil_rare),
@@ -85,13 +91,19 @@ ggplot(sample_data(phylo_soil_rare), aes(Ecozone, PD)) +
 
 #### Beta diversity #####
 
+#Will need to revisit PERMANOVA usage for this tommorrow
+
 #Obtain weighted unifrac distance metrics
 wuni_dm <- distance(phylo_soil_rare, method = "wunifrac")
 uni_dm <- distance(phylo_soil_rare, method = "unifrac")
+bc_dm <- distance(phylo_soil_rare, method = "bray")
 
 #Create coordinate tables
 pcoa_wuni <- ordinate(phylo_soil_rare, method="PCoA", distance = wuni_dm)
 pcoa_uni <- ordinate(phylo_soil_rare, method="PCoA", distance = uni_dm)
+pcoa_bc <- ordinate(phylo_soil_rare, method="PCoA", distance = bc_dm)
+
+pcoa_wuni_Comp <- ordinate(phylo_Comp, method="PCoA", distance = wuni_Comp)
 
 #Generate figures
 plot_ordination(phylo_soil_rare, pcoa_uni, 
@@ -102,6 +114,11 @@ plot_ordination(phylo_soil_rare, pcoa_uni,
 plot_ordination(phylo_soil_rare, pcoa_wuni, 
                 color = "Ecozone", shape = "LTSP.Treatment",
                 title = "Weighted Unifrac Distance") +
+  labs(pch="OM Removal", col = "Ecozone")
+
+plot_ordination(phylo_soil_rare, pcoa_bc, 
+                color = "Ecozone", shape = "LTSP.Treatment",
+                title = "Bray Curtis") +
   labs(pch="OM Removal", col = "Ecozone")
 
 #### Taxonomy bar plots ####
