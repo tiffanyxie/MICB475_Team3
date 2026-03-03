@@ -1,5 +1,6 @@
 # March 3, 2026: Compare soil conditions between OM Removal
 
+
 **Overview**
 * Moisture content lower in OM1 and OM2 vs REF in SBSBC
 * Total carbon decreases with increasing OM removal in overall BC and IDFBC, but no significance in SBSBC
@@ -7,6 +8,7 @@
 * Lower CN ratio in OM2 vs OM1 and REF in BC and IDFBC, no significance in SDSBC
 * No significant differences in pH
 
+[R Script](soil_export/compare_soil_conditions_om_removal.R)
 ## Moisture Content
 
 <img width="898" height="309" alt="image" src="https://github.com/user-attachments/assets/0d5d83de-6043-4c8c-9102-8e8cf49bf402" />
