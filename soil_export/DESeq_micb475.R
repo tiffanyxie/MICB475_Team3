@@ -137,7 +137,7 @@ ggplot(plot_data_OM2_vs_REF, aes(x = log2FoldChange, y = Genus, fill = log2FoldC
   geom_bar(stat = "identity", alpha = 0.8) +
   geom_errorbar(aes(xmin = log2FoldChange - lfcSE, xmax = log2FoldChange + lfcSE), width = 0.2) +
   scale_fill_manual(values = c("TRUE" = "lightpink", "FALSE" = "lightblue"), 
-                    labels = c("Lower in OM2", "Higher in OM1"),
+                    labels = c("Lower in OM2", "Higher in OM2"),
                     name = "Abundance") +
   labs(title = "OM2 vs REF: Top 20 Significant Genera",
        subtitle = "Grouped by Abundance Direction") +
@@ -147,7 +147,7 @@ ggplot(plot_data_OM2_vs_OM1, aes(x = log2FoldChange, y = Genus, fill = log2FoldC
   geom_bar(stat = "identity", alpha = 0.8) +
   geom_errorbar(aes(xmin = log2FoldChange - lfcSE, xmax = log2FoldChange + lfcSE), width = 0.2) +
   scale_fill_manual(values = c("TRUE" = "lightpink", "FALSE" = "lightblue"), 
-                    labels = c("Lower in OM2", "Higher in OM1"),
+                    labels = c("Lower in OM2", "Higher in OM2"),
                     name = "Abundance") +
   labs(title = "OM2 vs OM1: Top 20 Significant Genera",
        subtitle = "Grouped by Abundance Direction") +
