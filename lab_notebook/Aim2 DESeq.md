@@ -13,7 +13,7 @@ Volcano Plots
 <img width="1124" height="884" alt="image" src="https://github.com/user-attachments/assets/db470b8d-690a-494f-8a37-954a809ebceb" />
 
 Taxa bar plots
-<img width="1225" height="884" alt="image" src="https://github.com/user-attachments/assets/f0da7b28-527b-41f7-ac84-87614aafadc4" />
-<img width="1225" height="884" alt="image" src="https://github.com/user-attachments/assets/f1a5d330-dbad-479f-b9d8-b75d615b3046" />
-<img width="1225" height="884" alt="image" src="https://github.com/user-attachments/assets/e1e029fe-f2fc-402a-9ead-3b89aed24523" />
+<img width="1370" height="884" alt="image" src="https://github.com/user-attachments/assets/18c42d71-e939-46ad-beb0-12abde0193cd" />
+<img width="1370" height="884" alt="image" src="https://github.com/user-attachments/assets/fce3fe13-f39a-4817-96fd-1721ce43714a" />
+<img width="1370" height="884" alt="image" src="https://github.com/user-attachments/assets/ed96ec13-4a5a-4504-8d39-3503e74004be" />
 
