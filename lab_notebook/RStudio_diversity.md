@@ -1,4 +1,4 @@
-# Initial Diversity analyses
+<img width="1464" height="1034" alt="050dd5e0-92a6-4094-b2a2-9c941667e4c5" src="https://github.com/user-attachments/assets/7183a4b0-d452-4c92-b3d3-4825efa1e4f5" /># Initial Diversity analyses
 
 ## Aim:
 * Support experimental aims and assess important variables
@@ -122,55 +122,102 @@ Significant Correlation across all metrics, Total Carbon across ecozones may var
 
 **IDFBC**
 
+<img width="400" height="400" alt="c9f0cf94-1033-4b29-a0b1-5c40780f7db2" src="https://github.com/user-attachments/assets/a2310197-b1c4-462e-bd39-13f65a49c9d8" />
 
+No Significant Correlation
 
 **SBSBC**
 
+<img width="400" height="400" alt="51ea213e-c114-4465-b337-cd2bb21f0255" src="https://github.com/user-attachments/assets/33f9f9ef-9014-4e8c-9441-c54a5c0667ad" />
 
+No Significant Correlation
 
 **All BC**
 
+<img width="400" height="400" alt="c6bcaa6c-a0c3-4a63-94d6-c00b20b920c2" src="https://github.com/user-attachments/assets/c160f38a-73f2-4fb9-8319-c47a217711c6" />
 
+Significant Correlation across all metrics, Total Nitrogen across ecozones may vary significantly
 
 ### CN Ratio
 
 **IDFBC**
 
+<img width="400" height="400" alt="f713c0d2-08d2-43dd-b6a8-04a91e7ce6f2" src="https://github.com/user-attachments/assets/6756af8c-e50d-4fc5-9e18-0f1d01ab24d0" />
 
+No Significant Correlation
 
 **SBSBC**
 
+<img width="400" height="400" alt="683ebd9c-c707-4073-aca8-101702bf6821" src="https://github.com/user-attachments/assets/8c1f04e3-1834-4cc0-b91c-53d831dea5f2" />
 
+No Significant Correlation
 
 **All BC**
 
+<img width="400" height="400" alt="bf77c711-3ff8-4f22-9c78-b39ff437ddc5" src="https://github.com/user-attachments/assets/5d41ef67-a34f-4233-b267-3ccc9c4dd788" />
+
+No Significant Correlation
 
 ### pH
 
 **IDFBC**
 
+<img width="400" height="400" alt="3fff1774-fa77-49fd-8dd3-3fcfceb094b3" src="https://github.com/user-attachments/assets/31a656f5-0051-4068-ad6c-d9993916b092" />
 
+No Significant Correlation
 
 **SBSBC**
 
+<img width="400" height="400" alt="24179bb1-bc8d-44cf-b673-b296ac8b56aa" src="https://github.com/user-attachments/assets/40359433-7ad2-4124-ad13-62b05fbb5f5f" />
 
+Significance
+* PD - p = 0.006103
 
 **All BC**
 
+<img width="400" height="400" alt="17aa6efe-6050-4e75-ba64-429dbdfb72e5" src="https://github.com/user-attachments/assets/985f8ff7-77b9-47ca-bb28-16454b230a5f" />
+<img width="400" height="400" alt="050dd5e0-92a6-4094-b2a2-9c941667e4c5" src="https://github.com/user-attachments/assets/dd22131a-14e5-4804-83a4-c07f1e2f3ebc" />
+
+Significant Correlation across all metrics, pH across ecozones may vary significantly. Box plot shows the difference in pH across Ecozones
 
 ### Soil Bulk Density
 
 **IDFBC**
 
+<img width="400" height="400" alt="6b9d58e7-7af1-4ed7-9c01-3c554ba817f3" src="https://github.com/user-attachments/assets/a780055f-7205-4cbb-a2d5-4c9a2835f8f1" />
+
+No Significant Correlation
+
+**SBSBC**
+
+<img width="400" height="400" alt="54dfd76b-2d4c-4a0e-ac56-626b57d53caf" src="https://github.com/user-attachments/assets/b18eeb34-9050-445e-a825-f9836b83bf04" />
+
+No Significant Correlation
+
+**All BC**
+
+<img width="400" height="400" alt="19d3314c-ca5b-461d-aa25-0b55b49661c4" src="https://github.com/user-attachments/assets/5f6c36f7-8a6c-4bf1-a3b8-88303efe7ac5" />
+
+Significant Correlation across all metrics, soil bulk density across ecozones may vary significantly.
+
+## Beta Diversity Results
+
+**IDFBC**
+
+<img width="400" height="400" alt="a7a1d9cf-44fb-4c27-8084-e40f5857d0c0" src="https://github.com/user-attachments/assets/bdb6067e-428e-4d43-ae9a-cbf0036a5f37" />
+<img width="400" height="400" alt="cf656d6f-7ead-47fa-8cee-a979daac928c" src="https://github.com/user-attachments/assets/86ea0b1a-4ae2-4d81-a0f6-ec5ba16d1711" />
 
 
 **SBSBC**
+
+<img width="400" height="400" alt="bdd69c08-2a90-4721-b3dc-c3bee13a854a" src="https://github.com/user-attachments/assets/dabcd7b4-910f-48f0-babe-51c5567ea23c" />
+<img width="400" height="400" alt="d65a91c7-7b4b-407c-8699-e4662df0ac17" src="https://github.com/user-attachments/assets/70291236-002a-461f-9379-d18f702225a3" />
 
 
 
 **All BC**
 
-
-
+<img width="400" height="400" alt="ea397fc0-262d-4dc8-9f93-0512f02aa183" src="https://github.com/user-attachments/assets/d13ecbfb-f30b-49bd-8490-c99897ab0d83" />
+<img width="400" height="400" alt="4bc5ad9b-f773-4b0a-a9e9-6dbf8fbb5c89" src="https://github.com/user-attachments/assets/966af4c3-8614-4b8f-a065-344b901eca83" />
 
 
