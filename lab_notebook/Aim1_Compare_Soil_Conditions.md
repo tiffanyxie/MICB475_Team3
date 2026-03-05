@@ -1,6 +1,9 @@
 # March 3, 2026: Compare soil conditions between OM Removal
 
+## Aim
+* Compare soil conditions (moisture, total carbon, total nitrogen, C/N ratio, and pH)  between OM removal
 
+## Results
 **Overview**
 * Moisture content lower in OM1 and OM2 vs REF in SBSBC
 * Total carbon decreases with increasing OM removal in overall BC and IDFBC, but no significance in SBSBC
@@ -8,8 +11,8 @@
 * Lower CN ratio in OM2 vs OM1 and REF in BC and IDFBC, no significance in SDSBC
 * No significant differences in pH
 
-[R Script](soil_export/compare_soil_conditions_om_removal.R)
-## Moisture Content
+[R Script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/soil_export/compare_soil_conditions_om_removal.R)
+### Moisture Content
 
 <img width="898" height="309" alt="image" src="https://github.com/user-attachments/assets/0d5d83de-6043-4c8c-9102-8e8cf49bf402" />
 
@@ -52,7 +55,7 @@ Dunn test
 | OM1 - REF    | -2.4980307 | 0.012488538 | 0.024977076 |
 | OM2 - REF    | -2.9476548 | 0.003201944 | 0.009605832 |
 
-## Total Carbon
+### Total Carbon
 <img width="716" height="309" alt="image" src="https://github.com/user-attachments/assets/53a9bead-4d1b-4827-9e58-fa236f23381f" />
 
 **BC**
@@ -94,7 +97,7 @@ Kruskal-Wallis chi-squared = 5.1755, df = 2, p-value = 0.07519
 | OM1 - REF  | -1.6102426 | 0.1073449  | 0.2146898 |
 | OM2 - REF  | -2.2713616 | 0.0231251  | 0.0693753 |
 
-## Total Nitrogen
+### Total Nitrogen
 <img width="751" height="309" alt="image" src="https://github.com/user-attachments/assets/dad8d693-14dc-4e96-9db6-bd7c535094be" />
 
 **BC**
@@ -135,7 +138,7 @@ Dunn test
 | OM1 - REF  | -1.7058292 | 0.08803988   | 0.1760798   |
 | OM2 - REF  | -1.8979476 | 0.05770299   | 0.1731090   |
 
-## CN Ratio
+### CN Ratio
 <img width="796" height="309" alt="image" src="https://github.com/user-attachments/assets/8f8051cc-84c1-47dc-bf32-d12174c1d31b" />
 
 **BC**
@@ -173,7 +176,7 @@ Dunn test
 | OM1 - REF  | -1.033792  | 0.30123353   | 0.3012335   |
 | OM2 - REF  | -2.012621  | 0.04415449   | 0.1324635   |
 
-## pH
+### pH
 <img width="723" height="309" alt="image" src="https://github.com/user-attachments/assets/0e11129c-f074-4da3-a466-e7b2b446125b" />
 
 **BC**
