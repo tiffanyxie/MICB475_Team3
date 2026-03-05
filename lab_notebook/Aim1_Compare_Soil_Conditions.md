@@ -3,6 +3,10 @@
 ## Aim
 * Compare soil conditions (moisture, total carbon, total nitrogen, C/N ratio, and pH)  between OM removal
 
+## Code
+
+[R Script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/soil_export/compare_soil_conditions_om_removal.R)
+
 ## Results
 **Overview**
 * Moisture content lower in OM1 and OM2 vs REF in SBSBC
@@ -11,7 +15,6 @@
 * Lower CN ratio in OM2 vs OM1 and REF in BC and IDFBC, no significance in SDSBC
 * No significant differences in pH
 
-[R Script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/soil_export/compare_soil_conditions_om_removal.R)
 ### Moisture Content
 
 <img width="898" height="309" alt="image" src="https://github.com/user-attachments/assets/0d5d83de-6043-4c8c-9102-8e8cf49bf402" />
