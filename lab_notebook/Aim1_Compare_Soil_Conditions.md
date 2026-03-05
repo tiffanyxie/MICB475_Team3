@@ -18,6 +18,14 @@
 Kruskal-Wallis: chi-squared = 5.2861, df = 2, p-value =
 0.07114
 
+Dunn test
+
+| Comparison | Z         | P.unadj    | P.adj     |
+|------------|-----------|------------|-----------|
+| OM1 - OM2  | 0.2991179 | 0.76485007 | 0.76485007|
+| OM1 - REF  | -2.0285439| 0.04250477 | 0.08500954|
+| OM2 - REF  | -2.2357807| 0.02536614 | 0.07609842|
+
 
 **IDFBC**
 * No significant difference
@@ -75,7 +83,7 @@ Dunn test
 **SBSBC**
 * Not significant
 
-Kruskal-Wallis chi-squared = 5.1755, df = 2, p-value = 0.08
+Kruskal-Wallis chi-squared = 5.1755, df = 2, p-value = 0.07519
 
   Dunn test
   
@@ -106,7 +114,7 @@ Dunn test
 **IDFBC**
 * No significance
 
-Kruskal-Wallis chi-squared = 5.4791, df = 2, p-value = 0.06
+Kruskal-Wallis chi-squared = 5.4791, df = 2, p-value = 0.0646
 
 Dunn test
 | Comparison |       Z    |   P.unadj    |   P.adj     |
@@ -118,7 +126,7 @@ Dunn test
 **SBSBC**
 * No significance
   
-Kruskal-Wallis chi-squared = 3.791, df = 2, p-value = 0.15
+Kruskal-Wallis chi-squared = 3.791, df = 2, p-value = 0.1502
 
 Dunn test
 | Comparison |       Z    |   P.unadj    |   P.adj     |
@@ -133,7 +141,7 @@ Dunn test
 **BC**
 * Significantly lower CN ratio in OM2 vs OM1 and REF
   
-Kruskal-Wallis chi-squared = 14.1836, df = 2, p-value = 0
+Kruskal-Wallis chi-squared = 14.1836, df = 2, p-value = 0.0008319
 Dunn test
 | Comparison |       Z     |    P.unadj      |    P.adj       |
 |------------|------------|----------------|----------------|
@@ -155,7 +163,7 @@ Dunn test
 
 **SBSBC**
 * No significant difference
-Kruskal-Wallis chi-squared = 4.5462, df = 2, p-value = 0.1
+Kruskal-Wallis chi-squared = 4.5462, df = 2, p-value = 0.103
 
 Dunn test
 
