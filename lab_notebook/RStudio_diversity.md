@@ -1,4 +1,4 @@
-<img width="1464" height="1034" alt="050dd5e0-92a6-4094-b2a2-9c941667e4c5" src="https://github.com/user-attachments/assets/7183a4b0-d452-4c92-b3d3-4825efa1e4f5" /># Initial Diversity analyses
+# Initial Diversity analyses
 
 ## Aim:
 * Support experimental aims and assess important variables
