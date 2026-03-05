@@ -20,6 +20,11 @@
 
 
 ## Discussion notes
+* No difference in alpha diversity between OM removal
+* Many ecozone-specific differences
+* Will pool BC samples together for remaining analyses
+* For next week: revise Aim 2 analyses
+* DESeq- fix code
+* Ensure DESeq and ISA are on the same level (e.g. genus)
+* Finish ISA - use unrarefied data
 
-
-## Relevant Analysis Scripts
