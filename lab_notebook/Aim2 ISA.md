@@ -29,3 +29,4 @@ Higher indicator values indicate a stronger association between a taxon and a sp
 still have to work on: 
 - within each ecozone, also have to analyze the OM 1,2,3 removal
 - change the name of top 10 species into genus name or smth
+- change to use the unrarefied, compare om1 to rarefied, and om2 to rarefied, the value use 0.6
