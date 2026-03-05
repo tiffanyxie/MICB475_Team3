@@ -24,3 +24,8 @@ The indicator value (statistic) reflects the strength of association between a t
 
 The figure shows the **top 10 taxa with the highest indicator values in each ecozone** for visualization purposes.  
 Higher indicator values indicate a stronger association between a taxon and a specific LTSP treatment group.
+
+
+still have to work on: 
+- within each ecozone, also have to analyze the OM 1,2,3 removal
+- change the name of top 10 species into genus name or smth
