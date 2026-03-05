@@ -8,16 +8,21 @@
 core_microbiome_analysis/coremicrobiome_micb475.R
 
 ## Results:
-*prevelance was set to 0.15 because when it was set to 0.2, it yeilded 0 ASVs for all 3 treatment groups. Note that OM1 and REF groups share the same ASVs*
+*prevelance was set to 0.15 because when it was set to 0.2, it yeilded 0 ASVs for all OM1 and OM@ treatment groups. 
 
 Plot of ASVs, genus level
 
-REF/OM1
-<img width="1404" height="630" alt="Screenshot 2026-03-02 at 12 35 38 AM" src="https://github.com/user-attachments/assets/66e6a738-db7c-4afb-b1e9-7ca36dc11671" />
+REF
+<img width="1447" height="706" alt="Screenshot 2026-03-04 at 11 33 04 PM" src="https://github.com/user-attachments/assets/b421cb76-96b1-4912-b285-678ecd60c306" />
+
+OM1
+<img width="1444" height="704" alt="Screenshot 2026-03-04 at 11 33 28 PM" src="https://github.com/user-attachments/assets/fce54367-0f46-477a-a218-bef9caa900dc" />
+
 
 OM2
 <img width="1441" height="633" alt="Screenshot 2026-03-02 at 12 36 26 AM" src="https://github.com/user-attachments/assets/44a13844-ba95-4b0d-9f04-9b292dbfeecb" />
 
 Venn diagram
 
-<img width="428" height="419" alt="Screenshot 2026-03-02 at 12 29 49 AM" src="https://github.com/user-attachments/assets/d060a9c8-cf5f-4959-be40-1fc1d486e781" />
+<img width="636" height="611" alt="Screenshot 2026-03-04 at 11 32 35 PM" src="https://github.com/user-attachments/assets/00976e55-bfe8-42f4-90d0-37c92b8d6951" />
+
