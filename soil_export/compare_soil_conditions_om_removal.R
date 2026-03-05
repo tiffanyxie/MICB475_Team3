@@ -8,6 +8,7 @@ library(readxl)
 library(ggplot2)
 library(ggtext)
 library(FSA)
+library(patchwork)
 
 #### Load metadata ####
 soil_meta_raw<-read_delim("soil_metadata.txt")
