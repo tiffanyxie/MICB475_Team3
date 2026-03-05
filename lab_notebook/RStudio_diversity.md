@@ -204,20 +204,49 @@ Significant Correlation across all metrics, soil bulk density across ecozones ma
 
 **IDFBC**
 
-<img width="400" height="400" alt="a7a1d9cf-44fb-4c27-8084-e40f5857d0c0" src="https://github.com/user-attachments/assets/bdb6067e-428e-4d43-ae9a-cbf0036a5f37" />
-<img width="400" height="400" alt="cf656d6f-7ead-47fa-8cee-a979daac928c" src="https://github.com/user-attachments/assets/86ea0b1a-4ae2-4d81-a0f6-ec5ba16d1711" />
+<img width="800" height="800" alt="a7a1d9cf-44fb-4c27-8084-e40f5857d0c0" src="https://github.com/user-attachments/assets/bdb6067e-428e-4d43-ae9a-cbf0036a5f37" />
+
+| Term                                      | R2      | Pr(>F) |
+|-------------------------------------------|---------|--------|
+| Site                                      | 0.06510 | 0.002  |
+| LTSP.Treatment                            | 0.05247 | 0.019  |
+| Compaction.Treatment                      | 0.03384 | 0.248  |
+| Site:LTSP.Treatment                       | 0.05035 | 0.836  |
+| Site:Compaction.Treatment                 | 0.08635 | 0.020  |
+| LTSP.Treatment:Compaction.Treatment       | 0.02885 | 0.466  |
+| Site:LTSP.Treatment:Compaction.Treatment  | 0.06703 | 0.227  |
+| Residual                                  | 0.61601 |        |
+| Total                                     | 1.00000 |        |
 
 
 **SBSBC**
 
-<img width="400" height="400" alt="bdd69c08-2a90-4721-b3dc-c3bee13a854a" src="https://github.com/user-attachments/assets/dabcd7b4-910f-48f0-babe-51c5567ea23c" />
-<img width="400" height="400" alt="d65a91c7-7b4b-407c-8699-e4662df0ac17" src="https://github.com/user-attachments/assets/70291236-002a-461f-9379-d18f702225a3" />
+<img width="800" height="800" alt="bdd69c08-2a90-4721-b3dc-c3bee13a854a" src="https://github.com/user-attachments/assets/dabcd7b4-910f-48f0-babe-51c5567ea23c" />
 
-
+| Term                                      | R2      | Pr(>F) |
+|-------------------------------------------|---------|--------|
+| Site                                      | 0.07802 | 0.003  |
+| LTSP.Treatment                            | 0.08337 | 0.001  |
+| Compaction.Treatment                      | 0.07224 | 0.005  |
+| Site:LTSP.Treatment                       | 0.12429 | 0.001  |
+| Site:Compaction.Treatment                 | 0.10229 | 0.002  |
+| LTSP.Treatment:Compaction.Treatment       | 0.08051 | 0.007  |
+| Site:LTSP.Treatment:Compaction.Treatment  | 0.05607 | 0.045  |
+| Residual                                  | 0.40320 |        |
+| Total                                     | 1.00000 |        |
 
 **All BC**
 
-<img width="400" height="400" alt="ea397fc0-262d-4dc8-9f93-0512f02aa183" src="https://github.com/user-attachments/assets/d13ecbfb-f30b-49bd-8490-c99897ab0d83" />
-<img width="400" height="400" alt="4bc5ad9b-f773-4b0a-a9e9-6dbf8fbb5c89" src="https://github.com/user-attachments/assets/966af4c3-8614-4b8f-a065-344b901eca83" />
+<img width="800" height="800" alt="ea397fc0-262d-4dc8-9f93-0512f02aa183" src="https://github.com/user-attachments/assets/d13ecbfb-f30b-49bd-8490-c99897ab0d83" />
 
-
+| Term                                      | R2      | Pr(>F) |
+|-------------------------------------------|---------|--------|
+| Site                                      | 0.24782 | 0.001  |
+| LTSP.Treatment                            | 0.02978 | 0.006  |
+| Compaction.Treatment                      | 0.02054 | 0.062  |
+| Site:LTSP.Treatment                       | 0.08639 | 0.004  |
+| Site:Compaction.Treatment                 | 0.09328 | 0.001  |
+| LTSP.Treatment:Compaction.Treatment       | 0.01760 | 0.128  |
+| Site:LTSP.Treatment:Compaction.Treatment  | 0.07263 | 0.045  |
+| Residual                                  | 0.43196 |        |
+| Total                                     | 1.00000 |        |
