@@ -3,6 +3,8 @@
 
 ## Meeting Minutes
 
+[March 5: Aim 1 and 2](https://github.com/tiffanyxie/MICB475_Team3/blob/main/meeting_minutes/Mar_5.md)
+
 [Feb 26: Proposal and Aim 1 update](https://github.com/tiffanyxie/MICB475_Team3/blob/main/meeting_minutes/Feb_26.md)
 
 [Feb 12: Data processing and proposal update](https://github.com/tiffanyxie/MICB475_Team3/blob/main/meeting_minutes/Feb_12.md)
