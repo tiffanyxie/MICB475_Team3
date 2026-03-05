@@ -8,7 +8,7 @@
 core_microbiome_analysis/coremicrobiome_micb475.R
 
 ## Results:
-*prevelance was set to 0.15 because when it was set to 0.2, it yeilded 0 ASVs for all OM1 and OM@ treatment groups. 
+*prevelance was set to 0.15 because when it was set to 0.2, it yeilded 0 ASVs for all OM1 and OM2 treatment groups. 
 
 Plot of ASVs, genus level
 
