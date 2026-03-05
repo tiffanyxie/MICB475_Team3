@@ -4,8 +4,8 @@
 1. Discuss Aim1 and Aim2 results 
 
 ## Update on the project
--Aim 2 (Core microbiome, Deseq, ISA) completed
--Comparison of soil conditions bewteen OM removal levels completed
+- Aim 2 (Core microbiome, Deseq, ISA) completed
+- Aim 1 completed (?), comparison of soil conditions bewteen OM removal levels completed
 
 ## Discussion notes
 
