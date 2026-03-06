@@ -20,7 +20,7 @@ The indicator value (statistic) reflects the strength of association between a t
 
 ### Indicator taxa summary
 
-![ISA indicator taxa](../R_scripts/output/ISA_plot.png)
+![ISA indicator taxa](../soil_export/ISA_indicator_plot.png)
 
 The figure shows the **top 10 taxa with the highest indicator values in each ecozone** for visualization purposes.  
 Higher indicator values indicate a stronger association between a taxon and a specific LTSP treatment group.
