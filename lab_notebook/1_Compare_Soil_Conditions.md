@@ -5,7 +5,7 @@
 
 ## Code
 
-[R Script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/soil_export/compare_soil_conditions_om_removal.R)
+[R Script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scipts/1_Diversity_metrics.R)
 
 ## Results
 **Overview**
