@@ -4,7 +4,7 @@
 * Determine ASVs (or Taxa) that have decreased or increased in presence relative to a reference
 
 ## Code:
-DESEq_micb475.R
+[R Script](../R_scripts/2_DESeq.R)
 
 ## Results:
 Volcano Plots
