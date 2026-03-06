@@ -7,7 +7,7 @@
 
 ## Code:
 
-soil_export/isa_analysis.R
+[R Script](../R_scripts/2_ISA.R)
 
 ## Results:
 
