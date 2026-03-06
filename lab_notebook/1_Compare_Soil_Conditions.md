@@ -5,7 +5,7 @@
 
 ## Code
 
-[R Script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scipts/1_Diversity_metrics.R)
+[R Script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/1_Metadata_Analysis)
 
 ## Results
 **Overview**
