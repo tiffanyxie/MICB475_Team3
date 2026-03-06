@@ -5,7 +5,7 @@
 * Create a Venn diagram using all the ASVs shared and unique to LTSP treatment groups 
 
 ## Code:
-[R Script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/2_CoreMicrobiome)
+[R Script](../R_scripts/2_CoreMicrobiome.R)
 
 ## Results:
 *prevelance was set to 0.15 because when it was set to 0.2, it yeilded 0 ASVs for all OM1 and OM2 treatment groups. 
