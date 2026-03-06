@@ -9,9 +9,9 @@
 
 [Aim 1 - Diversity Metrics](https://github.com/tiffanyxie/MICB475_Team3/blob/main/lab_notebook/1_Diversity_Metrics.md)
 
-[Comparison of soil conditions between OM removal](https://github.com/tiffanyxie/MICB475_Team3/blob/main/lab_notebook/1_Compare_Soil_Conditions.md)
+[Aim 1 - Metadata Analysis](https://github.com/tiffanyxie/MICB475_Team3/blob/main/lab_notebook/1_Compare_Soil_Conditions.md)
 
-[Aim 2 - Core Microbiome](https://github.com/tiffanyxie/MICB475_Team3/blob/main/lab_notebook/2_CoreMicrobiome.md)
+[Aim 2 - Core Microbiome](https://github.com/tiffanyxie/MICB475_Team3/blob/main/lab_notebook/2_Core_Microbiome.md)
 
 [Aim 2 - DESeq](https://github.com/tiffanyxie/MICB475_Team3/blob/main/lab_notebook/2_DESeq.md)
 
