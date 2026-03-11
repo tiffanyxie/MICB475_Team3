@@ -25,7 +25,7 @@ ps <-  phylo_soil %>%
 ps_clr = ps %>% microbiome::transform('clr') 
 
 #Filter taxa
-test<- c("99c89a5ef824dcaea453aa1e8f5a1d80","3e036813a32e030a41402519657d6ac5","6deb9f88f14df479760ec8a1721a63ba") ## REPLACE WITH ACTUAL TAXA
+test<- tax_table(ps_clr) %>% rownames() %>% unique() %>% head(n=20)## REPLACE WITH ACTUAL TAXA
 ps_filt = prune_taxa(test,ps_clr)
 
 # Melt the dataset
@@ -41,7 +41,8 @@ df_transformed = df %>%
 df_pivot = df_transformed %>% 
   select(Sample,pH,Total.Carbon,Total.Nitrogen, pH, CN.Ratio,LTSP.Treatment,Genus,Abundance) %>% 
   # Turn each Genus into its own column
-  pivot_wider(names_from = Genus, values_from = Abundance)
+  pivot_wider(names_from = Genus, values_from = Abundance) %>%
+  mutate(LTSP.Treatment = if_else(grepl("OM",LTSP.Treatment),"OM","REF"))
 
 # Remove rows with NA values in the metadata
 df_noNA = df_pivot %>% na.omit()
@@ -58,7 +59,8 @@ df_final = df_noNA %>% select(-Sample)
 predictors = df_final %>% select(-LTSP.Treatment)
 
 outcome = df_final %>% pull(LTSP.Treatment) %>%
-  factor(levels=c("REF","OM1","OM2"))
+  factor(levels=c("REF","OM"))
+  #factor(levels=c("REF","OM1","OM2"))
 
 #Set up k-fold cross-validation
 # Randomly subsets the rows into k equal bins.
