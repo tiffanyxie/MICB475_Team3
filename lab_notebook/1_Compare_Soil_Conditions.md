@@ -13,7 +13,7 @@
 * Total carbon decreases with increasing OM removal in overall BC and IDFBC, but no significance in SBSBC
 * Lower nitrogen in OM removal samples in BC, no significance when subset to ecozones
 * Lower CN ratio in OM2 vs OM1 and REF in BC and IDFBC, no significance in SDSBC
-* No significant differences in pH
+* pH higher in OM2 vs REF in IDFBC only
 
 ### Moisture Content
 
@@ -180,30 +180,31 @@ Dunn test
 | OM2 - REF  | -2.012621  | 0.04415449   | 0.1324635   |
 
 ### pH
-<img width="723" height="309" alt="image" src="https://github.com/user-attachments/assets/0e11129c-f074-4da3-a466-e7b2b446125b" />
+<img width="860" height="438" alt="image" src="https://github.com/user-attachments/assets/d34173e2-a56a-461f-a09c-b1e7ba1ad857" />
+
 
 **BC**
 * No significance
-Kruskal-Wallis chi-squared = 1.8995, df = 2, p-value = 0.3868
+Kruskal-Wallis chi-squared = 3.3378, df = 2, p-value = 0.1885
 
 Dunn test
-| Comparison |        Z       |   P.unadj    |   P.adj     |
-|------------|----------------|--------------|-------------|
-| OM1 - OM2  |  0.003158412   | 0.9974800    | 0.9974800   |
-| OM1 - REF  |  1.291172332   | 0.1966439    | 0.5899318   |
-| OM2 - REF  |  1.285899274   | 0.1984782    | 0.3969564   |
+| Comparison | Z | P.unadj | P.adj |
+|---|---|---|---|
+| OM1 - OM2 | -0.03427439 | 0.97265834 | 0.9726583 |
+| OM1 - REF | 1.69798354 | 0.08951087 | 0.1790217 |
+| OM2 - REF | 1.71748420 | 0.08589074 | 0.2576722 |
 
 **IDFBC**
-* No significance
-Kruskal-Wallis chi-squared = 2.2529, df = 2, p-value = 0.3242
+* Significantly higher in OM2 vs REF
+Kruskal-Wallis chi-squared = 7.3333, df = 2, p-value = 0.02556
 
 Dunn test
 
-| Comparison |        Z       |   P.unadj    |   P.adj     |
-|------------|----------------|--------------|-------------|
-| OM1 - OM2  | -0.4093502     | 0.6822827    | 0.6822827   |
-| OM1 - REF  |  1.2060595     | 0.2277945    | 0.4555891   |
-| OM2 - REF  |  1.4955138     | 0.1347804    | 0.4043412   |
+| Comparison | Z | P.unadj | P.adj |
+|---|---|---|---|
+| OM1 - OM2 | -0.7385489 | 0.460180935 | 0.46018094 |
+| OM1 - REF | 2.1759707 | 0.029557452 | 0.05911490 |
+| OM2 - REF | 2.6982037 | 0.006971477 | 0.02091443 | 
 
 **SBSBC**
 * No significance
