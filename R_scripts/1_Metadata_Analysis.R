@@ -1,7 +1,6 @@
 
-# Compare metadata categories across OM treatments
-# Last modified: March 3, 2026
-# Tiffany Xie
+# R Script to Compare metadata categories across OM treatments
+# Last modified: March 11, 2026
 
 #### Load Packages ####
 library(tidyverse)
@@ -26,7 +25,7 @@ soil_meta<-soil_meta_raw %>%
   mutate(LTSP_Treatment = factor(LTSP_Treatment,levels=c("REF","OM1","OM2","OM3"))) %>%
   mutate(Compaction_Treatment = factor(Compaction_Treatment, levels = c("REF","C0","C1","C2")))
 
-#### Filter to BC, O horizion, no herbicide samples ####
+#### Filter to BC, O horizon, no herbicide samples ####
 bc_soil<-soil_meta %>%
   filter(Ecozone %in% c("IDFBC","SBSBC")) %>%
   filter(Horizon == "O horizon") %>%
@@ -241,7 +240,8 @@ plot_ph<-function(df,plt_title){
   
   #Filter to samples with moisture content level
   df_filt <-df %>%
-    filter(!is.na(pH))
+    filter(!is.na(pH)) %>%
+    filter(pH != 0)
   
   #Get number of samples in each TLSP treatment
   sample_num<-df_filt %>%
@@ -271,16 +271,16 @@ bc_ph + idfbc_ph + sbsbc_ph
 #### Statistical tests comparing CN Ratio between OM treatments ####
 
 #Overall BC soil
-kruskal.test(pH ~ LTSP_Treatment,bc_soil) 
-dunnTest(pH ~ LTSP_Treatment,bc_soil) 
+kruskal.test(pH ~ LTSP_Treatment,bc_soil %>% filter(pH != 0)) 
+dunnTest(pH ~ LTSP_Treatment,bc_soil %>% filter(pH != 0)) 
 
 
 #IDFBC 
-kruskal.test(pH ~ LTSP_Treatment,idfbc) 
-dunnTest(pH ~ LTSP_Treatment,idfbc) 
+kruskal.test(pH ~ LTSP_Treatment,idfbc %>% filter(pH != 0)) 
+dunnTest(pH ~ LTSP_Treatment,idfbc %>% filter(pH != 0)) 
 
 #SBSBC 
-kruskal.test(pH ~ LTSP_Treatment,sbsbc) 
-dunnTest(pH ~ LTSP_Treatment,sbsbc) 
+kruskal.test(pH ~ LTSP_Treatment,sbsbc %>% filter(pH != 0)) 
+dunnTest(pH ~ LTSP_Treatment,sbsbc %>% filter(pH != 0)) 
 
 
