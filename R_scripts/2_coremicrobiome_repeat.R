@@ -65,3 +65,35 @@ soil_venn <- ggVennDiagram(x = soil_list_full)
 ## Save venn diagram
 #ggsave("soil_venn.png", soil_venn)
 
+## The below code is to identify which genera are present in each section of the Venn Diagram
+
+#Make the soil list into a dataframe of Feature IDs
+core_table <- data.frame(REF = as.vector(soil_list_full$REF), 
+                         OM1 = as.vector(soil_list_full$OM1),
+                         OM2 = c(as.vector(soil_list_full$OM2), NA)) #added a value to make the vector lengths equal
+
+#Put Feature IDs into a single column to allow for joining to taxonomy table
+core_long <- core_table %>%
+  pivot_longer(cols = all_of(c("REF", "OM1", "OM2")),
+               names_to = "Treatment",
+               values_to = "Feature ID") %>%
+  arrange(Treatment) %>%
+  filter(`Feature ID` != is.na(`Feature ID`))
+
+#Join dataframe to taxonomy table
+tax_dat <- read_delim(file = "taxonomy.tsv", delim = "\t") %>%
+  select(-Confidence) %>%
+  separate(col=Taxon, sep = ";",
+           into = c("Domain","Phylum","Class","Order","Family","Genus","Species"))
+
+#Change data frame to report on the treatments each taxonomic category is present in
+core_tax <- inner_join(core_long, tax_dat) %>%
+  select(Treatment, Genus) %>% #can change Genus to whatever taxonomic level is of interest
+  distinct() %>%                # removes duplicate treatment–genus pairs
+  mutate(present = Treatment) %>%
+  pivot_wider(
+    names_from = Genus, #make sure to change the taxonomic level here as well
+    values_from = present,
+    values_fill = NA
+  )
+view(core_tax)
