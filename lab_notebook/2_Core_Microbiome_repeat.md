@@ -21,3 +21,7 @@ OM1
 OM2
 <img width="1442" height="665" alt="Screenshot 2026-03-11 at 8 53 05 PM" src="https://github.com/user-attachments/assets/96b9b66f-7ba1-4cce-b644-7d8c99f13903" />
 
+venn diagram
+<img width="644" height="595" alt="Screenshot 2026-03-11 at 9 26 18 PM" src="https://github.com/user-attachments/assets/ccbb0ccd-0d92-4485-a54d-f0a9c0a90d4e" />
+
+Note that some ASVs were classified in to "Incertae sedis"
