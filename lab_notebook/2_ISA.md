@@ -25,3 +25,8 @@ The indicator value (statistic) reflects the strength of association between a t
 The figure shows the top 5 significant indicator taxa for each treatment group within each ecozone for visualization purposes.  
 Higher indicator values indicate a stronger association between a taxon and a specific LTSP treatment group.
 
+still have to do:
+1. merge the ecozones and set bc as a whole
+2. keep p< 0.05, not the indicator score
+3. generate graph with all data to have an overview
+4. keep the tie situation instead of filtering them out
