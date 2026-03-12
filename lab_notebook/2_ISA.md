@@ -20,7 +20,7 @@ The indicator value (statistic) reflects the strength of association between a t
 
 ### Indicator taxa summary
 
-![ISA indicator taxa](../R_scripts/output/ISA_indicator_plot.png)
+![ISA indicator taxa](../R_scripts/output/2_ISA.png)
 
 The figure shows the top 5 significant indicator taxa for each treatment group within each ecozone for visualization purposes.  
 Higher indicator values indicate a stronger association between a taxon and a specific LTSP treatment group.
