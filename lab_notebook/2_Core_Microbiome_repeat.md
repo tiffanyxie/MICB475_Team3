@@ -7,7 +7,7 @@ Create a Venn diagram using all the ASVs shared and unique to LTSP treatment gro
 
 Code:
 
-[R Script](R_scripts/2_coremicrobiome_repeat.R)
+[R Script](https://github.com/tiffanyxie/MICB475_Team3/blob/55c54bfa1f9156a4a6b3ba350240fb495d8dd341/R_scripts/2_coremicrobiome_repeat.R)
 
 Results:
 
