@@ -86,8 +86,10 @@ tax_dat <- read_delim(file = "taxonomy.tsv", delim = "\t") %>%
   separate(col=Taxon, sep = ";",
            into = c("Domain","Phylum","Class","Order","Family","Genus","Species"))
 
+core_tax <- inner_join(core_long, tax_dat)
+
 #Change data frame to report on the treatments each taxonomic category is present in
-core_tax <- inner_join(core_long, tax_dat) %>%
+core_in_treatments <- core_tax%>%
   select(Treatment, Genus) %>% #can change Genus to whatever taxonomic level is of interest
   distinct() %>%                # removes duplicate treatment–genus pairs
   mutate(present = Treatment) %>%
@@ -96,4 +98,15 @@ core_tax <- inner_join(core_long, tax_dat) %>%
     values_from = present,
     values_fill = NA
   )
-view(core_tax)
+view(core_in_treatments)
+
+#Same as above, but with raw ASVs instead of taxonomic levels
+ASVs_in_treatments <- core_long%>%
+  distinct() %>%                # removes duplicate treatment–genus pairs
+  mutate(present = Treatment) %>%
+  pivot_wider(
+    names_from = `Feature ID`,
+    values_from = present,
+    values_fill = NA
+  )
+view(ASVs_in_treatments)
