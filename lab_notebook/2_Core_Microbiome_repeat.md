@@ -1,15 +1,15 @@
-Core Microbiome
+# Core Microbiome
 
-Aim:
+## Aim:
 
 To perform core microbiome again at the genus level. To determine what ASVs are unique to each LSTP treatment group (REF/OM1/OM2) and plot those ASVs' relative abundance
 Create a Venn diagram using all the ASVs shared and unique to LTSP treatment groups
 
-Code:
+## Code:
 
 [R Script](https://github.com/tiffanyxie/MICB475_Team3/blob/55c54bfa1f9156a4a6b3ba350240fb495d8dd341/R_scripts/2_coremicrobiome_repeat.R)
 
-Results:
+## Results:
 
 *prevelance was set to 0.9 and detection to 0.001.
 
