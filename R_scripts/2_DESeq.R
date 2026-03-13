@@ -2,6 +2,7 @@
 library(tidyverse)
 library(phyloseq)
 library(DESeq2)
+library(dplyr)
 
 setwd("~/Desktop/soil_proj")
 
@@ -98,6 +99,11 @@ sigASVs_vec_OM2_vs_OM1 <- tax_table(soil_deseq_OM2_vs_OM1 ) %>% as.data.frame() 
   arrange(log2FoldChange) %>%
   mutate(Genus = make.unique(Genus)) %>%
   mutate(Genus = factor(Genus, levels=unique(Genus)))
+
+# Save sig ASVs as csv
+write.table(sigASVs_OM1_vs_REF,"output/DESeq_OM1_vs_REF.csv",quote=FALSE,sep=",",row.names=FALSE,col.names=TRUE)
+write.table(sigASVs_vec_OM2_vs_REF,"output/DESeq_OM2_vs_REF.csv",quote=FALSE,sep=",",row.names=FALSE,col.names=TRUE)
+write.table(sigASVs_vec_OM2_vs_OM1,"output/DESeq_OM2_vs_OM1.csv",quote=FALSE,sep=",",row.names=FALSE,col.names=TRUE)
 
 
 plot_data_OM1_vs_REF <- tax_table(soil_deseq_OM1_vs_REF) %>% as.data.frame() %>%
