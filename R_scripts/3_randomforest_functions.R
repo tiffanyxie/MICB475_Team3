@@ -92,10 +92,11 @@ run_rf = function(X, y, fold_list,
     
     # This will tell the RF command how to perform the RF.
     train_control = trainControl(method = "cv", # K-fold cross validation
-                                 number = number_of_folds, # 10 folds
-                                 classProbs = TRUE, # Predicted class probabilities 
+                                 number = number_of_folds) # 10 folds
+                                 #classProbs = TRUE, # Remove predicted class probabilities 
                                  # are returned instead of just class labels.
-                                 summaryFunction = twoClassSummary) # compute AUC
+                                 #summaryFunction = twoClassSummary) # compute AUC
+                                 #Removed two class summary
     
     # Use hyperparameter tuning to optimize each parameter.
     # Note that optimal settings are chosen based on ROC/AUC - prone to overfitting!
@@ -104,7 +105,7 @@ run_rf = function(X, y, fold_list,
                                       method = "ranger",
                                       trControl = train_control, # Perform tuning
                                       tuneGrid = hyper,
-                                      metric = "ROC"
+                                      metric = "Accuracy" #Changed from ROC to train
     ))
     
     # Finally, run random forest using the optimal settings
