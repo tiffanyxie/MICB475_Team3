@@ -101,7 +101,7 @@ sigASVs_vec_OM2_vs_OM1 <- tax_table(soil_deseq_OM2_vs_OM1 ) %>% as.data.frame() 
   mutate(Genus = factor(Genus, levels=unique(Genus)))
 
 # Save sig ASVs as csv
-write.table(sigASVs_OM1_vs_REF,"output/DESeq_OM1_vs_REF.csv",quote=FALSE,sep=",",row.names=FALSE,col.names=TRUE)
+write.table(sigASVs_vec_OM1_vs_REF,"output/DESeq_OM1_vs_REF.csv",quote=FALSE,sep=",",row.names=FALSE,col.names=TRUE)
 write.table(sigASVs_vec_OM2_vs_REF,"output/DESeq_OM2_vs_REF.csv",quote=FALSE,sep=",",row.names=FALSE,col.names=TRUE)
 write.table(sigASVs_vec_OM2_vs_OM1,"output/DESeq_OM2_vs_OM1.csv",quote=FALSE,sep=",",row.names=FALSE,col.names=TRUE)
 
