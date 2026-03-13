@@ -10,23 +10,40 @@ library(boot)
 library(ggplot2)
 library(phyloseq)
 library(tidyverse)
+library(dplyr)
 
 
 
 #Load dataset and aggregate reads to Genus level
-load("phylo_soil.RData")
-ps <-  phylo_soil %>%
-  tax_glom('Genus')
+load("phylo_soil_genus.RData")
+
+# Load ASVs of interest
+
+#DeSeq results
+deseq_om1_ref<-read.delim("output/DeSEQ_OM1_vs_REF.csv",sep=",")
+deseq_om2_ref<-read.delim("output/DeSEQ_OM2_vs_REF.csv",sep=",")
+deseq_om2_om1<-read.delim("output/DeSEQ_OM2_vs_OM1.csv",sep=",")
+
+
+deseq_results<-rbind(deseq_om1_ref,deseq_om2_ref,deseq_om2_om1) %>%
+  filter(!grepl("Incertae_Sedis",Genus))
+unique_asvs<-deseq_results %>% pull(ASV) %>% unique()
+unique_genus<-deseq_results %>% pull(Genus) %>% unique()
+
+
+
 
 #### Part 2: Format Data ####
 
 # Normalize microbiome data and select only the significant taxa
+
+
+
 # CLR transformation
-ps_clr = ps %>% microbiome::transform('clr') 
+ps_clr = phylo_soil_genus %>% microbiome::transform('clr') 
 
 #Filter taxa
-test<- tax_table(ps_clr) %>% rownames() %>% unique() %>% head(n=20)## REPLACE WITH ACTUAL TAXA
-ps_filt = prune_taxa(test,ps_clr)
+ps_filt = prune_taxa(unique_asvs,ps_clr)
 
 # Melt the dataset
 df = psmelt(ps_filt) 
@@ -41,8 +58,7 @@ df_transformed = df %>%
 df_pivot = df_transformed %>% 
   select(Sample,pH,Total.Carbon,Total.Nitrogen, pH, CN.Ratio,LTSP.Treatment,Genus,Abundance) %>% 
   # Turn each Genus into its own column
-  pivot_wider(names_from = Genus, values_from = Abundance) %>%
-  mutate(LTSP.Treatment = if_else(grepl("OM",LTSP.Treatment),"OM","REF"))
+  pivot_wider(names_from = Genus, values_from = Abundance) 
 
 # Remove rows with NA values in the metadata
 df_noNA = df_pivot %>% na.omit()
@@ -56,11 +72,10 @@ df_final = df_noNA %>% select(-Sample)
 
 
 # Predictors and outcome
-predictors = df_final %>% select(-LTSP.Treatment)
+predictors = df_final %>% select(-LTSP.Treatment) %>% as.data.frame()
 
 outcome = df_final %>% pull(LTSP.Treatment) %>%
-  factor(levels=c("REF","OM"))
-  #factor(levels=c("REF","OM1","OM2"))
+  factor(levels=c("REF","OM1","OM2"))
 
 #Set up k-fold cross-validation
 # Randomly subsets the rows into k equal bins.
@@ -92,21 +107,23 @@ tune_grid = expand.grid(mtry = c(3,6,10),
 #### Part 4: Run RF ####
 source('3_randomforest_functions.R')
 
-pd_model = run_rf(X = predictors, y = outcome, 
+soil_model = run_rf(X = predictors, y = outcome, 
                   fold_list = folds,
                   hyper = tune_grid, 
                   rngseed = 421)
 
-names(pd_model)
+names(soil_model)
+
+test_pred<-predict(soil_model,X_test_fold)
 
 #### Part 5: Interpret Results ####
 
 # Generate ROC curve
 
-roc_test = roc(pd_model$test_labels$true_labels,
-               pd_model$test_labels$predicted_probabilities)
-roc_train = roc(pd_model$train_labels$true_labels,
-                pd_model$train_labels$predicted_probabilities)
+roc_test = roc(soil_model$test_labels$true_labels,
+               soil_model$test_labels$predicted_probabilities)
+roc_train = roc(soil_model$train_labels$true_labels,
+                soil_model$train_labels$predicted_probabilities)
 
 # True positive rate = sensitivity
 # False positive rate = 1-specificity
@@ -138,7 +155,7 @@ roc_data = data.frame(Dataset = 'RF Tutorial Data',
                                               round(pd_model$auc_test_ci[2], 2)))
 
 #Plot importance values
-pd_model$importance %>% 
+soil_model$importance %>% 
   # Data are automatically arranged by decreasing importance - turn it into a factor.
   # Otherwise the features will show up alphabetically in the plot.
   mutate(Feature = factor(.$Feature,levels = .$Feature)) %>% 
