@@ -4,7 +4,7 @@
 * To develop a random forest model using soil conditions and bacterial populations to predict level of OM Removal
 
 ## Code
-[!Main Script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_RandomForest.R)
+[Main Script: Random_Forest.R](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_RandomForest.R)
 
 [Random Forest Functions](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_randomforest_functions_modified.R)
 
