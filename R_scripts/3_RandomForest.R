@@ -162,6 +162,7 @@ soil_model$importance %>%
   theme_classic(base_size=18) +
   theme(axis.text.x = element_text(angle=45, vjust = 1, hjust=1)) +
   ylab('Importance (Gini)') + xlab(NULL)
+ggsave(output/importance_plot_1.png)
 
 
 #!!! below not run
