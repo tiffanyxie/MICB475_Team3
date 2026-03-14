@@ -10,7 +10,6 @@ library(boot)
 library(ggplot2)
 library(phyloseq)
 library(tidyverse)
-library(dplyr)
 
 
 
@@ -105,7 +104,7 @@ tune_grid = expand.grid(mtry = c(3,6,10),
                         min.node.size = c(2,3,4))
 
 #### Part 4: Run RF ####
-source('3_randomforest_functions.R')
+source('3_randomforest_functions_modified.R')
 
 soil_model = run_rf(X = predictors, y = outcome, 
                   fold_list = folds,
@@ -114,9 +113,58 @@ soil_model = run_rf(X = predictors, y = outcome,
 
 names(soil_model)
 
-test_pred<-predict(soil_model,X_test_fold)
+
 
 #### Part 5: Interpret Results ####
+
+#Test results with confusion matrix
+test_true<-soil_model$test_labels %>% pull(true_labels) %>%
+  factor(levels=c("REF","OM1","OM2"))
+
+#For confusion matrix need factor with eventual result
+# Use max probability to determine result
+test_result<-data.frame(Result = soil_model$test_labels %>% 
+                          select(REF,OM1,OM2) %>% max.col()) %>%
+  mutate(Result = case_when(Result == 1 ~ "REF",
+                            Result == 2 ~ "OM1",
+                            Result == 3 ~ "OM2")) %>%
+  pull(Result) %>% 
+  factor(levels=c("REF","OM1","OM2"))
+
+test_conf_mat<-confusionMatrix(test_result,test_true)
+test_conf_mat$table
+
+#Training results with confusion matrix
+train_true<-soil_model$train_labels %>% pull(true_labels) %>%
+  factor(levels=c("REF","OM1","OM2"))
+
+#For confusion matrix need factor with eventual result
+# Use max probability to determine result
+train_result<-data.frame(Result = soil_model$test_labels %>% 
+                          select(REF,OM1,OM2) %>% max.col()) %>%
+  mutate(Result = case_when(Result == 1 ~ "REF",
+                            Result == 2 ~ "OM1",
+                            Result == 3 ~ "OM2")) %>%
+  pull(Result) %>% 
+  factor(levels=c("REF","OM1","OM2"))
+
+train_conf_mat<-confusionMatrix(train_result,train_true)
+train_conf_mat$table
+
+
+#Plot importance values
+soil_model$importance %>% 
+  # Data are automatically arranged by decreasing importance - turn it into a factor.
+  # Otherwise the features will show up alphabetically in the plot.
+  mutate(Feature = factor(.$Feature,levels = .$Feature)) %>% 
+  ggplot(aes(Feature,MeanDecreaseGini,fill=MeanDecreaseGini)) +
+  geom_col() +
+  theme_classic(base_size=18) +
+  theme(axis.text.x = element_text(angle=45, vjust = 1, hjust=1)) +
+  ylab('Importance (Gini)') + xlab(NULL)
+
+
+#!!! below not run
 
 # Generate ROC curve
 
@@ -154,15 +202,7 @@ roc_data = data.frame(Dataset = 'RF Tutorial Data',
                       Testing_AUC_CI = paste0(round(pd_model$auc_test_ci[1], 2), "-", 
                                               round(pd_model$auc_test_ci[2], 2)))
 
-#Plot importance values
-soil_model$importance %>% 
-  # Data are automatically arranged by decreasing importance - turn it into a factor.
-  # Otherwise the features will show up alphabetically in the plot.
-  mutate(Feature = factor(.$Feature,levels = .$Feature)) %>% 
-  ggplot(aes(Feature,MeanDecreaseGini,fill=MeanDecreaseGini)) +
-  geom_col() +
-  theme_classic(base_size=18) +
-  theme(axis.text.x = element_text(angle=45, vjust = 1, hjust=1)) +
-  ylab('Importance (Gini)') + xlab(NULL)
+
+
 
 
