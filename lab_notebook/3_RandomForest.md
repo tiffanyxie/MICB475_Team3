@@ -4,9 +4,9 @@
 * To develop a random forest model using soil conditions and bacterial populations to predict level of OM Removal
 
 ## Code
-[Main Script]
+[!Main Script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_RandomForest.R)
 
-[Random Forest Functions]
+[Random Forest Functions](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_randomforest_functions_modified.R)
 
 Modifications to Random_Forest.R
 * Applied Bessie's suggestions to allow multiple outcomes
@@ -23,6 +23,16 @@ Modifications to random forest functions
 * No change to importance values, still returning importance values
 
 ## Results
+
+* Using total 37 bacterial genuses determined to be differentially abundant between any two OM treatment levels via DESeq (p < 0.05, log2FC > 1)
+* Soil conditions: pH, total carbon, total nitrogen, CN ratio, soil moisture content
+Hyperparameters:
+tune_grid = expand.grid(mtry = c(3,6,10), 
+                        splitrule = c("gini","extratrees"),
+                        min.node.size = c(2,3,4))
+
+Importance Values
+![Importance Value Plot](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/output/importance_plot_1.png)
 
 **Training**
 
