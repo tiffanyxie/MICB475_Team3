@@ -38,11 +38,11 @@ Importance Values
 
 Confusion Matrix
 
-|            | **REF** | **OM1** | **OM2** |
+|            | **True REF** | **True OM1** | **True OM2** |
 |------------|---------|---------|---------|
-| **REF**    | 3       | 2       | 6       |
-| **OM1**    | 8       | 22      | 20      |
-| **OM2**    | 4       | 21      | 18      |
+| **Predicted REF**    | 3       | 2       | 6       |
+| **Predicted OM1**    | 8       | 22      | 20      |
+| **Predicted OM2**    | 4       | 21      | 18      |
 
 
 | **Metric**               | **REF** | **OM1** | **OM2** |
@@ -59,6 +59,13 @@ Confusion Matrix
 **Testing**
 
 Confusion Matrix
+
+|             | **True REF** | **True OM1** | **True OM2** |
+|-------------|---------|---------|---------|
+| **Predicted REF**     | 10      | 0       | 1       |
+| **Predicted OM1**     | 3       | 31      | 16      |
+| **Predicted OM2**     | 2       | 14      | 27      |
+
 
 | **Metric**               | **REF** | **OM1** | **OM2** |
 |--------------------------|---------|---------|---------|
