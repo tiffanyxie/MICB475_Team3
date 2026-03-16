@@ -11,4 +11,12 @@
 
 ## Discussion notes
 
+* Core microbiome results not particularly helpful
+* DESeq has more helpful results
+* Perhaps, different OM levels do not have unique taxa, but there are changes in abundance
+* For now, we will use log2FC > 1 and p < 0.05 for DESeq threshold for ASV selection
+* If we want to be more limited in our ASV selection, we can consider log2FC > 1.5 and p < 0.05
 
+For next week:
+* Bessie will provide us updates for the RF script
+* Selina will fix ISA
