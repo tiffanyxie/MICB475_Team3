@@ -11,18 +11,26 @@
 
 
 ### Modifications to Random_Forest.R
-* Applied Bessie's suggestions to allow multiple outcomes
-1) y = factor(y, levels = c("Control", "PD")) -> y = factor(y)
-2) Remove classProbs = TRUE and summaryFunction = twoClassSummary from trainControl()
-3) Change metric = "ROC" to metric = "Accuracy" in train()
+Changed outcomes from a two-level factor to a three level factor y = factor(y, levels = c("REF","OM1","OM2"))
 
-* Added confusion matrix to results interpretation and no longer generating ROC Curves
+
+Added confusion matrix to results interpretation and no longer generating ROC Curves
+* confusionMatrix() function takes in factor of predicted results (e.g. OM1, OM2, REF, etc.) and factor of the true results (OM1, OM1, REF)
+* Current model has table with true_labels and columns with probability of REF, OM1, and OM2
+* In order to get factor of predicted results -> set prediction as column with highest probability
+* Then run confusionMatrix(result,true) where result is predicted results and true is the actual value for test and training data
+
+Changed *source(randomforest_functions.R)* to *source(randomforest_functions_modified.R)*
 
 ### Modifications to randomforest_functions.R
 
+
 **Summary of changes:** 
-* Modify run_rf() and average_rf() to no longer calculate and return AUV values, only return importance values, true values, and predicted probabilities of REF, OM1, and OM2 for training and test data set
-* No modification to code returning importance valuces
+1) Applied Bessie's suggestions:
+*  Remove classProbs = TRUE and summaryFunction = twoClassSummary from trainControl()
+*  Change metric = "ROC" to metric = "Accuracy" in train()
+2) Modify run_rf() and average_rf() to no longer calculate and return AUV values, only return importance values, true values, and predicted probabilities of REF, OM1, and OM2 for training and test data set
+3) No modification to code returning importance valuces
 
 **run_rf()**
 
