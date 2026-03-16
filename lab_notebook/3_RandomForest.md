@@ -10,7 +10,7 @@
 
 
 
-Modifications to Random_Forest.R
+### Modifications to Random_Forest.R
 * Applied Bessie's suggestions to allow multiple outcomes
 1) y = factor(y, levels = c("Control", "PD")) -> y = factor(y)
 2) Remove classProbs = TRUE and summaryFunction = twoClassSummary from trainControl()
@@ -18,7 +18,7 @@ Modifications to Random_Forest.R
 
 * Added confusion matrix to results interpretation and no longer generating ROC Curves
 
-Modifications to randomforest_functions.R
+### Modifications to randomforest_functions.R
 
 **Summary of changes:** 
 * Modify run_rf() and average_rf() to no longer calculate and return AUV values, only return importance values, true values, and predicted probabilities of REF, OM1, and OM2 for training and test data set
@@ -69,11 +69,6 @@ train_labels = bind_rows(all_labels_train) %>%
 * Return results list of only test_labels, train_labels, and importance_df (no AUC values)
 
 
-
-* No longer calculating AUC in run_rf()
-* No longer returning AUC values in average_rf()
-* Modify run_rf() and average_rf() to return true values and probability of REF, OM1, and OM2
-* No change to importance values, still returning importance values
 
 
 
