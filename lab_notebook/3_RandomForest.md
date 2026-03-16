@@ -6,9 +6,9 @@
 ## Code
 [Main Script: Random_Forest.R](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_RandomForest.R)
 
-[Original Random Forest Functions: not used, just for reference](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_randomforest_functions.R)
+[Original Random Forest Functions (not used, just for reference)](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_randomforest_functions.R)
 
-[Modified Random Forest Functions: used in main script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_randomforest_functions_modified.R)
+[Modified Random Forest Functions (used in main script)](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_randomforest_functions_modified.R)
 
 
 
