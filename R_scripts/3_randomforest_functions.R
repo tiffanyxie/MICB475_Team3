@@ -92,20 +92,19 @@ run_rf = function(X, y, fold_list,
     
     # This will tell the RF command how to perform the RF.
     train_control = trainControl(method = "cv", # K-fold cross validation
-                                 number = number_of_folds) # 10 folds
-                                 #classProbs = TRUE, # Remove predicted class probabilities 
+                                 number = number_of_folds, # 10 folds
+                                 classProbs = TRUE, # Predicted class probabilities 
                                  # are returned instead of just class labels.
-                                 #summaryFunction = twoClassSummary) # compute AUC
-                                 #Removed two class summary
+                                 summaryFunction = twoClassSummary) # compute AUC
     
     # Use hyperparameter tuning to optimize each parameter.
     # Note that optimal settings are chosen based on ROC/AUC - prone to overfitting!
     set.seed(rngseed) # Reproducible randomness
-    rf_model = suppressWarnings(caret::train(X_train_fold, y_train_fold, # training dataset
+    rf_model = suppressWarnings(train(X_train_fold, y_train_fold, # training dataset
                                       method = "ranger",
                                       trControl = train_control, # Perform tuning
                                       tuneGrid = hyper,
-                                      metric = "Accuracy" #Changed from ROC to train
+                                      metric = "ROC"
     ))
     
     # Finally, run random forest using the optimal settings
@@ -116,13 +115,7 @@ run_rf = function(X, y, fold_list,
                                min.node.size = rf_model$bestTune$min.node.size,
                                importance = TRUE)
     
-    
-    
     # Calculate and save model statistics (TRAINING DATA)
-    
-    # ------- !!! change below here
-    
-    
     train_pred_proba = predict(final_model, type = "prob")[, 2]
     train_auc = auc(roc(y_train_fold, train_pred_proba))
     train_auc_scores = c(train_auc_scores, train_auc)
@@ -136,9 +129,6 @@ run_rf = function(X, y, fold_list,
     test_pred_proba = predict(final_model, X_test_fold, type = "prob")[, 2]
     test_auc = auc(roc(y_test_fold, test_pred_proba))
     test_auc_scores = c(test_auc_scores, test_auc)
-    
-    
-    
     # Save predictions
     temp = tibble(row = c(1:nrow(X))[fold], # Row from the original testing dataset
                   true_labels = y_test_fold, # Actual outcomes
@@ -149,10 +139,7 @@ run_rf = function(X, y, fold_list,
     # Ctrl, PD: higher number = higher in that group
     # MeanDecrease: how does the model quality decrease if the variable is removed? Higher=more important
     feature_importance_values[[length(feature_importance_values) + 1]] = final_model$importance
-  
-    # ------- !!! change above here
-    
-    }
+  }
   
   # Average all the folds
   avg_result = average_rf(train_auc_scores,test_auc_scores,

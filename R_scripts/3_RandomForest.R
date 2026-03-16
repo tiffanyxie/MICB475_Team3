@@ -113,7 +113,8 @@ soil_model = run_rf(X = predictors, y = outcome,
 
 names(soil_model)
 
-
+#Save model
+save(soil_model,file = "output/soil_model.Rdata")
 
 #### Part 5: Interpret Results ####
 

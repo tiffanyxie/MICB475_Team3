@@ -6,7 +6,9 @@
 ## Code
 [Main Script: Random_Forest.R](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_RandomForest.R)
 
-[Modified Random Forest Functions](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_randomforest_functions_modified.R)
+[Original Random Forest Functions: not used, just for reference](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_randomforest_functions.R)
+
+[Modified Random Forest Functions: used in main script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_randomforest_functions_modified.R)
 
 
 
@@ -15,10 +17,12 @@
 
 
 2) Added confusion matrix to results interpretation and no longer generating ROC Curves
-* confusionMatrix() function takes in factor of predicted results (e.g. OM1, OM2, REF, etc.) and factor of the true results (OM1, OM1, REF)
-* Current model has table with true_labels and columns with probability of REF, OM1, and OM2
-* In order to get factor of predicted results -> set prediction as column with highest probability
-* Then run confusionMatrix(result,true) where result is predicted results and true is the actual value for test and training data
+    *  confusionMatrix() function takes in factor of predicted results (e.g. OM1, OM2, REF, etc.) and factor of the true results (OM1, OM1, REF)
+    * Current model has table with true_labels and columns with probability of REF, OM1, and OM2
+
+        ![Tibble of model results](images/rf_model_results_ref.png.png)
+    * In order to get factor of predicted results -> set prediction as column with highest probability
+    * Then run confusionMatrix(result,true) where result is predicted results and true is the actual value for test and training data
 
 3) Changed *source(randomforest_functions.R)* to *source(randomforest_functions_modified.R)*
 
@@ -79,6 +83,9 @@ train_labels = bind_rows(all_labels_train) %>%
 
 
 ## Results
+[Model](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/output/soil_model.Rdata)
+
+
 
 * Using total 37 bacterial genuses determined to be differentially abundant between any two OM treatment levels via DESeq (p < 0.05, log2FC > 1)
 * Soil conditions: pH, total carbon, total nitrogen, CN ratio, soil moisture content
