@@ -11,28 +11,28 @@
 
 
 ### Modifications to Random_Forest.R
-Changed outcomes from a two-level factor to a three level factor y = factor(y, levels = c("REF","OM1","OM2"))
+1) Changed outcomes from a two-level factor to a three level factor y = factor(y, levels = c("REF","OM1","OM2"))
 
 
-Added confusion matrix to results interpretation and no longer generating ROC Curves
+2) Added confusion matrix to results interpretation and no longer generating ROC Curves
 * confusionMatrix() function takes in factor of predicted results (e.g. OM1, OM2, REF, etc.) and factor of the true results (OM1, OM1, REF)
 * Current model has table with true_labels and columns with probability of REF, OM1, and OM2
 * In order to get factor of predicted results -> set prediction as column with highest probability
 * Then run confusionMatrix(result,true) where result is predicted results and true is the actual value for test and training data
 
-Changed *source(randomforest_functions.R)* to *source(randomforest_functions_modified.R)*
+3) Changed *source(randomforest_functions.R)* to *source(randomforest_functions_modified.R)*
 
-### Modifications to randomforest_functions.R
+### Modifications to randomforest_functions.R -> randomforest_functions_modified.R
 
 
-**Summary of changes:** 
+**Overview of changes:** 
 1) Applied Bessie's suggestions:
 *  Remove classProbs = TRUE and summaryFunction = twoClassSummary from trainControl()
 *  Change metric = "ROC" to metric = "Accuracy" in train()
 2) Modify run_rf() and average_rf() to no longer calculate and return AUV values, only return importance values, true values, and predicted probabilities of REF, OM1, and OM2 for training and test data set
 3) No modification to code returning importance valuces
 
-**run_rf()**
+**Detailed changes  to run_rf()**
 
 Training
 * Change *train_pred_proba = predict(final_model, type = "prob")[, 2]* to *train_pred<-predict(final_model,X_train_fold,type = "prob")*
@@ -53,7 +53,7 @@ Testing:
 * Implemented same changes for the testing code
 
 
-**average_rf()**
+**Detailed changes to average_rf()**
 * Removed the function parameters: train_auc_scores and test_auc_scores 
 * Removed code combining AUC values using bootstrap apprroach
 * Removed calculation of AUC confidence intervals
@@ -75,8 +75,6 @@ train_labels = bind_rows(all_labels_train) %>%
     ungroup()
 
 * Return results list of only test_labels, train_labels, and importance_df (no AUC values)
-
-
 
 
 
