@@ -6,7 +6,9 @@
 ## Code
 [Main Script: Random_Forest.R](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_RandomForest.R)
 
-[Random Forest Functions](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_randomforest_functions_modified.R)
+[Modified Random Forest Functions](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_randomforest_functions_modified.R)
+
+
 
 Modifications to Random_Forest.R
 * Applied Bessie's suggestions to allow multiple outcomes
@@ -16,11 +18,64 @@ Modifications to Random_Forest.R
 
 * Added confusion matrix to results interpretation and no longer generating ROC Curves
 
-Modifications to random forest functions
+Modifications to randomforest_functions.R
+
+**Summary of changes:** 
+* Modify run_rf() and average_rf() to no longer calculate and return AUV values, only return importance values, true values, and predicted probabilities of REF, OM1, and OM2 for training and test data set
+* No modification to code returning importance valuces
+
+**run_rf()**
+
+Training
+* Change *train_pred_proba = predict(final_model, type = "prob")[, 2]* to *train_pred<-predict(final_model,X_train_fold,type = "prob")*
+* Remove code related to calculating auc *train_auc = auc(roc(y_train_fold, train_pred_proba))* and *train_auc_scores = c(train_auc_scores, train_auc)*
+* Change code for saving results
+Old:
+temp = tibble(row = c(1:nrow(X))[-fold], # Row from the original training dataset
+                  true_labels = y_train_fold, # Actual outcomes
+                  predicted_probabilities = train_pred_proba) # Predicted outcomes
+
+New:
+temp = tibble(row = c(1:nrow(X))[-fold], # Row from the original training dataset
+                  true_labels = y_train_fold, # Actual outcomes
+                  REF = train_pred[,1], # Predicted outcomes
+                  OM1 = train_pred[,2],
+                  OM2 = train_pred[,3])
+Testing:
+* Implemented same changes for the testing code
+
+
+**average_rf()**
+* Removed the function parameters: train_auc_scores and test_auc_scores 
+* Removed code combining AUC values using bootstrap apprroach
+* Removed calculation of AUC confidence intervals
+* No change to combining test data labels and predictions
+* Change code for combining train data labels and predictions -> this code currently averages the predicted probabilities, since we now have three columns - probability of REF, OM1, and OM2 - vs one column -> changed to average all three columns
+
+Original Code:
+train_labels = bind_rows(all_labels_train) %>% 
+    group_by(row,true_labels) %>% 
+    summarize(predicted_probabilities = mean(predicted_probabilities)) %>% 
+    ungroup()
+
+New Code:
+train_labels = bind_rows(all_labels_train) %>% 
+    group_by(row,true_labels) %>% 
+    summarize(REF = mean(REF),
+              OM1 = mean(OM1),
+              OM2 = mean(OM2)) %>% 
+    ungroup()
+
+* Return results list of only test_labels, train_labels, and importance_df (no AUC values)
+
+
+
 * No longer calculating AUC in run_rf()
 * No longer returning AUC values in average_rf()
 * Modify run_rf() and average_rf() to return true values and probability of REF, OM1, and OM2
 * No change to importance values, still returning importance values
+
+
 
 ## Results
 
