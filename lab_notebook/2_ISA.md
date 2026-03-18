@@ -22,7 +22,7 @@ The indicator value (`stat`) reflects the strength of association between a taxo
 
 ### Indicator taxa summary
 
-![ISA indicator taxa](../Lab_notebook/images/ISA plot updated.png)
+![ISA indicator taxa](../images/ISA%20plot%20updated.png)
 
 The figure shows **all significant indicator taxa across BC** to provide an overall overview of treatment associations.  
 Unlike the previous version, the plot does not select only the top taxa by indicator value, and ties are retained rather than removed.  
