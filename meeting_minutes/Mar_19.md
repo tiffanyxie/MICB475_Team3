@@ -16,4 +16,8 @@ Random Forest Updates!
 [Random Forest Functions](../R_scripts/3_randomforest_functions_modified.R)
 
 ## Discussion Notes
-
+* ISA results not particularly helpful
+* Multi-class model is not very good at differentiating OM1 and OM2
+* Total carbon and CN ratio are important predictive factors
+* Can we do a binary model to differentiate OM1 vs REF, OM2 vs REF,and OM1 + OM2 vs REF?
+* Generate ROC curves and calcluate AUC

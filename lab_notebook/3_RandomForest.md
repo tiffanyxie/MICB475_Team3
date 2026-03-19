@@ -1,4 +1,4 @@
-# Aim 3: Random Forest
+# Aim 3: Random Forest - Multi-Class (REF vs OM1 vs OM2)
 
 ## Aim
 * To develop a random forest model using soil conditions and bacterial populations to predict level of OM Removal
@@ -141,3 +141,11 @@ Confusion Matrix
 | Detection Prevalence     | 0.10577 | 0.4808  | 0.4135  |
 | Balanced Accuracy        | 0.82772 | 0.6834  | 0.6735  |
 
+
+Conclusions:
+* Model can differentiate REF vs OM
+* CN ratio and total carbon are important for predicing OM treatment level
+* When removing CN ratio and total carbon from predictors, accuracy is worse
+*      accuracy for test drops to 0.58876, 0.5458, and 0.4848 for REF, OM1, and OM2
+*       accuracy for training is about the same: 0.54981, 0.5653, 0.5242 for REF, OM1, OM2
+* Differentially abundant genus are not helpful for predicting OM treatment level
