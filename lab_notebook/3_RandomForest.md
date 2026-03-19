@@ -1,7 +1,7 @@
-# Aim 3: Random Forest - Multi-Class (REF vs OM1 vs OM2)
+# Aim 3: Random Forest - Multi-Class
 
 ## Aim
-* To develop a random forest model using soil conditions and bacterial populations to predict level of OM Removal
+* To develop a random forest model using soil conditions and bacterial populations to predict level of OM Removal (REF/OM1/OM2)
 
 ## Code
 [Main Script: Random_Forest.R](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_RandomForest.R)
