@@ -1,7 +1,3 @@
-# ISA by ecozone using unrarefied data
-# only keep REF, OM1, OM2
-# keep significant taxa (p <= 0.05)
-
 # Load packages
 library(phyloseq)
 library(indicspecies)
@@ -16,33 +12,31 @@ set.seed(67)
 # Use the UNRAREFIED phyloseq object
 ps <- phylo_soil
 
-# Keep only samples from the selected ecozone
-do_isa <- function(ps, ez) {
-keep <- sample_names(ps)[sample_data(ps)$Ecozone == ez]
-ps_ez <- prune_samples(keep, ps)
+# Run ISA on all BC samples together
+do_isa <- function(ps) {
   
 # Keep only REF, OM1, OM2
-keep_trt <- sample_names(ps_ez)[sample_data(ps_ez)$LTSP.Treatment %in% c("REF", "OM1", "OM2")]
-ps_ez <- prune_samples(keep_trt, ps_ez)
+keep_trt <- sample_names(ps)[sample_data(ps)$LTSP.Treatment %in% c("REF", "OM1", "OM2")]
+ps_sub <- prune_samples(keep_trt, ps)
   
 # Remove taxa with zero abundance after subsetting
-ps_ez <- prune_taxa(taxa_sums(ps_ez) > 0, ps_ez)
+ps_sub <- prune_taxa(taxa_sums(ps_sub) > 0, ps_sub)
   
 # Aggregate taxa at the genus level
-ps_ez <- tax_glom(ps_ez, taxrank = "Genus")
+ps_sub <- tax_glom(ps_sub, taxrank = "Genus")
   
 # Convert counts to relative abundance within each sample
-ps_ez <- transform_sample_counts(ps_ez, function(x) {
+ps_sub <- transform_sample_counts(ps_sub, function(x) {
   if (sum(x) == 0) return(x)
   x / sum(x)
 })
   
 # Extract OTU table as matrix for ISA
-otu <- as(otu_table(ps_ez), "matrix")
-if (taxa_are_rows(ps_ez)) otu <- t(otu)
+otu <- as(otu_table(ps_sub), "matrix")
+if (taxa_are_rows(ps_sub)) otu <- t(otu)
   
-# Define treatment groups to each sample
-grp <- as.factor(as.character(sample_data(ps_ez)$LTSP.Treatment))
+# Define treatment groups for each sample
+grp <- as.factor(as.character(sample_data(ps_sub)$LTSP.Treatment))
   
 # Run indicator species analysis
 isa <- multipatt(otu, grp, func = "IndVal.g", control = how(nperm = 999))
@@ -50,10 +44,9 @@ isa <- multipatt(otu, grp, func = "IndVal.g", control = how(nperm = 999))
 # Convert output to dataframe
 out <- as.data.frame(isa$sign)
 out$taxon <- rownames(out)
-out$Ecozone <- ez
   
 # Join taxonomy table so that Genus names can be used
-tax_df <- as.data.frame(tax_table(ps_ez))
+tax_df <- as.data.frame(tax_table(ps_sub))
 tax_df$taxon <- rownames(tax_df)
 out <- left_join(out, tax_df, by = "taxon")
   
@@ -64,20 +57,18 @@ out$GenusLabel <- ifelse(
   as.character(out$Genus)
 )
   
-  # Keep significant taxa only
-  out <- out %>%
-    filter(p.value <= 0.05)
+# Keep significant taxa only
+out <- out %>%
+  filter(p.value < 0.05)
   
-  return(out)
+return(out)
 }
 
-# Run ISA separately for each ecozone, and combine into one data chart ready for plot
-ecoz <- unique(as.character(sample_data(ps)$Ecozone))
-
-res <- bind_rows(lapply(ecoz, function(ez) do_isa(ps, ez)))
+# Run ISA on all BC data together
+res <- do_isa(ps)
 
 # Save result table
-write_csv(res, "ISA_indicators_by_Ecozone_REF_OM1_OM2_unrarefied_p0.05.csv")
+write_csv(res, "ISA_indicators_BC_REF_OM1_OM2_unrarefied_p_lt_0.05.csv")
 
 # Create treatment label from ISA result columns
 res2 <- res %>%
@@ -94,12 +85,15 @@ res2 <- res %>%
     )
   )
 
-# Keep only single-treatment indicators
+# Keep all significant indicators for overview
 plot_df <- res2 %>%
-  filter(AssociatedTreatment %in% c("REF", "OM1", "OM2")) %>%
-  group_by(Ecozone, AssociatedTreatment) %>%
-  slice_max(order_by = stat, n = 5, with_ties = FALSE) %>%
-  ungroup()
+  filter(AssociatedTreatment != "Other")
+
+# Optional: order treatment panels
+plot_df$AssociatedTreatment <- factor(
+  plot_df$AssociatedTreatment,
+  levels = c("REF", "OM1", "OM2", "REF+OM1", "REF+OM2", "OM1+OM2", "REF+OM1+OM2")
+)
 
 # Create plot
 p <- ggplot(
@@ -113,17 +107,20 @@ p <- ggplot(
   geom_col() +
   coord_flip() +
   facet_grid(
-    Ecozone ~ AssociatedTreatment,
+    . ~ AssociatedTreatment,
     scales = "free_y",
     space = "free_y"
   ) +
   labs(
-    title = "Top indicator genera by ecozone and treatment",
+    title = "Significant indicator genera across BC by treatment combination",
     x = "Genus",
     y = "Indicator value"
   ) +
   theme_classic() +
-  scale_y_continuous(n.breaks = 4) +
+  scale_y_continuous(
+    breaks = c(0, 0.2, 0.4, 0.6),
+    labels = c("0.0", "0.2", "0.4", "0.6")
+  ) +
   theme(
     text = element_text(size = 12),
     axis.text.y = element_text(size = 8),
@@ -136,8 +133,8 @@ print(p)
 
 # Save plot
 ggsave(
-  "ISA_indicator_plot_by_ecozone_and_treatment.png",
+  "ISA_indicator_plot_BC_all_significant_by_treatment.png",
   plot = p,
-  width = 12,
+  width = 16,
   height = 8
 )
