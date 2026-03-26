@@ -14,7 +14,6 @@ library(ggplot2)
 library(phyloseq)
 library(tidyverse)
 
-setwd("~/Desktop/soil_proj")
 
 #Load dataset and aggregate reads to Genus level
 load("phylo_soil_genus.RData")
@@ -124,7 +123,7 @@ soil_model = run_rf(X = predictors, y = outcome,
 names(soil_model)
 
 #Save model
-save(soil_model,file = "output/soil_model.Rdata")
+save(soil_model,file = "output/soil_model_OM1_REF.Rdata")
 
 #### Part 5: Interpret Results ####
 # Used GenAI to troubleshoot
@@ -186,7 +185,7 @@ soil_model$importance %>%
   theme_classic(base_size=18) +
   theme(axis.text.x = element_text(angle=45, vjust = 1, hjust=1)) +
   ylab('Importance (Gini)') + xlab(NULL)
-ggsave("output/importance_plot_1.png",width = 14, height=4, units=c("in"))
+ggsave("output/importance_plot_OM1_REF.png",width = 14, height=4, units=c("in"))
 
 
 

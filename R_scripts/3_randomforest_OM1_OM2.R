@@ -103,7 +103,7 @@ tune_grid = expand.grid(mtry = c(3,6,10),
                         min.node.size = c(2,3,4))
 
 #### Part 4: Run RF ####
-source('randomforest_functions.R')
+source('3_randomforest_functions.R')
 
 soil_model = run_rf(X = predictors, y = outcome, 
                     fold_list = folds,
@@ -111,6 +111,9 @@ soil_model = run_rf(X = predictors, y = outcome,
                     rngseed = 421)
 
 names(soil_model)
+
+save(soil_model,file = "output/soil_model_OM1_OM2.Rdata")
+
 
 
 ###ROC###
