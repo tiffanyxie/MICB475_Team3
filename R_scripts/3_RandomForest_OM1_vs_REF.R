@@ -4,6 +4,7 @@
 # install.packages("caret", dependencies = TRUE)
 # install.packages("randomForest")
 
+
 #### Part 1: Load Libraries and Data ####
 library(randomForest)
 library(caret)
@@ -42,7 +43,7 @@ unique_genus_om1_ref<-deseq_results_om1_ref %>% pull(Genus) %>% unique()
 # CLR transformation
 
 # Used GenAI to troubleshoot and added this
-ps_binary <- subset_samples(phylo_soil_genus, LTSP.Treatment %in% c("REF", "OM1"))
+ps_binary <- subset_samples(phylo_soil_genus, LTSP.Treatment %in% c("REF", "OM1")
 
 ps_clr = ps_binary %>% microbiome::transform('clr') 
 

@@ -24,10 +24,9 @@ load("phylo_soil_genus.RData")
 #DeSeq results
 deseq_om1_ref<-read.delim("output/DeSEQ_OM1_vs_REF.csv",sep=",")
 deseq_om2_ref<-read.delim("output/DeSEQ_OM2_vs_REF.csv",sep=",")
-deseq_om2_om1<-read.delim("output/DeSEQ_OM2_vs_OM1.csv",sep=",")
 
 
-deseq_results<-rbind(deseq_om1_ref,deseq_om2_ref,deseq_om2_om1) %>%
+deseq_results<-rbind(deseq_om1_ref,deseq_om2_ref) %>%
   filter(!grepl("Incertae_Sedis",Genus))
 unique_asvs<-deseq_results %>% pull(ASV) %>% unique()
 unique_genus<-deseq_results %>% pull(Genus) %>% unique()
@@ -145,6 +144,9 @@ ggplot() +
            size = 6) +
   theme_minimal(base_size=18)
 
+ggsave("output/OM_REF.png",size = 6, units=c('in'))
+
+
 roc_data = data.frame(Dataset = 'RF Tutorial Data',
                       Training_AUC = round(soil_model$auc_train, 2),
                       Training_AUC_CI = paste0(round(soil_model$auc_train_ci[1], 2), "-", 
@@ -167,3 +169,6 @@ soil_model$importance %>%
   theme_classic(base_size=18) +
   theme(axis.text.x = element_text(angle=45, vjust = 1, hjust=1)) +
   ylab('Importance (Gini)') + xlab(NULL)
+
+ggsave("output/OM_REF_importance.png",size = 6, units=c('in'))
+

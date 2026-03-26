@@ -141,6 +141,7 @@ ggplot() +
                            auc(roc_test), soil_model$auc_test_ci[1], soil_model$auc_test_ci[2]), 
            size = 6) +
   theme_minimal(base_size=18)
+ggsave("output/OM2_REF.png",units=c("in"), width = 6, height = 5)
 
 roc_data = data.frame(Dataset = 'RF Tutorial Data',
                       Training_AUC = round(soil_model$auc_train, 2),
@@ -164,4 +165,6 @@ soil_model$importance %>%
   theme_classic(base_size=18) +
   theme(axis.text.x = element_text(angle=45, vjust = 1, hjust=1)) +
   ylab('Importance (Gini)') + xlab(NULL)
+ggsave("output/OM2_REF_importance.png",units=c("in"), width = 10, height = 5)
+
 

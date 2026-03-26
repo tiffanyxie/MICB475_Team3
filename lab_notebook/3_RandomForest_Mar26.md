@@ -18,3 +18,18 @@
 <img width="4200" height="1200" alt="importance_plot_1" src="https://github.com/user-attachments/assets/1fd49f1a-a8d3-425c-94f0-03d45ec69790" />
 <img width="1278" height="885" alt="image" src="https://github.com/user-attachments/assets/d3926bbc-5541-4963-9941-0fa08d684939" />
 <img width="616" height="42" alt="image" src="https://github.com/user-attachments/assets/2ea4aab1-85b1-4b13-975e-7313f2139bbc" />
+
+
+## OM2 vs REF
+![ROC](../R_scripts/output/OM2_REF.png)
+![Importance Values](../R_scripts/output/OM2_REF_importance.png)
+
+## Combined OM1 + OM2 vs REF
+![ROC](../R_scripts/output/OM_REF.png)
+
+
+![Importance Values](../R_scripts/output/OM_REF_importance.png)
+
+
+
+
