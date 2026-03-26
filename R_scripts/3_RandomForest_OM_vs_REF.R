@@ -144,7 +144,7 @@ ggplot() +
            size = 6) +
   theme_minimal(base_size=18)
 
-ggsave("output/OM_REF.png",size = 6, units=c('in'))
+ggsave("output/OM_REF.png",width = 6, height = 5, units=c('in'))
 
 
 roc_data = data.frame(Dataset = 'RF Tutorial Data',
@@ -170,5 +170,5 @@ soil_model$importance %>%
   theme(axis.text.x = element_text(angle=45, vjust = 1, hjust=1)) +
   ylab('Importance (Gini)') + xlab(NULL)
 
-ggsave("output/OM_REF_importance.png",size = 6, units=c('in'))
+ggsave("output/OM_REF_importance.png",width = 11, height = 5, units=c('in'))
 
