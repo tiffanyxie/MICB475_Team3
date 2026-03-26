@@ -26,6 +26,9 @@ venn diagram:
 
 <img width="644" height="595" alt="Screenshot 2026-03-11 at 9 26 18 PM" src="https://github.com/user-attachments/assets/ccbb0ccd-0d92-4485-a54d-f0a9c0a90d4e" />
 
+Prevelance set to 0.5 and detection to 0.001
+<img width="815" height="615" alt="Screenshot 2026-03-26 at 1 30 19 PM" src="https://github.com/user-attachments/assets/e387d0d0-4907-4c6b-ba51-5f8a3f3eb1be" />
+
 Note that some ASVs were classified into "Incertae sedis"
 
 **Table with the genera used in the venn diagram**
