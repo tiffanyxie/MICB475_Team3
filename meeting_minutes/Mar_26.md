@@ -1,8 +1,7 @@
 # March 26 - Random Forest
 
 ## Agenda 
-1. Discuss ISA results
-2. Discuss first attempt at generating RF model :D
+1. Discuss Random Forest results (Pairs)
 
 ## Updates on Project
 
