@@ -4,6 +4,7 @@
 * To develop a random forest model using soil conditions and bacterial populations to predict level of OM Removal (REF/OM1/OM2)
 
 ## Code
+[OM1 vs REF](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/3_RandomForest_OM1_vs_REF)
 
 ## OM1 VS OM2
 
