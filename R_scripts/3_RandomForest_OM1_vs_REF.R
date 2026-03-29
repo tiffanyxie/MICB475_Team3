@@ -43,7 +43,7 @@ unique_genus_om1_ref<-deseq_results_om1_ref %>% pull(Genus) %>% unique()
 # CLR transformation
 
 # Used GenAI to troubleshoot and added this
-ps_binary <- subset_samples(phylo_soil_genus, LTSP.Treatment %in% c("REF", "OM1")
+ps_binary <- subset_samples(phylo_soil_genus, LTSP.Treatment %in% c("REF", "OM1"))
 
 ps_clr = ps_binary %>% microbiome::transform('clr') 
 
@@ -175,18 +175,28 @@ train_result <- soil_model$train_labels %>%
 train_conf_mat<-confusionMatrix(train_result,train_true)
 train_conf_mat$table
 
-
+#### Figures ####
+load("output/soil_model_OM1_REF.Rdata")
 #Plot importance values
-soil_model$importance %>% 
+
+importance_plot<-soil_model$importance %>% 
+  mutate(Feature = gsub("g__","",Feature)) %>%
   # Data are automatically arranged by decreasing importance - turn it into a factor.
   # Otherwise the features will show up alphabetically in the plot.
   mutate(Feature = factor(.$Feature,levels = .$Feature)) %>% 
-  ggplot(aes(Feature,MeanDecreaseGini,fill=MeanDecreaseGini)) +
+  ggplot(aes(Feature,MeanDecreaseGini)) + #,fill=MeanDecreaseGini)) +
   geom_col() +
-  theme_classic(base_size=18) +
-  theme(axis.text.x = element_text(angle=45, vjust = 1, hjust=1)) +
-  ylab('Importance (Gini)') + xlab(NULL)
-ggsave("output/importance_plot_OM1_REF.png",width = 14, height=4, units=c("in"))
+  theme_classic() +
+  scale_y_continuous(expand=c(0,0)) +
+  theme(axis.text.x = element_text(angle=50, vjust = 1, hjust=1),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 12)) +
+  ylab('Importance (Gini)') + xlab(NULL) +
+  labs(fill = "Mean Decrease Gini")
+importance_plot
+
 
 
 
@@ -217,19 +227,26 @@ ci_test  <- pROC::ci.auc(roc_test)
 # roc_train = roc(soil_model$train_labels$true_labels,
 #                 soil_model$train_labels$predicted_probabilities)
 
-# True positive rate = sensitivity
-# False positive rate = 1-specificity
-ggplot() +
-  geom_line(aes(x = 1 - roc_train$specificities, y = roc_train$sensitivities), color = "red", size = 1) +
-  geom_line(aes(x = 1 - roc_test$specificities, y = roc_test$sensitivities), color = "black", size = 1) +
-  geom_abline(slope = 1, intercept = 0, color = "gray", linetype = "dashed") +
-  labs(x = "False Positive Rate", y = "True Positive Rate", title = "Binary ROC: OM1 vs REF") +
-  annotate("text", x = 0.6, y = 0.2, 
+roc_plot<-ggplot() +
+  # Training data: this is a type of control
+  geom_line(aes(x = 1 - roc_train$specificities, 
+                y = roc_train$sensitivities), 
+            color = "red",size=1) +
+  # Test data: tells us the strength of the prediction
+  geom_line(aes(x = 1 - roc_test$specificities,
+                y = roc_test$sensitivities), 
+            color = "black",size=1) +
+  geom_abline(slope = 1, intercept = 0, color = "gray", linetype = "dashed",size=1) +
+  labs(x = "False Positive Rate", y = "True Positive Rate") +
+  annotate("text", x = 0.7, y = 0.2, 
            label = sprintf("Train (red): %.2f (%.2f-%.2f)\nTest (black): %.2f (%.2f-%.2f)",
-                           auc_train_val, ci_train[1], ci_train[3],
-                           auc_test_val, ci_test[1], ci_test[3]), 
-           size = 5) +
-  theme_minimal(base_size = 18)
+                           auc(roc_train), soil_model$auc_train_ci[1], soil_model$auc_train_ci[2],
+                           auc(roc_test), soil_model$auc_test_ci[1], soil_model$auc_test_ci[2]), 
+           size = 12/.pt) +
+  theme_classic() +
+  theme(axis.title = element_text(size = 12),
+        axis.text = element_text(size=10))
+roc_plot
 
 # ggplot() +
 #   # Training data: this is a type of control
@@ -259,5 +276,15 @@ roc_data = data.frame(
   Testing_AUC_CI = paste0(round(ci_test[1], 2), "-", round(ci_test[3], 2))
 )
 
-
+#### Save plots ####
+roc_plot
+ggsave("figures/om1_ref_roc.png",
+       units=c("in"),
+       width = 4,
+       height = 3)
+importance_plot
+ggsave("figures/om1_ref_importance.png",
+       units=c("in"),
+       width = 6,
+       height = 3)
 

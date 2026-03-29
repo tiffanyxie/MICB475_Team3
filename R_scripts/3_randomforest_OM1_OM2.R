@@ -116,7 +116,8 @@ save(soil_model,file = "output/soil_model_OM1_OM2.Rdata")
 
 
 
-###ROC###
+####Figures ####
+load("output/soil_model_OM1_OM2.Rdata")
 
 roc_test =  roc(soil_model$test_labels$true_labels,
                soil_model$test_labels$predicted_probabilities)
@@ -158,6 +159,7 @@ importance_plot_labels<-soil_model$importance
 
 
 importance_plot<-soil_model$importance %>% 
+  mutate(Feature = gsub("g__","",Feature)) %>%
 # Data are automatically arranged by decreasing importance - turn it into a factor.
 # Otherwise the features will show up alphabetically in the plot.
   mutate(Feature = factor(.$Feature,levels = .$Feature)) %>% 
@@ -165,7 +167,7 @@ importance_plot<-soil_model$importance %>%
   geom_col() +
   theme_classic() +
   scale_y_continuous(expand=c(0,0)) +
-  theme(axis.text.x = element_text(angle=45, vjust = 1, hjust=1),
+  theme(axis.text.x = element_text(angle=50, vjust = 1, hjust=1),
         axis.text = element_text(size = 10),
         axis.title = element_text(size = 12),
         legend.text = element_text(size = 10),
@@ -177,13 +179,13 @@ importance_plot
 
 #### Save plots ####
 roc_plot
-ggsave("output/om1_om2_roc.png",
+ggsave("figures/om1_om2_roc.png",
        units=c("in"),
        width = 4,
        height = 3)
 importance_plot
-ggsave("output/om1_om2_importance.png",
+ggsave("figures/om1_om2_importance.png",
        units=c("in"),
-       width = 4,
+       width = 6,
        height = 3)
 
