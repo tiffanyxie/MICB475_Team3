@@ -10,6 +10,7 @@ library(boot)
 library(ggplot2)
 library(phyloseq)
 library(tidyverse)
+library(patchwork)
 
 
 
@@ -109,7 +110,6 @@ soil_model = run_rf(X = predictors, y = outcome,
                     fold_list = folds,
                     hyper = tune_grid, 
                     rngseed = 421)
-
 names(soil_model)
 
 save(soil_model,file = "output/soil_model_OM1_OM2.Rdata")
@@ -123,8 +123,7 @@ roc_test =  roc(soil_model$test_labels$true_labels,
 roc_train = roc(soil_model$train_labels$true_labels,
                 soil_model$train_labels$predicted_probabilities)
 
-
-ggplot() +
+roc_plot<-ggplot() +
   # Training data: this is a type of control
   geom_line(aes(x = 1 - roc_train$specificities, 
                 y = roc_train$sensitivities), 
@@ -139,8 +138,11 @@ ggplot() +
            label = sprintf("Train (red): %.2f (%.2f-%.2f)\nTest (black): %.2f (%.2f-%.2f)",
                            auc(roc_train), soil_model$auc_train_ci[1], soil_model$auc_train_ci[2],
                            auc(roc_test), soil_model$auc_test_ci[1], soil_model$auc_test_ci[2]), 
-           size = 6) +
-  theme_minimal(base_size=18)
+           size = 12/.pt) +
+  theme_classic() +
+  theme(axis.title = element_text(size = 12),
+        axis.text = element_text(size=10))
+roc_plot
 
 roc_data = data.frame(Dataset = 'RF Tutorial Data',
                       Training_AUC = round(soil_model$auc_train, 2),
@@ -152,16 +154,36 @@ roc_data = data.frame(Dataset = 'RF Tutorial Data',
 
 soil_model$importance
 
+importance_plot_labels<-soil_model$importance
 
-soil_model$importance %>% 
-  
+
+importance_plot<-soil_model$importance %>% 
 # Data are automatically arranged by decreasing importance - turn it into a factor.
 # Otherwise the features will show up alphabetically in the plot.
- 
   mutate(Feature = factor(.$Feature,levels = .$Feature)) %>% 
-  ggplot(aes(Feature,MeanDecreaseGini,fill=MeanDecreaseGini)) +
+  ggplot(aes(Feature,MeanDecreaseGini)) + #,fill=MeanDecreaseGini)) +
   geom_col() +
-  theme_classic(base_size=18) +
-  theme(axis.text.x = element_text(angle=45, vjust = 1, hjust=1)) +
-  ylab('Importance (Gini)') + xlab(NULL)
+  theme_classic() +
+  scale_y_continuous(expand=c(0,0)) +
+  theme(axis.text.x = element_text(angle=45, vjust = 1, hjust=1),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 12)) +
+  ylab('Importance (Gini)') + xlab(NULL) +
+  labs(fill = "Mean Decrease Gini")
+importance_plot
+
+
+#### Save plots ####
+roc_plot
+ggsave("output/om1_om2_roc.png",
+       units=c("in"),
+       width = 4,
+       height = 3)
+importance_plot
+ggsave("output/om1_om2_importance.png",
+       units=c("in"),
+       width = 4,
+       height = 3)
 
