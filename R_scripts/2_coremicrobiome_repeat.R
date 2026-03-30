@@ -14,6 +14,10 @@ load("phylo_soil.RData")
 phylo_soil <- tax_glom(phylo_soil, taxrank = "Genus", NArm=FALSE)
 
 
+# Alternatively, load phylo_soil_genus
+load("phylo_soil_genus.RData")
+phylo_soil<-phylo_soil_genus
+
 ## Convert to relative abundance 
 soil_RA <- transform_sample_counts(phylo_soil, fun=function(x) x/sum(x))
 
@@ -28,9 +32,9 @@ soil_OM2 <- subset_samples(soil_RA, `LTSP.Treatment`=="OM2")
 
 ## What ASVs are found in more than 90% of samples in each LTSP Treatment group?
 
-soil_REF_ASVs <- core_members(soil_REF, detection=0.001, prevalence = 0.9)
-soil_OM1_ASVs <- core_members(soil_OM1, detection=0.001, prevalence = 0.9)
-soil_OM2_ASVs <- core_members(soil_OM2, detection=0.001, prevalence = 0.9)
+soil_REF_ASVs <- core_members(soil_REF, detection=0.001, prevalence = 0.5)
+soil_OM1_ASVs <- core_members(soil_OM1, detection=0.001, prevalence = 0.5)
+soil_OM2_ASVs <- core_members(soil_OM2, detection=0.001, prevalence = 0.5)
 
 
 ## What are these ASVs? 
@@ -59,11 +63,29 @@ prune_taxa(soil_OM2_ASVs,soil_RA) %>%
 soil_list_full <- list(REF = soil_REF_ASVs, OM1 = soil_OM1_ASVs, OM2 = soil_OM2_ASVs)
 
 
-soil_venn <- ggVennDiagram(x = soil_list_full)
+soil_venn <- ggVennDiagram(x = soil_list_full, label_geom = "label")
+update_geom_defaults("label", list(fill = "white", color = "black"))
 
+
+#Used GenAi for troubleshooting formatting
+
+soil_venn +
+  scale_fill_gradient(
+    low = "#97e5f1",
+    high = "#0292a7",
+    name = "Genus Count"
+  ) + 
+  theme(legend.text = element_text(size = 10),
+        legend.title = element_text(size = 12),
+        plot.background = element_rect(fill = "white", color = NA),
+        panel.background = element_rect(fill = "white", color = NA)
+        )
 
 ## Save venn diagram
-#ggsave("soil_venn.png", soil_venn)
+ggsave("figures/core_microbiome.png",
+       units=c("in"),
+       width = 5.5,
+       height = 5)
 
 ## The below code is to identify which genera are present in each section of the Venn Diagram
 
