@@ -97,7 +97,7 @@ plot_df$AssociatedTreatment <- factor(
 
 # Create plot
 p <- ggplot(
-  plot_df,
+  plot_df %>% mutate(GenusLabel = gsub("g__","",GenusLabel)),
   aes(
     x = reorder(GenusLabel, stat),
     y = stat,
@@ -112,7 +112,63 @@ p <- ggplot(
     space = "free_y"
   ) +
   labs(
-    title = "Significant indicator genera across BC by treatment combination",
+    x = "Genus",
+    y = "Indicator value"
+  ) +
+  theme_classic() +
+  scale_y_continuous(
+    breaks = c(0, 0.2, 0.4, 0.6),
+    labels = c("0.0", "0.2", "0.4", "0.6")
+  ) +
+  theme(
+    text = element_text(size = 12),
+    axis.text.y = element_text(size = 8),
+    axis.text.x = element_text(size = 10),
+    legend.position = "none"
+  )
+
+# Show plot
+print(p)
+
+# Save plot
+ggsave(
+  "ISA_indicator_plot_BC_all_significant_by_treatment.png",
+  plot = p,
+  width = 16,
+  height = 8
+)
+
+
+#### Format Figures ####
+
+ref<-plot_df %>% 
+  mutate(GenusLabel = gsub("g__","",GenusLabel)) %>%
+  filter(AssociatedTreatment == "REF") %>%
+  arrange(desc(stat)) %>%
+  mutate(GenusLabel = factor(GenusLabel,levels=unique(GenusLabel)))
+
+
+ref %>%
+  ggplot(aes(x = GenusLabel, y = stat)) +
+  geom_bar(stat="identity")
+ref
+  
+  
+p <- ggplot(
+  plot_df %>% mutate(GenusLabel = gsub("g__","",GenusLabel)),
+  aes(
+    x = reorder(GenusLabel, stat),
+    y = stat,
+    fill = AssociatedTreatment
+  )
+) +
+  geom_col() +
+  facet_grid(
+    . ~ AssociatedTreatment,
+    scales = "free_y",
+    space = "free_y"
+  ) +
+  labs(
     x = "Genus",
     y = "Indicator value"
   ) +
