@@ -3,8 +3,8 @@ library(tidyverse)
 library(phyloseq)
 library(DESeq2)
 library(dplyr)
+library(patchwork)
 
-setwd("~/Desktop/soil_proj")
 
 #### Load data ####
 load("phylo_soil.RData")
@@ -131,27 +131,48 @@ plot_data_OM2_vs_OM1 <- tax_table(soil_deseq_OM2_vs_OM1) %>% as.data.frame() %>%
   mutate(Genus = make.unique(Genus)) %>%
   mutate(Genus = factor(Genus, levels=unique(Genus)))
 
-ggplot(plot_data_OM1_vs_REF, aes(x = log2FoldChange, y = Genus, fill = log2FoldChange > 0)) +
+
+#### Figures ####
+#OM1 vs REF
+
+om1_ref<-ggplot(plot_data_OM1_vs_REF, aes(x = log2FoldChange, y = Genus, fill = log2FoldChange > 0)) +
   geom_bar(stat = "identity") +
   geom_errorbar(aes(xmin = log2FoldChange - lfcSE, xmax = log2FoldChange + lfcSE), width = 0.2) +
   scale_fill_manual(values = c("TRUE" = "lightpink", "FALSE" = "lightblue"), 
                     labels = c("Lower in OM1", "Higher in OM1"),
-                    name = "Abundance") +
-  labs(title = "OM1 vs REF") +
-  theme_minimal()
-ggplot(plot_data_OM2_vs_REF, aes(x = log2FoldChange, y = Genus, fill = log2FoldChange > 0)) +
+                    name = "OM1 vs REF") +
+  #labs(title = "OM1 vs REF") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        legend.text = element_text(size = 11),
+        legend.title = element_text(size = 12))
+
+
+
+om2_ref<-ggplot(plot_data_OM2_vs_REF, aes(x = log2FoldChange, y = Genus, fill = log2FoldChange > 0)) +
   geom_bar(stat = "identity") +
   geom_errorbar(aes(xmin = log2FoldChange - lfcSE, xmax = log2FoldChange + lfcSE), width = 0.2) +
   scale_fill_manual(values = c("TRUE" = "lightpink", "FALSE" = "lightblue"), 
                     labels = c("Lower in OM2", "Higher in OM2"),
-                    name = "Abundance") +
-  labs(title = "OM2 vs REF") +
-  theme_minimal()
-ggplot(plot_data_OM2_vs_OM1, aes(x = log2FoldChange, y = Genus, fill = log2FoldChange > 0)) +
+                    name = "OM2 vs REF") +
+  #labs(title = "OM2 vs REF") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        legend.text = element_text(size = 11),
+        legend.title = element_text(size = 12))
+  
+  
+  
+om2_om1<-ggplot(plot_data_OM2_vs_OM1, aes(x = log2FoldChange, y = Genus, fill = log2FoldChange > 0)) +
   geom_bar(stat = "identity") +
   geom_errorbar(aes(xmin = log2FoldChange - lfcSE, xmax = log2FoldChange + lfcSE), width = 0.2) +
   scale_fill_manual(values = c("TRUE" = "lightpink", "FALSE" = "lightblue"), 
                     labels = c("Lower in OM2", "Higher in OM2"),
-                    name = "Abundance") +
-  labs(title = "OM2 vs OM1") +
-  theme_minimal()
+                    name = "OM2 vs OM1") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        legend.text = element_text(size = 11),
+        legend.title = element_text(size = 12))
