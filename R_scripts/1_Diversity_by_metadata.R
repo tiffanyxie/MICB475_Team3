@@ -23,6 +23,11 @@ dat_wdiv_long <- samp_dat_wdiv %>%
                names_to = "Metrics",
                values_to = "Metric_Values")
 
+
+#Change OM treatment column to factor (used Claude AI for troubleshooting)
+sample_data(phylo_soil_rare)$LTSP.Treatment<-factor(sample_data(phylo_soil_rare)$LTSP.Treatment,
+                                                    levels=c("REF","OM1","OM2"))
+
 #Subset data to specific ecozones
 IDFBC_phylo_rare <- subset_samples(phylo_soil_rare, Ecozone == "IDFBC")
 SBSBC_phylo_rare <- subset_samples(phylo_soil_rare, Ecozone == "SBSBC")
@@ -30,6 +35,118 @@ SBSBC_phylo_rare <- subset_samples(phylo_soil_rare, Ecozone == "SBSBC")
 #Generate List of Diversity Metrics
 
 metrics <- c("Shannon","Chao1", "ACE", "Simpson", "Fisher", "Observed","PD")
+
+
+
+####Shannon's Diversity Figure####
+
+
+kruskal.test(Shannon ~ `LTSP.Treatment`, data = subset(samp_dat_wdiv))
+
+bc_shannon_plt<-plot_richness(phylo_soil_rare, x = "LTSP.Treatment", measures = c("Shannon")) +
+  xlab("OM Removal") +
+  ylab("Shannon's Diversity") +
+  ggtitle("BC") +
+  geom_boxplot() +
+  theme_classic() +
+  theme(plot.title = element_text(size = 14,hjust = 0.5),
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11),
+        strip.text = element_blank(),
+        strip.background = element_blank())
+bc_shannon_plt
+ggsave("figures/bc_diversity.png",units=c('in'),width = 4, height = 4)
+
+#IDFBC
+kruskal.test(Shannon ~ `LTSP.Treatment`, data = subset(samp_dat_wdiv, Ecozone == "IDFBC"))
+idfbc_shannon_plt<-plot_richness(IDFBC_phylo_rare, x = "LTSP.Treatment", measures = c("Shannon")) +
+  xlab("OM Removal") +
+  ylab("Shannon's Diversity") +
+  ggtitle("IDFBC") +
+  geom_boxplot() +
+  theme_classic() +
+  theme(plot.title = element_text(size = 14,hjust = 0.5),
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11),
+        strip.text = element_blank(), #Used claude to add code to remove facet labels
+        strip.background = element_blank())
+
+idfbc_shannon_plt
+ggsave("figures/idfbc_diversity.png",units=c('in'),width = 4, height = 4)
+
+
+#SBSBC
+kruskal.test(Shannon ~ `LTSP.Treatment`, data = subset(samp_dat_wdiv, Ecozone == "SBSBC"))
+
+sbsbc_shannon_plt<-plot_richness(SBSBC_phylo_rare, x = "LTSP.Treatment", measures = c("Shannon")) +
+  xlab("OM Removal") +
+  ylab("Shannon's Diversity") +
+  ggtitle("SBSBC") +
+  geom_boxplot() +
+  theme_classic() +
+  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11),
+        strip.text = element_blank(),
+        strip.background = element_blank())
+sbsbc_shannon_plt
+ggsave("figures/sbsbc_diversity.png",units=c('in'),width = 4, height = 4)
+
+#### Shannon Diversity Plot's Matching Axis ####
+
+bc_shannon_plt<-plot_richness(phylo_soil_rare, x = "LTSP.Treatment", measures = c("Shannon")) +
+  xlab("OM Removal") +
+  ylab("Shannon's Diversity") +
+  ggtitle("BC") +
+  geom_boxplot() +
+  theme_classic() +
+  theme(plot.title = element_text(size = 14,hjust = 0.5),
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11),
+        strip.text = element_blank(),
+        strip.background = element_blank()) +
+  scale_y_continuous(breaks=c(3.5,4,4.5,5),limits = c(3.5,5.1))
+
+idfbc_shannon_plt<-plot_richness(IDFBC_phylo_rare, x = "LTSP.Treatment", measures = c("Shannon")) +
+  xlab("OM Removal") +
+  ylab("Shannon's Diversity") +
+  ggtitle("IDFBC") +
+  geom_boxplot() +
+  theme_classic() +
+  theme(plot.title = element_text(size = 14,hjust = 0.5),
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11),
+        strip.text = element_blank(), #Used claude to add code to remove facet labels
+        strip.background = element_blank()) +
+  scale_y_continuous(breaks=c(3.5,4,4.5,5),limits = c(3.5,5.1))
+
+sbsbc_shannon_plt<-plot_richness(SBSBC_phylo_rare, x = "LTSP.Treatment", measures = c("Shannon")) +
+  xlab("OM Removal") +
+  ylab("Shannon's Diversity") +
+  ggtitle("SBSBC") +
+  geom_boxplot() +
+  theme_classic() +
+  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11),
+        strip.text = element_blank(),
+        strip.background = element_blank()) +
+  scale_y_continuous(breaks=c(3.5,4,4.5,5),limits = c(3.5,5.1))
+
+bc_shannon_plt + idfbc_shannon_plt + sbsbc_shannon_plt 
+ggsave("figures/combined_diversity.png",width = 8, height = 4, units=c('in'))
 
 #### Plot alpha diversity by OM removal####
 #IDFBC Ecozone

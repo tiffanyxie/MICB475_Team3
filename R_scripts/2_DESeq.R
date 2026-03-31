@@ -145,8 +145,8 @@ om1_ref<-ggplot(plot_data_OM1_vs_REF, aes(x = log2FoldChange, y = Genus, fill = 
   theme_classic() +
   theme(axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
-        legend.text = element_text(size = 11),
-        legend.title = element_text(size = 12))
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11))
 
 
 
@@ -160,8 +160,8 @@ om2_ref<-ggplot(plot_data_OM2_vs_REF, aes(x = log2FoldChange, y = Genus, fill = 
   theme_classic() +
   theme(axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
-        legend.text = element_text(size = 11),
-        legend.title = element_text(size = 12))
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11))
   
   
   
@@ -174,5 +174,19 @@ om2_om1<-ggplot(plot_data_OM2_vs_OM1, aes(x = log2FoldChange, y = Genus, fill = 
   theme_classic() +
   theme(axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
-        legend.text = element_text(size = 11),
-        legend.title = element_text(size = 12))
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11))
+
+
+#Save images
+om1_ref
+ggsave("figures/om1_ref_deseq.png",units=c("in"),width = 6, height = 3)
+
+om2_ref
+ggsave("figures/om2_ref_deseq.png",units=c("in"),width = 6, height = 6)
+
+om2_om1
+ggsave("figures/om2_om1_deseq.png",units=c("in"),width = 6, height = 4)
+
+combined<-om1_ref + om2_ref + om2_om1 + plot_layout(ncol = 1,heights=c(3,6,4))
+ggsave("figures/combined_deseq.png",width = 6, height = 10)
