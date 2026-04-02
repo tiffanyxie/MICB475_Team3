@@ -11,6 +11,8 @@
 **Figure 2**
 
 ![Figure 2](../R_scripts/figures/Figure2.png)
+![Figure 2](../R_scripts/figures/Figure_2_ISA_combined.png)
+
 
 **Figure 3** \
 Core Microbiome

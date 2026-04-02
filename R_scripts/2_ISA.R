@@ -5,6 +5,7 @@ library(dplyr)
 library(readr)
 library(ggplot2)
 library(permute)
+library(patchwork)
 
 # Set seed for reproducibility
 set.seed(67)
@@ -141,19 +142,120 @@ ggsave(
 
 #### Format Figures ####
 
-ref<-plot_df %>% 
-  mutate(GenusLabel = gsub("g__","",GenusLabel)) %>%
-  filter(AssociatedTreatment == "REF") %>%
+plot_df_unique<-plot_df %>% 
+  mutate(GenusLabel = make.unique(gsub("g__","",GenusLabel))) %>%
   arrange(desc(stat)) %>%
   mutate(GenusLabel = factor(GenusLabel,levels=unique(GenusLabel)))
 
-
-ref %>%
+ref<-plot_df_unique %>%
+  filter(AssociatedTreatment == "REF") %>%
   ggplot(aes(x = GenusLabel, y = stat)) +
-  geom_bar(stat="identity")
+  geom_bar(stat="identity") +
+  ylab("Indicator Value") +
+  theme_classic() +
+  ggtitle("REF") +
+  scale_y_continuous(expand=c(0,0),limits=c(0,0.8),breaks=seq(0,0.8,by=0.2)) +
+  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        axis.title.x= element_blank(),
+        axis.text.x =  element_text(angle = 45,hjust =1,size = 10),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11)) 
 ref
-  
-  
+
+om2<-plot_df_unique %>%
+  filter(AssociatedTreatment == "OM2") %>%
+  ggplot(aes(x = GenusLabel, y = stat)) +
+  geom_bar(stat="identity") +
+  ylab("Indicator Value") +
+  theme_classic() +
+  ggtitle("OM2") +
+  scale_y_continuous(expand=c(0,0),limits=c(0,0.8),breaks=seq(0,0.8,by=0.2)) +
+  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        axis.title.x= element_blank(),
+        axis.text.x =  element_text(angle = 45,hjust =1,size = 10),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11))
+om2
+
+ref_om1<-plot_df_unique %>%
+  filter(AssociatedTreatment == "REF+OM1") %>%
+  ggplot(aes(x = GenusLabel, y = stat)) +
+  geom_bar(stat="identity") +
+  ylab("Indicator Value") +
+  theme_classic() +
+  ggtitle("REF + OM1") +
+  scale_y_continuous(expand=c(0,0),limits=c(0,0.8),breaks=seq(0,0.8,by=0.2)) +
+  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        axis.title.x= element_blank(),
+        axis.text.x =  element_text(angle = 45,hjust =1,size = 10),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11))
+ref_om1 
+
+ref_om2<-plot_df_unique %>%
+  filter(AssociatedTreatment == "REF+OM2") %>%
+  ggplot(aes(x = GenusLabel, y = stat)) +
+  geom_bar(stat="identity") +
+  ylab("Indicator Value") +
+  theme_classic() +
+  ggtitle("REF + OM2") +
+  scale_y_continuous(expand=c(0,0),limits=c(0,0.8),breaks=seq(0,0.8,by=0.2)) +
+  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        axis.title.x= element_blank(),
+        axis.text.x =  element_text(angle = 45,hjust =1,size = 10),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11))
+ref_om2 
+
+om1_om2<-plot_df_unique %>%
+  filter(AssociatedTreatment == "OM1+OM2") %>%
+  ggplot(aes(x = GenusLabel, y = stat)) +
+  geom_bar(stat="identity") +
+  ylab("Indicator Value") +
+  theme_classic() +
+  ggtitle("OM1 + OM2") +
+  scale_y_continuous(expand=c(0,0),limits=c(0,0.8),breaks=seq(0,0.8,by=0.2)) +
+  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+        axis.title = element_text(size = 12),
+        axis.title.x= element_blank(),
+        axis.text = element_text(size=10),
+        axis.text.x =  element_text(angle = 45,hjust =1,size = 10),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11))
+om1_om2 
+
+
+ref + om2 + plot_layout(ncol = 2, widths=c(4,2))
+ggsave("figures/isa_individual_treatment.png",width=6,height=3,units=c('in'))
+
+ref_om1 + plot_spacer() + ref_om2 + plot_spacer() + om1_om2  + 
+  plot_layout(ncol = 5, widths=c(3,0.15,2,0.15,2),guides="collect")
+ggsave("figures/isa_combined_treatment.png",width=6,height=3,units=c('in'))
+
+
+all_om<-plot_df_unique %>%
+  ggplot(aes(x = GenusLabel, y = stat,fill = AssociatedTreatment)) +
+  geom_bar(stat="identity") +
+  ylab("Indicator Value") +
+  xlab("Genus") +
+  theme_classic() +
+  scale_y_continuous(expand=c(0,0),limits=c(0,0.8),breaks=seq(0,0.8,by=0.2)) +
+  theme(plot.title = element_text(size = 14,hjust = 0.5),
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size=10),
+        axis.text.x =  element_text(angle = 45,hjust =1,size = 10),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 11))
+
+#### Original Plot ####
 p <- ggplot(
   plot_df %>% mutate(GenusLabel = gsub("g__","",GenusLabel)),
   aes(

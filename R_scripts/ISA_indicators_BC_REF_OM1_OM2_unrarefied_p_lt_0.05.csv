@@ -1,0 +1,24 @@
+s.OM1,s.OM2,s.REF,index,stat,p.value,taxon,Domain,Phylum,Class,Order,Family,Genus,Species,GenusLabel
+1,0,1,5,0.7128367677481883,0.004,6deb9f88f14df479760ec8a1721a63ba,d__Bacteria, p__Pseudomonadota, c__Alphaproteobacteria, o__Azospirillales, f__Inquilinaceae, g__Inquilinus,NA, g__Inquilinus
+1,0,1,5,0.37267799624996495,0.028,b95e15fd30eae1a9119235b9972c2ec8,d__Bacteria, p__Pseudomonadota, c__Alphaproteobacteria, o__Acetobacterales, f__Acetobacteraceae, g__Roseococcus,NA, g__Roseococcus
+0,1,0,2,0.35138523603575855,0.042,685fef0256585176fcd8ddf80ffea14d,d__Bacteria, p__Planctomycetota, c__Phycisphaerae, o__Phycisphaerales, f__Phycisphaeraceae, g__SM1A02,NA, g__SM1A02
+0,0,1,3,0.3211233051970689,0.014,89d4bf8bb2a8baf62ca8121e1476e435,d__Bacteria, p__Myxococcota, c__Myxococcia, o__Myxococcales, f__Anaeromyxobacteraceae, g__Anaeromyxobacter,NA, g__Anaeromyxobacter
+0,0,1,3,0.32414706728980375,0.015,b4fd43ffc6fe30f98f5b67549fe6d5de,d__Bacteria, p__Chloroflexota, c__Ktedonobacteria, o__Ktedonobacterales, f__Ktedonobacteraceae, g__Incertae_Sedis,NA, g__Incertae_Sedis
+0,1,1,6,0.3703725416824444,0.046,3f9d03106f42036945b697aae3589731,d__Bacteria, p__Bacillota, c__Bacilli, o__Paenibacillales, f__Paenibacillaceae, g__Paenibacillus,NA, g__Paenibacillus
+0,0,1,3,0.48173629566295817,0.014,523a4c362ca9ac6319ef1e433a32071e,d__Bacteria, p__Bacteroidota, c__Bacteroidia, o__Chitinophagales, f__Chitinophagaceae, g__Puia,NA, g__Puia
+0,0,1,3,0.5522902278724587,0.002,fd0eb9ae2791f68a971a8454bf128700,d__Bacteria, p__Pseudomonadota, c__Gammaproteobacteria, o__Lysobacterales, f__Rhodanobacteraceae, g__Luteibacter,NA, g__Luteibacter
+1,0,1,5,0.5406343079861246,0.007,365936ac898296af3540373a2305661a,d__Bacteria, p__Pseudomonadota, c__Gammaproteobacteria, o__Lysobacterales, f__Rhodanobacteraceae, g__Dokdonella,NA, g__Dokdonella
+0,0,1,3,0.40240622760111955,0.028,dff36c3ac3774b7186b4751bc554034a,d__Bacteria, p__Pseudomonadota, c__Gammaproteobacteria, o__Rickettsiellales, f__Rickettsiellaceae, g__Aquicella,NA, g__Aquicella
+1,0,1,5,0.5397628348154994,0.021,8509361904afffc3af727e3b0506d44f,d__Bacteria, p__Pseudomonadota, c__Gammaproteobacteria, o__JG36-TzT-191, f__Incertae_Sedis, g__Incertae_Sedis,NA, g__Incertae_Sedis
+0,0,1,3,0.3165100610619823,0.045,947091df5d41f7a0a67fd3878042ac05,d__Bacteria, p__Acidobacteriota, c__Acidobacteriae, o__Terriglobales, f__Acidobacteriaceae_(Subgroup_1), g__Acidicapsa,NA, g__Acidicapsa
+1,1,0,4,0.5328037310033089,0.034,46250f859a7b516a4bbbd1f15134931e,d__Bacteria, p__Acidobacteriota, c__Vicinamibacteria, o__Subgroup_17, f__Incertae_Sedis, g__Incertae_Sedis,NA, g__Incertae_Sedis
+0,1,0,2,0.4374203140775978,0.029,8cfa8b30726de78d1f19335a9c6b3d88,d__Bacteria, p__Fibrobacterota, c__Fibrobacteria, o__Fibrobacterales, f__Fibrobacteraceae, g__possible_genus_04,NA, g__possible_genus_04
+0,1,0,2,0.36814012477378,0.033,a9ea51361e48984dc28f1c71b4fda381,d__Bacteria, p__Pseudomonadota, c__Alphaproteobacteria, o__Sphingomonadales, f__Sphingomonadaceae, g__Polymorphobacter,NA, g__Polymorphobacter
+0,0,1,3,0.33514157919688936,0.045,466f89439ef6816b130cf0f84e2b6af3,d__Bacteria, p__Pseudomonadota, c__Alphaproteobacteria, o__Sphingomonadales, f__Sphingomonadaceae, g__Sandaracinobacter,NA, g__Sandaracinobacter
+0,0,1,3,0.3935083121474709,0.046,28d5450a0c00e1e6e58465771d72681e,d__Bacteria, p__Pseudomonadota, c__Alphaproteobacteria, o__Sphingomonadales, f__Sphingomonadaceae, g__Hephaestia,NA, g__Hephaestia
+1,0,1,5,0.46036841952886515,0.033,8f30758a164d8864cfa62ec764a376ad,d__Bacteria, p__Pseudomonadota, c__Alphaproteobacteria, o__Hyphomicrobiales, f__Devosiaceae, g__Arsenicitalea,NA, g__Arsenicitalea
+0,0,1,3,0.3333333333333333,0.018,dbb80217a233e6d65946cf99e9ba8059,d__Bacteria, p__Pseudomonadota, c__Alphaproteobacteria, o__Hyphomicrobiales, f__Pleomorphomonadaceae, g__Incertae_Sedis,NA, g__Incertae_Sedis
+0,0,1,3,0.3133851377342126,0.024,fae9c70569c775ba58d41bc6a9c047b7,d__Bacteria, p__Actinomycetota, c__Actinobacteria, o__Micrococcales, f__Microbacteriaceae, g__Lacisediminihabitans,NA, g__Lacisediminihabitans
+0,1,0,2,0.4401173819338854,0.037,dd2325e53fa198631f54aea7037e8782,d__Bacteria, p__Actinomycetota, c__Actinobacteria, o__Frankiales, f__Geodermatophilaceae, g__Blastococcus,NA, g__Blastococcus
+0,0,1,3,0.3989809478773058,0.017,84a15170e4e35dd078a01d87882294b3,d__Bacteria, p__Actinomycetota, c__Actinobacteria, o__Pseudonocardiales, f__Pseudonocardiaceae, g__Actinophytocola,NA, g__Actinophytocola
+0,0,1,3,0.3106746079978997,0.037,8dcef1e2015151b8e7e9933631aeef70,d__Bacteria, p__Actinomycetota, c__Actinobacteria, o__Streptosporangiales, f__Streptosporangiaceae, g__Sphaerimonospora,NA, g__Sphaerimonospora
