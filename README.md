@@ -3,7 +3,7 @@
 
 ## Meeting Minutes
 
-[April 2: Presentation and Manuscript Figures](../meeting_minutes/April_2.md)
+[April 2: Presentation and Manuscript Figures](./meeting_minutes/April_2.md)
 
 [March 26: Random Forest](./meeting_minutes/Mar_26.md)
 
