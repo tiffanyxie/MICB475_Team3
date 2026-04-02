@@ -188,4 +188,8 @@ ggsave("figures/om1_om2_importance.png",
        units=c("in"),
        width = 6,
        height = 3)
+ggsave("figures/om1_om2_importance.svg",
+       units=c("in"),
+       width = 6,
+       height = 3)
 

@@ -86,6 +86,10 @@ ggsave("figures/core_microbiome.png",
        units=c("in"),
        width = 5.5,
        height = 5)
+ggsave("figures/core_microbiome.svg",
+       units=c("in"),
+       width = 5.5,
+       height = 5)
 
 ## The below code is to identify which genera are present in each section of the Venn Diagram
 
