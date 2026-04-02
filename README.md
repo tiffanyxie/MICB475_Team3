@@ -2,6 +2,12 @@
 **Team 3:** Selina Cai, Ivana Djaja, Cole Harrison, Rachel Liu, Tiffany Xie
 
 ## Meeting Minutes
+
+[April 2: Presentation and Manuscript Figures](../meeting_minutes/April_2.md)
+
+[March 26: Random Forest](./meeting_minutes/Mar_26.md)
+
+
 [March 19: Aim 2 ISA Results and Aim 3 Random Forest First Attempt](./meeting_minutes/Mar_19.md)
 
 [March 12: Aim 2 updates](./meeting_minutes/Mar_12.md)

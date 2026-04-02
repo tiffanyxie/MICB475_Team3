@@ -1,4 +1,4 @@
-# March 26 - Random Forest
+# April 2: Presentation and Manuscript Figures
 
 ## Agenda 
 * Discuss presentation
@@ -8,9 +8,14 @@
 
 ![Figure 1](../R_scripts/figures/Figure1.png)
 
-**Figure 2**
+**Figure 2 Option 1** \
+Indicator Species
 
 ![Figure 2](../R_scripts/figures/Figure2.png)
+
+
+**Figure 2 Option 2**\
+Indicator Species
 ![Figure 2](../R_scripts/figures/Figure_2_ISA_combined.png)
 
 
