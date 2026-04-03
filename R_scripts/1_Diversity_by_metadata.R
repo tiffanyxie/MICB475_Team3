@@ -50,7 +50,7 @@ bc_shannon_plt<-plot_richness(phylo_soil_rare, x = "LTSP.Treatment", measures = 
   ggtitle("BC") +
   geom_boxplot() +
   theme_classic() +
-  theme(plot.title = element_text(size = 14,hjust = 0.5),
+  theme(plot.title = element_blank(), #element_text(size = 14,hjust = 0.5),
         axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
         legend.text = element_text(size = 10),
@@ -68,7 +68,7 @@ idfbc_shannon_plt<-plot_richness(IDFBC_phylo_rare, x = "LTSP.Treatment", measure
   ggtitle("IDFBC") +
   geom_boxplot() +
   theme_classic() +
-  theme(plot.title = element_text(size = 14,hjust = 0.5),
+  theme(plot.title = element_blank(), #element_text(size = 14,hjust = 0.5),
         axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
         legend.text = element_text(size = 10),
@@ -89,7 +89,7 @@ sbsbc_shannon_plt<-plot_richness(SBSBC_phylo_rare, x = "LTSP.Treatment", measure
   ggtitle("SBSBC") +
   geom_boxplot() +
   theme_classic() +
-  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+  theme(plot.title = element_blank(), #element_text(size = 14,hjust = 0.5),
         axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
         legend.text = element_text(size = 10),
@@ -107,7 +107,7 @@ bc_shannon_plt<-plot_richness(phylo_soil_rare, x = "LTSP.Treatment", measures = 
   ggtitle("BC") +
   geom_boxplot() +
   theme_classic() +
-  theme(plot.title = element_text(size = 14,hjust = 0.5),
+  theme(plot.title = element_blank(), #element_text(size = 14,hjust = 0.5),
         axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
         legend.text = element_text(size = 10),
@@ -122,7 +122,7 @@ idfbc_shannon_plt<-plot_richness(IDFBC_phylo_rare, x = "LTSP.Treatment", measure
   ggtitle("IDFBC") +
   geom_boxplot() +
   theme_classic() +
-  theme(plot.title = element_text(size = 14,hjust = 0.5),
+  theme(plot.title = element_blank(), #element_text(size = 14,hjust = 0.5),
         axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
         legend.text = element_text(size = 10),
@@ -137,7 +137,7 @@ sbsbc_shannon_plt<-plot_richness(SBSBC_phylo_rare, x = "LTSP.Treatment", measure
   ggtitle("SBSBC") +
   geom_boxplot() +
   theme_classic() +
-  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+  theme(plot.title = element_blank(), #element_text(size = 14,hjust = 0.5),
         axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
         legend.text = element_text(size = 10),
