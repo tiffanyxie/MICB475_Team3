@@ -2,6 +2,7 @@ library(phyloseq)
 library(ape) # importing trees
 library(tidyverse)
 library(picante)
+library(svglite)
 
 load("phylo_soil.RData")
 load("phylo_soil_rare.RData")

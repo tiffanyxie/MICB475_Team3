@@ -6,6 +6,7 @@ library(readr)
 library(ggplot2)
 library(permute)
 library(patchwork)
+library(svglite)
 
 # Set seed for reproducibility
 set.seed(67)
@@ -155,7 +156,7 @@ ref<-plot_df_unique %>%
   theme_classic() +
   ggtitle("REF") +
   scale_y_continuous(expand=c(0,0),limits=c(0,0.8),breaks=seq(0,0.8,by=0.2)) +
-  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+  theme(plot.title = element_blank(),
         axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
         axis.title.x= element_blank(),
@@ -172,7 +173,7 @@ om2<-plot_df_unique %>%
   theme_classic() +
   ggtitle("OM2") +
   scale_y_continuous(expand=c(0,0),limits=c(0,0.8),breaks=seq(0,0.8,by=0.2)) +
-  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+  theme(plot.title = element_blank(),
         axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
         axis.title.x= element_blank(),
@@ -189,7 +190,7 @@ ref_om1<-plot_df_unique %>%
   theme_classic() +
   ggtitle("REF + OM1") +
   scale_y_continuous(expand=c(0,0),limits=c(0,0.8),breaks=seq(0,0.8,by=0.2)) +
-  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+  theme(plot.title = element_blank(),
         axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
         axis.title.x= element_blank(),
@@ -206,7 +207,7 @@ ref_om2<-plot_df_unique %>%
   theme_classic() +
   ggtitle("REF + OM2") +
   scale_y_continuous(expand=c(0,0),limits=c(0,0.8),breaks=seq(0,0.8,by=0.2)) +
-  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+  theme(plot.title = element_blank(),
         axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
         axis.title.x= element_blank(),
@@ -223,7 +224,7 @@ om1_om2<-plot_df_unique %>%
   theme_classic() +
   ggtitle("OM1 + OM2") +
   scale_y_continuous(expand=c(0,0),limits=c(0,0.8),breaks=seq(0,0.8,by=0.2)) +
-  theme(plot.title = element_text(size = 14,hjust = 0.5),,
+  theme(plot.title = element_blank(),
         axis.title = element_text(size = 12),
         axis.title.x= element_blank(),
         axis.text = element_text(size=10),
@@ -233,7 +234,7 @@ om1_om2<-plot_df_unique %>%
 om1_om2 
 
 
-ref + om2 + plot_layout(ncol = 2, widths=c(4,2))
+ref + plot_spacer() + om2 + plot_layout(ncol = 3, widths=c(4,0.1,2))
 ggsave("figures/isa_individual_treatment.png",width=6,height=3,units=c('in'))
 
 ref_om1 + plot_spacer() + ref_om2 + plot_spacer() + om1_om2  + 
@@ -246,6 +247,7 @@ all_om<-plot_df_unique %>%
   geom_bar(stat="identity") +
   ylab("Indicator Value") +
   xlab("Genus") +
+  labs(fill = "OM Treatment") +
   theme_classic() +
   scale_y_continuous(expand=c(0,0),limits=c(0,0.8),breaks=seq(0,0.8,by=0.2)) +
   theme(plot.title = element_text(size = 14,hjust = 0.5),
@@ -254,6 +256,9 @@ all_om<-plot_df_unique %>%
         axis.text.x =  element_text(angle = 45,hjust =1,size = 10),
         legend.text = element_text(size = 10),
         legend.title = element_text(size = 11))
+all_om
+ggsave("figures/Figure_2_ISA_combined.png",width=6,height=3,units=c('in'))
+
 
 #### Original Plot ####
 p <- ggplot(

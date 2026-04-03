@@ -2,6 +2,7 @@ library(tidyverse)
 library(phyloseq)
 library(microbiome)
 library(ggVennDiagram)
+library(svglite)
 
 #### Load data ####
 #Use non-rarefied phyloseq

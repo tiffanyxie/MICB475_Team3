@@ -9,20 +9,22 @@
 ![Figure 1](../R_scripts/figures/Figure1.png)
 
 **Figure 2 Option 1** \
-Indicator Species
+Core Microbiome
 
 ![Figure 2](../R_scripts/figures/Figure2.png)
 
 
-**Figure 2 Option 2**\
-Indicator Species
-![Figure 2](../R_scripts/figures/Figure_2_ISA_combined.png)
 
 
-**Figure 3** \
-Core Microbiome
+
+**Figure 3**
+
 
 ![Figure 3](../R_scripts/figures/Figure3.png)
+
+**Figure 3 Option 2**\
+Indicator Species
+![Figure 3](../R_scripts/figures/Figure_2_ISA_combined.png)
 
 **Figure 4** \
 DESeq

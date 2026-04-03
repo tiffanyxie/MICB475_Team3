@@ -4,6 +4,7 @@ library(phyloseq)
 library(DESeq2)
 library(dplyr)
 library(patchwork)
+library(svglite)
 
 
 #### Load data ####
@@ -11,6 +12,9 @@ load("phylo_soil.RData")
 
 soil_glom <- tax_glom(phylo_soil, taxrank = "Genus")
 
+#Alternative, load glommed rdata
+load("phylo_soil_genus.RData")
+soil_glom<-phylo_soil_genus
 #### DESeq ####
 
 
@@ -141,6 +145,7 @@ om1_ref<-ggplot(plot_data_OM1_vs_REF, aes(x = log2FoldChange, y = Genus, fill = 
   scale_fill_manual(values = c("TRUE" = "lightpink", "FALSE" = "lightblue"), 
                     labels = c("Lower in OM1", "Higher in OM1"),
                     name = "OM1 vs REF") +
+  scale_x_continuous(limits=c(-2.5,4),breaks=c(seq(-2,4,by=1))) +
   #labs(title = "OM1 vs REF") +
   theme_classic() +
   theme(axis.title = element_text(size = 12),
@@ -157,6 +162,7 @@ om2_ref<-ggplot(plot_data_OM2_vs_REF, aes(x = log2FoldChange, y = Genus, fill = 
                     labels = c("Lower in OM2", "Higher in OM2"),
                     name = "OM2 vs REF") +
   #labs(title = "OM2 vs REF") +
+  scale_x_continuous(limits=c(-2.5,4),breaks=c(seq(-2,4,by=1))) +
   theme_classic() +
   theme(axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
@@ -171,6 +177,7 @@ om2_om1<-ggplot(plot_data_OM2_vs_OM1, aes(x = log2FoldChange, y = Genus, fill = 
   scale_fill_manual(values = c("TRUE" = "lightpink", "FALSE" = "lightblue"), 
                     labels = c("Lower in OM2", "Higher in OM2"),
                     name = "OM2 vs OM1") +
+  scale_x_continuous(limits=c(-2.5,4),breaks=c(seq(-2,4,by=1))) +
   theme_classic() +
   theme(axis.title = element_text(size = 12),
         axis.text = element_text(size=10),
@@ -189,4 +196,5 @@ om2_om1
 ggsave("figures/om2_om1_deseq.png",units=c("in"),width = 6, height = 4)
 
 combined<-om1_ref + om2_ref + om2_om1 + plot_layout(ncol = 1,heights=c(3,6,4))
+combined
 ggsave("figures/combined_deseq.png",width = 6, height = 10)

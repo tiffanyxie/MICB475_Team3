@@ -14,6 +14,7 @@ library(boot)
 library(ggplot2)
 library(phyloseq)
 library(tidyverse)
+library(svglite)
 
 
 #Load dataset and aggregate reads to Genus level
