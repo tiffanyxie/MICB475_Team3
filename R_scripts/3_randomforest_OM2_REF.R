@@ -165,18 +165,22 @@ importance_plot<-soil_model$importance %>%
   mutate(Feature = gsub("g__","",Feature)) %>%
   # Data are automatically arranged by decreasing importance - turn it into a factor.
   # Otherwise the features will show up alphabetically in the plot.
-  mutate(Feature = factor(.$Feature,levels = .$Feature)) %>% 
-  ggplot(aes(Feature,MeanDecreaseGini)) + #,fill=MeanDecreaseGini)) +
-  geom_col() +
-  theme_classic() +
-  scale_y_continuous(expand=c(0,0)) +
-  theme(axis.text.x = element_text(angle=50, vjust = 1, hjust=1),
-        axis.text = element_text(size = 10),
-        axis.title = element_text(size = 12),
-        legend.text = element_text(size = 10),
-        legend.title = element_text(size = 12)) +
-  ylab('Importance (Gini)') + xlab(NULL) +
-  labs(fill = "Mean Decrease Gini")
+  mutate(Feature = factor(.$Feature,levels = .$Feature)) %>% {
+    idx_blue <- c(1, 9,10,12)
+    label_colors <- ifelse(seq_along(.$Feature) %in% idx_blue, "#1138B8", "#008321") #Used gen ai to help format labels 
+    ggplot(.,aes(Feature,MeanDecreaseGini)) + #,fill=MeanDecreaseGini)) +
+      geom_col() +
+      theme_classic() +
+      scale_y_continuous(expand=c(0,0)) +
+      theme(axis.text.x = element_text(angle=50, vjust = 1, hjust=1,colour = label_colors),
+            axis.text = element_text(size = 10),
+            axis.title = element_text(size = 12),
+            legend.text = element_text(size = 10),
+            legend.title = element_text(size = 12)) +
+      ylab('Importance (Gini)') + xlab(NULL) +
+      labs(fill = "Mean Decrease Gini")
+  }
+
 importance_plot
 
 #### Save plots ####
