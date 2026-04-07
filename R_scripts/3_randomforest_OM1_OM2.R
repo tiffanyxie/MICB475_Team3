@@ -164,7 +164,7 @@ importance_plot<-soil_model$importance %>%
 # Otherwise the features will show up alphabetically in the plot.
   mutate(Feature = factor(.$Feature,levels = .$Feature)) %>% 
   {
-    idx_blue <- c(1, 2, 3)
+    idx_blue <- c(1, 2, 3,8)
     label_colors <- ifelse(seq_along(.$Feature) %in% idx_blue, "#1138B8", "#008321") #Used gen ai to help format labels 
     ggplot(.,aes(Feature,MeanDecreaseGini)) + #,fill=MeanDecreaseGini)) +
       geom_col() +
