@@ -52,7 +52,7 @@ df_transformed = df %>%
 
 # Final table should ONLY contain the outcome and explanatory variables, each as their own column. For now we'll also include the sample id.
 df_pivot = df_transformed %>% 
-  select(Sample,pH,Total.Carbon,Total.Nitrogen, pH, CN.Ratio,LTSP.Treatment,Genus,Abundance) %>% 
+  select(Sample,pH,Total.Carbon,Moisture.Content,Total.Nitrogen, pH, CN.Ratio,LTSP.Treatment,Genus,Abundance) %>% 
   # Turn each Genus into its own column
   pivot_wider(names_from = Genus, values_from = Abundance) 
 
@@ -166,7 +166,7 @@ importance_plot<-soil_model$importance %>%
   # Data are automatically arranged by decreasing importance - turn it into a factor.
   # Otherwise the features will show up alphabetically in the plot.
   mutate(Feature = factor(.$Feature,levels = .$Feature)) %>% {
-    idx_blue <- c(1, 9,10,12)
+    idx_blue <- c(1, 7,9,11,14)
     label_colors <- ifelse(seq_along(.$Feature) %in% idx_blue, "#1138B8", "#008321") #Used gen ai to help format labels 
     ggplot(.,aes(Feature,MeanDecreaseGini)) + #,fill=MeanDecreaseGini)) +
       geom_col() +
