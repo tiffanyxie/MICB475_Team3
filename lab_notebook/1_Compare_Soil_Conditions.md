@@ -1,11 +1,11 @@
-# March 3, 2026: Compare soil conditions between OM Removal
+# Compare soil conditions between OM Removal
 
 ## Aim
 * Compare soil conditions (moisture, total carbon, total nitrogen, C/N ratio, and pH)  between OM removal
 
 ## Code
 
-[R Script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/1_Metadata_Analysis)
+[R Script](../R_scripts/1_Metadata_Analysis.R)
 
 ## Results
 **Overview**

@@ -8,7 +8,7 @@
 
 ![Figure 1](../R_scripts/figures/Figure1.png)
 
-**Figure 2 Option 1** \
+**Figure 2** \
 Core Microbiome
 
 ![Figure 2](../R_scripts/figures/Figure2.png)
@@ -17,7 +17,7 @@ Core Microbiome
 
 
 
-**Figure 3**
+**Figure 3 Option 1**
 
 
 ![Figure 3](../R_scripts/figures/Figure3.png)

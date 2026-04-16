@@ -11,8 +11,8 @@ Random Forest Updates!
 * Want to check with Bessie and team to ensure our approach to modifying code is correct before diving into model results
 * What metrics will we use to assess the accuracy of our model (ROC, confusion matrix)?
 
-[Notes on Random Forest Code Modification and Initial Results](../lab_notebook/3_RandomForest.md) \
- [Random Forest Main Script](../R_scripts/3_RandomForest.R) \
+[Notes on Random Forest Code Modification and Initial Results](../lab_notebook/3_RandomForest_MultiClass.md) \
+ [Random Forest Main Script](../R_scripts/3_RandomForest_REF_OM1_OM2.R) \
 [Random Forest Functions](../R_scripts/3_randomforest_functions_modified.R)
 
 ## Discussion Notes

@@ -11,7 +11,7 @@
 - Began preparing R scripts for diversity analyses
 - Continued refining the approach for Aim 1 (alpha diversity + metadata influence)
 - 
-[Aim 1 Lab Notebook](https://github.com/tiffanyxie/MICB475_Team3/blob/main/lab_notebook/RStudio_diversity.md)
+[Aim 1 Lab Notebook](https://github.com/tiffanyxie/MICB475_Team3/blob/main/lab_notebook/1_Diversity_Metrics.md)
 
 ## Discussion notes
 - Aim 1: not directly assessing impact of OM removal, but just checking how metadata variables impact alpha and beta diversity
@@ -20,6 +20,3 @@
 - We can also compare soil metadata conditions between OM removal to check if our results are the same
 - Goal for next week: finish Aim 1 by next week, Spearman correlation between each soil condition and alpha diversity, beta diversity, compare soil metadata conditions between OM removal. 
 
-## Relevant Analysis Scripts
-- [Diversity Stats trials.R](../soil_export/Diversity%20Stats%20trials.R)
-- [RStudio_processing.R](../soil_export/RStudio_processing.R)

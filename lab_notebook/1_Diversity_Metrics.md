@@ -6,7 +6,7 @@
 * Perform alpha and beta diversity statistical analyses
 
 ## Code:
-[R Script](https://github.com/tiffanyxie/MICB475_Team3/blob/main/R_scripts/1_Diversity_metrics.R)
+[R Script](../R_scripts/1_Diversity_by_metadata.R)
 
 ## Alpha Diversity Results:
 ### OM Removal

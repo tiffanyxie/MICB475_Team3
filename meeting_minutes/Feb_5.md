@@ -6,7 +6,7 @@
 ## Current Project Ideas with Soil Dataset
 [Paper associated with dataset](https://pubmed.ncbi.nlm.nih.gov/28765786/)
 
-[Code for visualizing metadata metrics associated with project ideas](https://github.com/tiffanyxie/MICB475_Team3/tree/main/project_brainstorm)
+[Code for visualizing metadata metrics associated with project ideas](../lab_notebook/project_brainstorm/visualizations_for_project_ideas.R)
 
 **1. Comparing the impact of LTSP treatmemt on the microbiome within each ecozone**
 * Remove samples with C1 and C2 compaction treatments, A horizon sampling depth, and herbicide treatment
@@ -24,7 +24,7 @@
 | CN ratio Range | 25.1–50.9 | 28.7–42.3 | 23.6–46.4 | 30.9–47.4 | 29.8–40.7 | 23.2–32.3 |
 
 Visualization of metadata metrics (sample number, elevation, moisture content, CN ratio)
-![Metadata_Horizon](../project_brainstorm/metadata_compare_ltsp_treatment.png)
+![Metadata_Horizon](../lab_notebook/project_brainstorm/metadata_compare_ltsp_treatment.png)
 
 **2. Comparing the impact of soil depth on the microbiome within each ecozone**
 * The only independent variable is horizon (O vs A)
@@ -44,7 +44,7 @@ Visualization of metadata metrics (sample number, elevation, moisture content, C
 | CN ratio Range | 25.1–50.9 | 17.4–42.3 | 19.1–46.4 | 16.3–47.4 | 11.1–40.7 | 15.5–32.3 |
 
 Visualization of metadata metrics (sample number, elevation, moisture content, CN ratio)
-![Metadata_Horizon](../project_brainstorm/metadata_compare_horizon.png)
+![Metadata_Horizon](../lab_notebook/project_brainstorm/metadata_compare_horizon.png)
 
 **3. Correlate Diversity with some continuous metric**
 * Pool nothing
