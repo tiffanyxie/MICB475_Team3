@@ -70,7 +70,7 @@ ggsave("figures/core_microbiome.svg",
 
 
 #Trouble shoot using AI
-# Make soil list into long format of Feature IDs (FIXED: no data.frame padding needed)
+# Make into long format of Feature IDs
 core_long <- bind_rows(
   data.frame(FeatureID = soil_list_full$REF, Treatment = "REF"),
   data.frame(FeatureID = soil_list_full$OM1, Treatment = "OM1"),
