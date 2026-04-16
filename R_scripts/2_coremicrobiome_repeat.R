@@ -1,4 +1,3 @@
-
 library(tidyverse)
 library(phyloseq)
 library(microbiome)
@@ -16,10 +15,6 @@ load("phylo_soil.RData")
 phylo_soil <- tax_glom(phylo_soil, taxrank = "Genus", NArm=FALSE)
 
 
-# Alternatively, load phylo_soil_genus
-load("phylo_soil_genus.RData")
-phylo_soil<-phylo_soil_genus
-
 ## Convert to relative abundance 
 soil_RA <- transform_sample_counts(phylo_soil, fun=function(x) x/sum(x))
 
@@ -31,7 +26,7 @@ soil_OM2 <- subset_samples(soil_RA, `LTSP.Treatment`=="OM2")
 
 #For reference: Abundance thresholds to test - 0 (presence/absence), 0.001 (filter out rare ASVs), 0.01 (abundant ASVs)
 
-## What ASVs are found in more than 90% of samples in each LTSP Treatment group?
+## What ASVs are found in more than 50% of samples in each LTSP Treatment group?
 
 REF_core_ASVs <- core_members(soil_REF, detection = 0.001, prevalence = 0.5)
 OM1_core_ASVs <- core_members(soil_OM1, detection = 0.001, prevalence = 0.5)
@@ -40,20 +35,14 @@ OM2_core_ASVs <- core_members(soil_OM2, detection = 0.001, prevalence = 0.5)
 soil_list_full <- list(REF = REF_core_ASVs, OM1 = OM1_core_ASVs, OM2 = OM2_core_ASVs)
 
 #used AI to trouble shoot to get genus level 
-tax_df <- as.data.frame(tax_table(phylo_soil))
+REF_genus <- tax_table(soil_REF)[REF_core_ASVs, "Genus"]
+OM1_genus <- tax_table(soil_OM1)[OM1_core_ASVs, "Genus"]
+OM2_genus <- tax_table(soil_OM2)[OM2_core_ASVs, "Genus"]
 
-tax_df$FeatureID <- rownames(tax_df)
-
-get_genera <- function(asvs, tax_df) {
-  unique(tax_df$Genus[tax_df$FeatureID %in% asvs])
-}
-
-REF_core <- get_genera(REF_core_ASVs, tax_df)
-OM1_core <- get_genera(OM1_core_ASVs, tax_df)
-OM2_core <- get_genera(OM2_core_ASVs, tax_df)
-
-soil_venn <- ggVennDiagram(list(REF = REF_core, OM1 = OM1_core, OM2 = OM2_core),
-  label_geom = "label")
+soil_venn <- ggVennDiagram(list(
+  REF = REF_genus,
+  OM1 = OM1_genus,
+  OM2 = OM2_genus))
 
 #Used GenAi for troubleshooting formatting
 
