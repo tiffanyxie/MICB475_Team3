@@ -1,3 +1,6 @@
+# Adapted from "randomforest_functions.R" by Avril Metcalfe-Roach
+# R script for helper functions for running multi-class Random Forest model
+
 # Run random forest on each fold
 
 # Average all the folds

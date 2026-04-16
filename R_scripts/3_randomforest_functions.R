@@ -1,3 +1,6 @@
+# Original R script written by Avril Metcalfe-Roach
+# R Script with helper functions for Random Forest
+
 # Run random forest on each fold
 
 # Average all the folds

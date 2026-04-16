@@ -1,4 +1,5 @@
 # Adapted from "Random Forest" by Avril Metcalfe-Roach
+# R Script for RF model to distinguish OM1 or OM2 vs REF
 
 
 #### Part 1: Load Libraries and Data ####

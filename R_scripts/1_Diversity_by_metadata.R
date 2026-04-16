@@ -1,3 +1,6 @@
+# R Script for Diversity Metrics
+
+# Load libraries
 library(phyloseq)
 library(ape) # importing trees
 library(tidyverse)

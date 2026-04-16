@@ -1,8 +1,5 @@
 # Adapted from "Random Forest" by Avril Metcalfe-Roach
-# install.packages("pROC")
-# install.packages("ranger")
-# install.packages("caret", dependencies = TRUE)
-# install.packages("randomForest")
+# R script for RF model to predict OM1 vs REF
 
 
 #### Part 1: Load Libraries and Data ####

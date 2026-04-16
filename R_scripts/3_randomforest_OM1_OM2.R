@@ -1,4 +1,5 @@
 # Adapted from "Random Forest" by Avril Metcalfe-Roach
+# R script for Random Forest model to predict OM1 vs OM2
 
 
 #### Part 1: Load Libraries and Data ####

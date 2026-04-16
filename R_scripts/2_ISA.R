@@ -1,4 +1,6 @@
-# Load packages
+# Rscript for ISA
+
+#####Load packages####
 library(phyloseq)
 library(indicspecies)
 library(dplyr)
@@ -8,8 +10,12 @@ library(permute)
 library(patchwork)
 library(svglite)
 
+#### ISA ####
+
 # Set seed for reproducibility
 set.seed(67)
+
+load("phylo_soil.RData")
 
 # Use the UNRAREFIED phyloseq object
 ps <- phylo_soil
@@ -68,6 +74,7 @@ return(out)
 
 # Run ISA on all BC data together
 res <- do_isa(ps)
+
 
 # Save result table
 write_csv(res, "ISA_indicators_BC_REF_OM1_OM2_unrarefied_p_lt_0.05.csv")
@@ -259,45 +266,3 @@ all_om<-plot_df_unique %>%
 all_om
 ggsave("figures/Figure_2_ISA_combined.png",width=6,height=3,units=c('in'))
 
-
-#### Original Plot ####
-p <- ggplot(
-  plot_df %>% mutate(GenusLabel = gsub("g__","",GenusLabel)),
-  aes(
-    x = reorder(GenusLabel, stat),
-    y = stat,
-    fill = AssociatedTreatment
-  )
-) +
-  geom_col() +
-  facet_grid(
-    . ~ AssociatedTreatment,
-    scales = "free_y",
-    space = "free_y"
-  ) +
-  labs(
-    x = "Genus",
-    y = "Indicator value"
-  ) +
-  theme_classic() +
-  scale_y_continuous(
-    breaks = c(0, 0.2, 0.4, 0.6),
-    labels = c("0.0", "0.2", "0.4", "0.6")
-  ) +
-  theme(
-    text = element_text(size = 12),
-    axis.text.y = element_text(size = 8),
-    axis.text.x = element_text(size = 10),
-    legend.position = "none"
-  )
-
-# Show plot
-print(p)
-
-# Save plot
-ggsave(
-  "ISA_indicator_plot_BC_all_significant_by_treatment.png",
-  plot = p,
-  width = 16,
-  height = 8
-)

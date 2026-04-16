@@ -1,4 +1,4 @@
-# Create phyloseq object
+# R Script to create phyloseq object
 
 
 #### Load libraries ####

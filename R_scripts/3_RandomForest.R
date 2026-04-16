@@ -1,5 +1,5 @@
 # Adapted from "Random Forest" by Avril Metcalfe-Roach
-
+# R Script for multi-class RF model to predict REF, OM1, OM2
 
 #### Part 1: Load Libraries and Data ####
 library(randomForest)
@@ -166,47 +166,4 @@ soil_model$importance %>%
   theme(axis.text.x = element_text(angle=45, vjust = 1, hjust=1)) +
   ylab('Importance (Gini)') + xlab(NULL)
 ggsave("output/importance_plot_OM1_OM2_REF.png",width = 14, height=4, units=c("in"))
-
-
-#!!! below not run
-
-# Generate ROC curve
-
-roc_test = roc(soil_model$test_labels$true_labels,
-               soil_model$test_labels$predicted_probabilities)
-roc_train = roc(soil_model$train_labels$true_labels,
-                soil_model$train_labels$predicted_probabilities)
-
-# True positive rate = sensitivity
-# False positive rate = 1-specificity
-ggplot() +
-  # Training data: this is a type of control
-  geom_line(aes(x = 1 - roc_train$specificities, 
-                y = roc_train$sensitivities), 
-            color = "red",size=1) +
-  # Test data: tells us the strength of the prediction
-  geom_line(aes(x = 1 - roc_test$specificities,
-                y = roc_test$sensitivities), 
-            color = "black",size=1) +
-  geom_abline(slope = 1, intercept = 0, color = "gray", linetype = "dashed",size=1) +
-  labs(x = "False Positive Rate", y = "True Positive Rate") +
-  annotate("text", x = 0.7, y = 0.2, 
-           label = sprintf("Train (red): %.2f (%.2f-%.2f)\nTest (black): %.2f (%.2f-%.2f)",
-                           auc(roc_train), pd_model$auc_train_ci[1], pd_model$auc_train_ci[2],
-                           auc(roc_test), pd_model$auc_test_ci[1], pd_model$auc_test_ci[2]), 
-           size = 6) +
-  theme_minimal(base_size=18)
-
-#Compile results into table
-roc_data = data.frame(Dataset = 'RF Tutorial Data',
-                      Training_AUC = round(pd_model$auc_train, 2),
-                      Training_AUC_CI = paste0(round(pd_model$auc_train_ci[1], 2), "-", 
-                                               round(pd_model$auc_train_ci[2], 2)),
-                      Testing_AUC = round(pd_model$auc_test, 2),
-                      Testing_AUC_CI = paste0(round(pd_model$auc_test_ci[1], 2), "-", 
-                                              round(pd_model$auc_test_ci[2], 2)))
-
-
-
-
 
