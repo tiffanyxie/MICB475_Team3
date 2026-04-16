@@ -32,7 +32,7 @@ REF_core <- core_members(soil_REF, detection = 0.001, prevalence = 0.5)
 OM1_core <- core_members(soil_OM1, detection = 0.001, prevalence = 0.5)
 OM2_core <- core_members(soil_OM2, detection = 0.001, prevalence = 0.5)
 
-soil_list_full <- list(REF = REF_core_ASVs, OM1 = OM1_core_ASVs, OM2 = OM2_core_ASVs)
+soil_list_full <- list(REF = REF_core, OM1 = OM1_core, OM2 = OM2_core)
 
 #used AI to trouble shoot to get genus level 
 REF_genus <- tax_table(soil_REF)[REF_core, "Genus"]
@@ -115,4 +115,6 @@ ASVs_in_treatments <- core_long %>%
     values_fill = NA)
 
 view(ASVs_in_treatments)
+
+
 
