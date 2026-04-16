@@ -26,18 +26,18 @@ soil_OM2 <- subset_samples(soil_RA, `LTSP.Treatment`=="OM2")
 
 #For reference: Abundance thresholds to test - 0 (presence/absence), 0.001 (filter out rare ASVs), 0.01 (abundant ASVs)
 
-## What ASVs are found in more than 50% of samples in each LTSP Treatment group?
+## What FeatureIDs are found in more than 50% of samples in each LTSP Treatment group?
 
-REF_core_ASVs <- core_members(soil_REF, detection = 0.001, prevalence = 0.5)
-OM1_core_ASVs <- core_members(soil_OM1, detection = 0.001, prevalence = 0.5)
-OM2_core_ASVs <- core_members(soil_OM2, detection = 0.001, prevalence = 0.5)
+REF_core <- core_members(soil_REF, detection = 0.001, prevalence = 0.5)
+OM1_core <- core_members(soil_OM1, detection = 0.001, prevalence = 0.5)
+OM2_core <- core_members(soil_OM2, detection = 0.001, prevalence = 0.5)
 
 soil_list_full <- list(REF = REF_core_ASVs, OM1 = OM1_core_ASVs, OM2 = OM2_core_ASVs)
 
 #used AI to trouble shoot to get genus level 
-REF_genus <- tax_table(soil_REF)[REF_core_ASVs, "Genus"]
-OM1_genus <- tax_table(soil_OM1)[OM1_core_ASVs, "Genus"]
-OM2_genus <- tax_table(soil_OM2)[OM2_core_ASVs, "Genus"]
+REF_genus <- tax_table(soil_REF)[REF_core, "Genus"]
+OM1_genus <- tax_table(soil_OM1)[OM1_core, "Genus"]
+OM2_genus <- tax_table(soil_OM2)[OM2_core, "Genus"]
 
 soil_venn <- ggVennDiagram(list(
   REF = REF_genus,
@@ -115,3 +115,4 @@ ASVs_in_treatments <- core_long %>%
     values_fill = NA)
 
 view(ASVs_in_treatments)
+
