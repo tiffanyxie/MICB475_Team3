@@ -1,3 +1,7 @@
+#R script for Core Microbiome
+
+                                                           
+#### Load packages ####
 library(tidyverse)
 library(phyloseq)
 library(microbiome)
@@ -5,40 +9,44 @@ library(ggVennDiagram)
 library(svglite)
 
 #### Load data ####
-#Use non-rarefied phyloseq
-
-load("phylo_soil.RData")
-
-#### "core" microbiome ####
-
-## Glom to Genus level
-phylo_soil <- tax_glom(phylo_soil, taxrank = "Genus", NArm=FALSE)
+load("phylo_soil_genus.RData")
 
 
-## Convert to relative abundance 
-soil_RA <- transform_sample_counts(phylo_soil, fun=function(x) x/sum(x))
+#### Core Microbiome Analysis ####
 
-## Filter dataset by LTSP Treatment  
+
+# Convert to relative abundance 
+soil_RA <- transform_sample_counts(phylo_soil_genus, 
+                                   fun=function(x) x/sum(x))
+
+# Subset samples to REF, OM1, and OM2
 soil_REF <- subset_samples(soil_RA, `LTSP.Treatment`=="REF")
 soil_OM1 <- subset_samples(soil_RA, `LTSP.Treatment`=="OM1")
 soil_OM2 <- subset_samples(soil_RA, `LTSP.Treatment`=="OM2")
 
 
-#For reference: Abundance thresholds to test - 0 (presence/absence), 0.001 (filter out rare ASVs), 0.01 (abundant ASVs)
+# Abundance thresholds to test 
+#     - 0 (presence/absence)
+#     - 0.001 (filter out rare ASVs)
+#     - 0.01 (abundant ASVs)
 
-## What FeatureIDs are found in more than 50% of samples in each LTSP Treatment group?
-
+# Core Microbiome Analysis: prevalence 50% and detection 0.1%
 REF_core <- core_members(soil_REF, detection = 0.001, prevalence = 0.5)
 OM1_core <- core_members(soil_OM1, detection = 0.001, prevalence = 0.5)
 OM2_core <- core_members(soil_OM2, detection = 0.001, prevalence = 0.5)
 
+# Combine core ASV results
 soil_list_full <- list(REF = REF_core, OM1 = OM1_core, OM2 = OM2_core)
 
-#used AI to trouble shoot to get genus level 
+# Obtain genera associated with core ASVs
+# Used AI to troubleshoot
 REF_genus <- tax_table(soil_REF)[REF_core, "Genus"]
 OM1_genus <- tax_table(soil_OM1)[OM1_core, "Genus"]
 OM2_genus <- tax_table(soil_OM2)[OM2_core, "Genus"]
 
+#### Results ####
+
+# Generate venn diagram
 soil_venn <- ggVennDiagram(list(
   REF = REF_genus,
   OM1 = OM1_genus,
@@ -46,6 +54,7 @@ soil_venn <- ggVennDiagram(list(
 
 #Used GenAi for troubleshooting formatting
 
+# Plot venn diagram 
 soil_venn +
   scale_fill_gradient(
     low = "#97e5f1",
@@ -56,7 +65,7 @@ soil_venn +
         plot.background = element_rect(fill = "white", color = NA),
         panel.background = element_rect(fill = "white", color = NA))
 
-## Save venn diagram
+# Save venn diagram
 ggsave("figures/core_microbiome.png",
        units=c("in"),
        width = 5.5,
@@ -66,55 +75,37 @@ ggsave("figures/core_microbiome.svg",
        width = 5.5,
        height = 5)
 
-## The below code is to identify which genera are present in each section of the Venn Diagram
+# Obtain table of core genera associated with each section of venn diagram
 
+ref_genera<-REF_genus %>% as.data.frame() %>% pull(Genus)
+om1_genera<-OM1_genus %>% as.data.frame() %>% pull(Genus)
+om2_genera<-OM2_genus %>% as.data.frame() %>% pull(Genus)
 
-#Trouble shoot using AI
-# Make into long format of Feature IDs
-core_long <- bind_rows(
-  data.frame(FeatureID = soil_list_full$REF, Treatment = "REF"),
-  data.frame(FeatureID = soil_list_full$OM1, Treatment = "OM1"),
-  data.frame(FeatureID = soil_list_full$OM2, Treatment = "OM2")) %>%
-  filter(!is.na(FeatureID))
-
-
-# Join taxonomy table
-tax_dat <- read_delim(file = "taxonomy.tsv", delim = "\t") %>%
-  select(-Confidence) %>%
-  rename(FeatureID = `Feature ID`) %>%
-  separate(
-    col = Taxon,
-    sep = ";",
-    into = c("Domain","Phylum","Class","Order","Family","Genus","Species"),
-    fill = "right",
-    remove = FALSE)
-
-core_tax <- inner_join(core_long, tax_dat, by = "FeatureID")
-
-#Change data frame to report on the treatments each taxonomic category is present in
-core_in_treatments <- core_tax %>%
-  select(Treatment, Genus) %>% #can change Genus to whatever taxonomic level is of interest
-  filter(!is.na(Genus)) %>%
-  distinct() %>% # removes duplicate treatment–genus pairs
-  mutate(present = Treatment) %>%
-  pivot_wider(
-    names_from = Genus, #make sure to change the taxonomic level here as well
-    values_from = present,
-    values_fill = NA)
-
-view(core_in_treatments)
-
-
-#Same as above, but with raw ASVs instead of taxonomic levels
-ASVs_in_treatments <- core_long %>%
-  distinct(Treatment, FeatureID) %>% # removes duplicate treatment–genus pairs
-  mutate(present = Treatment) %>%
-  pivot_wider(
-    names_from = FeatureID,
-    values_from = present,
-    values_fill = NA)
-
-view(ASVs_in_treatments)
+all_genus<- c(ref_genera,
+              om1_genera,
+              om2_genera) %>%
+  unique()
 
 
 
+core_genera_table<-data.frame(Genus = all_genus) %>%
+  mutate(REF = Genus %in% ref_genera,
+         OM1 = Genus %in% om1_genera,
+         OM2 = Genus %in% om2_genera) %>%
+  arrange(desc(REF),desc(OM1),desc(OM2))
+
+
+REF_unique <-core_genera_table %>%
+  filter(REF, !OM1, !OM2)
+
+REF_OM1_unique <-core_genera_table %>%
+  filter(REF, OM1, !OM2)
+
+REF_OM2_unique <-core_genera_table %>%
+  filter(REF, !OM1, OM2)
+
+OM1_unique <-core_genera_table %>%
+  filter(!REF, OM1, !OM2)
+
+OM1_OM2_unique <-core_genera_table %>%
+  filter(!REF, OM1, OM2)
