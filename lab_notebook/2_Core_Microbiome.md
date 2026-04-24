@@ -2,7 +2,7 @@
 
 ## Aim:
 
-To perform core microbiome at the genus level to determine the genera unique to each OM level. To Create a Venn diagram using all the genera shared and unique to OM level.
+To perform core microbiome at the genus level to determine the genera unique to each OM level. To Create a Venn diagram and table to show the genera shared and unique to OM level.
 
 ## Code:
 
