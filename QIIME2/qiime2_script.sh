@@ -108,23 +108,7 @@ qiime feature-table summarize \
   --m-sample-metadata-file /datasets/project_2/soil/soil_metadata.txt
 
 # Generate tree for phylogenetic diversity analyses
-qiime phylogeny align-to-tree-mafft-fasttree \
---i-sequences rep-seqs.qza \
---o-alignment aligned-rep-seqs.qza \
---o-masked-alignment masked-aligned-rep-seqs.qza \
---o-tree unrooted-tree.qza \
---o-rooted-tree rooted-tree.qza
-# ^ this gave an error, asked gemini and got told to try this code
-
-qiime phylogeny align-to-tree-mafft-fasttree \
-  --i-sequences rep-seqs.qza \
-  --p-n-threads 0 \
-  --o-alignment aligned-rep-seqs.qza \
-  --o-masked-alignment masked-aligned-rep-seqs.qza \
-  --o-tree unrooted-tree.qza \
-  --o-rooted-tree rooted-tree.qza
-# ^ gave error again
-
+# Used Gemini to troubleshoot errors for tree generation
 qiime feature-table filter-seqs \
   --i-data rep-seqs.qza \
   --i-table bc-only-o-layer-no-herbicide-filtered-table.qza \
@@ -165,5 +149,4 @@ scp soil_metadata.txt /data/soil_project/soil_export &
 
 biom convert -i feature-table.biom --to-tsv -o feature-table.txt &
 
-# On local computer, secure copying directory
-scp -r root@10.19.139.186:/data/soil_project/soil_export .
+
