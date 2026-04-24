@@ -15,8 +15,40 @@ Venn diagram
 
 Table with unique and shared genera between OM levels
 
-<img width="317" height="705" alt="Screenshot 2026-04-24 at 2 52 58 PM" src="https://github.com/user-attachments/assets/322e0ba5-3063-4b36-8bea-9bc7fc53081b" />
-
+Genus	REF	OM1	OM2
+ g__Incertae_Sedis	TRUE	TRUE	TRUE
+ g__Dongia	TRUE	TRUE	TRUE
+ g__Hypericibacter	TRUE	TRUE	TRUE
+ g__Robbsia	TRUE	TRUE	TRUE
+ g__Edaphobacter	TRUE	TRUE	TRUE
+ g__Reyranella	TRUE	TRUE	TRUE
+ g__Labrys	TRUE	TRUE	TRUE
+ g__Roseiarcus	TRUE	TRUE	TRUE
+ g__Phenylobacterium	TRUE	TRUE	TRUE
+ g__Acidiferrimicrobium	TRUE	TRUE	TRUE
+ g__Acidothermus	TRUE	TRUE	TRUE
+ g__Marmoricola	TRUE	TRUE	TRUE
+ g__Streptomyces	TRUE	TRUE	TRUE
+ g__Mycobacterium	TRUE	TRUE	TRUE
+ g__Jatrophihabitans	TRUE	TRUE	TRUE
+ g__Conexibacter	TRUE	TRUE	TRUE
+ g__Afipia	TRUE	TRUE	TRUE
+ g__Inquilinus	TRUE	TRUE	FALSE
+ g__Granulicella	TRUE	TRUE	FALSE
+ g__Baekduia	TRUE	FALSE	TRUE
+ g__Silvibacterium	TRUE	FALSE	FALSE
+ g__Rhodopila	FALSE	TRUE	TRUE
+ g__Acidibacter	FALSE	TRUE	TRUE
+ g__Hyphomicrobium	FALSE	TRUE	TRUE
+ g__Bauldia	FALSE	TRUE	TRUE
+ g__Pseudorhodoplanes	FALSE	TRUE	TRUE
+ g__Nocardioides	FALSE	TRUE	TRUE
+ g__Solirubrobacter	FALSE	TRUE	TRUE
+ g__Pseudolabrys	FALSE	TRUE	TRUE
+ g__Rhodoplanes	FALSE	TRUE	TRUE
+ g__Variibacter	FALSE	TRUE	TRUE
+ g__Rhodovastum	FALSE	TRUE	FALSE
+ g__Pedomicrobium	FALSE	TRUE	FALSE
 
 **Final Thresholds for Manuscript:** 
 * 0.5 for prevalence
