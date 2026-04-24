@@ -51,6 +51,8 @@ Table with unique and shared genera between OM levels
 | g__Rhodovastum       | FALSE | TRUE  | FALSE |
 | g__Pedomicrobium     | FALSE | TRUE  | FALSE |
 
+*TRUE means the genera is present. FALSE means the genera is absent.
+
 
 **Final Thresholds for Manuscript:** 
 * 0.5 for prevalence
