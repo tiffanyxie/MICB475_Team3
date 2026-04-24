@@ -21,13 +21,6 @@ load("phylo_soil_genus.RData")
 
 #DeSeq results
 deseq_om1_ref<-read.delim("output/DeSEQ_OM1_vs_REF.csv",sep=",")
-# deseq_om2_ref<-read.delim("output/DeSEQ_OM2_vs_REF.csv",sep=",")
-# deseq_om2_om1<-read.delim("output/DeSEQ_OM2_vs_OM1.csv",sep=",")
-
-# deseq_results<-rbind(deseq_om1_ref,deseq_om2_ref,deseq_om2_om1) %>%
-#   filter(!grepl("Incertae_Sedis",Genus))
-# unique_asvs<-deseq_results %>% pull(ASV) %>% unique()
-# unique_genus<-deseq_results %>% pull(Genus) %>% unique()
 
 deseq_results_om1_ref<-deseq_om1_ref %>%
   filter(!grepl("Incertae_Sedis",Genus))
@@ -76,7 +69,6 @@ df_final = df_noNA %>% select(-Sample)
 
 # Predictors and outcome
 predictors = df_final %>% select(-LTSP.Treatment) %>% as.data.frame()
-#predictors = df_final %>% select(-LTSP.Treatment,-CN.Ratio,-Total.Carbon) %>% as.data.frame()
 
 
 outcome = df_final %>% pull(LTSP.Treatment) %>%
@@ -137,12 +129,6 @@ test_true<-soil_model$test_labels %>% pull(true_labels) %>%
 #For confusion matrix need factor with eventual result
 # Use max probability to determine result
 
-# test_result <- data.frame(Result = soil_model$test_labels %>% 
-#                             select(REF, OM1) %>% max.col()) %>%
-#   mutate(Result = case_when(Result == 1 ~ "REF",
-#                             Result == 2 ~ "OM1")) %>%
-#   pull(Result) %>% 
-#   factor(levels = c("REF", "OM1"))
 
 test_result <- soil_model$test_labels %>%
   mutate(Result = ifelse(predicted_probabilities > 0.5, "OM1", "REF")) %>%
@@ -159,12 +145,6 @@ train_true<-soil_model$train_labels %>% pull(true_labels) %>%
 #For confusion matrix need factor with eventual result
 # Use max probability to determine result
 
-# train_result<-data.frame(Result = soil_model$test_labels %>% 
-#                           select(REF,OM1) %>% max.col()) %>%
-#   mutate(Result = case_when(Result == 1 ~ "REF",
-#                             Result == 2 ~ "OM1")) %>%
-#   pull(Result) %>% 
-#   factor(levels=c("REF","OM1"))
 
 train_result <- soil_model$train_labels %>%
   mutate(Result = ifelse(predicted_probabilities > 0.5, "OM1", "REF")) %>%
@@ -226,11 +206,6 @@ auc_test_val  <- pROC::auc(roc_test)
 ci_train <- pROC::ci.auc(roc_train)
 ci_test  <- pROC::ci.auc(roc_test)
 
-# roc_test = roc(soil_model$test_labels$true_labels,
-#                soil_model$test_labels$predicted_probabilities)
-# roc_train = roc(soil_model$train_labels$true_labels,
-#                 soil_model$train_labels$predicted_probabilities)
-
 roc_plot<-ggplot() +
   # Training data: this is a type of control
   geom_line(aes(x = 1 - roc_train$specificities, 
@@ -252,23 +227,6 @@ roc_plot<-ggplot() +
         axis.text = element_text(size=10))
 roc_plot
 
-# ggplot() +
-#   # Training data: this is a type of control
-#   geom_line(aes(x = 1 - roc_train$specificities, 
-#                 y = roc_train$sensitivities), 
-#             color = "red",size=1) +
-#   # Test data: tells us the strength of the prediction
-#   geom_line(aes(x = 1 - roc_test$specificities,
-#                 y = roc_test$sensitivities), 
-#             color = "black",size=1) +
-#   geom_abline(slope = 1, intercept = 0, color = "gray", linetype = "dashed",size=1) +
-#   labs(x = "False Positive Rate", y = "True Positive Rate") +
-#   annotate("text", x = 0.7, y = 0.2, 
-#            label = sprintf("Train (red): %.2f (%.2f-%.2f)\nTest (black): %.2f (%.2f-%.2f)",
-#                            auc(roc_train), pd_model$auc_train_ci[1], pd_model$auc_train_ci[2],
-#                            auc(roc_test), pd_model$auc_test_ci[1], pd_model$auc_test_ci[2]), 
-#            size = 6) +
-#   theme_minimal(base_size=18)
 
 
 #Compile results into table
