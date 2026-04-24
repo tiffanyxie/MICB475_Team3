@@ -21,5 +21,5 @@
 [Feb 5: Brainstorm project ideas](https://github.com/tiffanyxie/MICB475_Team3/blob/main/meeting_minutes/Feb_5.md)
 
 ## Scripts 
-[QIIME2](QIIME2/)
+[QIIME2](QIIME2/) \
 [R Scripts](R_scripts/)
