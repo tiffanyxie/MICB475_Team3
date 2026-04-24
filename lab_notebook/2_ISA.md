@@ -12,7 +12,7 @@
 ## Results:
 
 Indicator species analysis was performed on all BC samples combined, rather than separately by ecozone, using genus-level relative abundance data.  
-Only samples from the REF, OM1, and OM2 treatment groups were retained for the analysis.
+Only samples from the REF, OM1, OM2 treatment groups, and those are significant in more than one treatment group were retained for the analysis.
 
 The ISA algorithm (`multipatt` from the **indicspecies** package) was used to identify genera whose occurrence and relative abundance were significantly associated with specific treatment groups or treatment combinations.
 
