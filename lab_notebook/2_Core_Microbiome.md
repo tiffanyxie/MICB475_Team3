@@ -6,7 +6,7 @@ To perform core microbiome at the genus level to determine the genera unique to 
 
 ## Code:
 
-[R Script](../R_scripts/2_CoreMicrobiome.R)
+[R Script](../[R_scripts/2_CoreMicrobiome.R](https://github.com/tiffanyxie/MICB475_Team3/blob/b39899f29d04a2407467321ec3d0bde3c9d3b640/R_scripts/2_CoreMicrobiome))
 
 ## Results:
 
