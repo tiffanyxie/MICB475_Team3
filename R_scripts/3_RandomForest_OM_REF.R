@@ -72,8 +72,6 @@ df_final = df_noNA %>% select(-Sample)
 
 # Predictors and outcome
 predictors = df_final %>% select(-LTSP.Treatment) %>% as.data.frame()
-#predictors = df_final %>% select(-LTSP.Treatment,-CN.Ratio,-Total.Carbon) %>% as.data.frame()
-
 
 outcome = df_final %>% pull(LTSP.Treatment) %>%
   factor(levels=c("OM","REF"))
